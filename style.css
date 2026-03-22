@@ -71,7 +71,7 @@ body::after {
     transition: all 0.14s ease;
 }
 
-/* ===================== NAV ===================== */
+/* NAV */
 nav {
     position: fixed;
     top: 0;
@@ -140,7 +140,7 @@ nav {
     color: #0a0900;
 }
 
-/* ===================== HERO ===================== */
+/* HERO*/
 #hero {
     min-height: 100vh;
     display: flex;
@@ -287,7 +287,7 @@ nav {
     animation: fu 0.7s 0.8s forwards;
 }
 
-/* ===================== BUTTONS ===================== */
+/* BUTTONS */
 .btn-primary {
     background: linear-gradient(135deg, var(--gold), var(--gold2));
     color: #0a0900;
@@ -329,7 +329,7 @@ nav {
     color: var(--gold2);
 }
 
-/* ===================== AVATAR ===================== */
+/* AVATAR  */
 .avatar-wrap {
     position: relative;
     width: 340px;
@@ -413,7 +413,7 @@ nav {
     }
 }
 
-/* ===================== STATS BAR ===================== */
+/*STATS BAR*/
 .stats-bar {
     display: flex;
     gap: 3rem;
@@ -448,7 +448,7 @@ nav {
     margin-top: 4px;
 }
 
-/* ===================== SECTION COMMON ===================== */
+/*SECTION COMMON*/
 .section {
     padding: 6rem 4rem;
 }
@@ -496,11 +496,11 @@ nav {
     margin-top: 0.75rem;
 }
 
-/* ===================== ABOUT ===================== */
+/* ABOUT  */
 #about {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
+    grid-template-columns: 0.6fr 1fr;
+    gap: 4rem;
     align-items: center;
 }
 
@@ -510,7 +510,7 @@ nav {
 
 .about-img-box {
     width: 100%;
-    aspect-ratio: 4/5;
+    aspect-ratio: 1/1;
     border-radius: 24px;
     background: linear-gradient(145deg, #1a1508, #111009);
     border: 1px solid var(--border);
@@ -518,7 +518,7 @@ nav {
     align-items: center;
     justify-content: center;
     font-family: 'Syne', sans-serif;
-    font-size: 72px;
+    font-size: 48px;
     font-weight: 800;
     color: var(--gold2);
     letter-spacing: -3px;
@@ -615,7 +615,7 @@ nav {
     line-height: 1.5;
 }
 
-/* ===================== SKILLS ===================== */
+/* SKILLS  */
 #skills {
     background: var(--bg2);
 }
@@ -712,7 +712,7 @@ nav {
     transition: width 1.2s cubic-bezier(.4, 0, .2, 1);
 }
 
-/* ===================== PROJECTS ===================== */
+/*  PROJECTS */
 #projects {
     background: var(--bg);
 }
@@ -842,7 +842,7 @@ nav {
     transform: none;
 }
 
-/* ===================== CONTACT ===================== */
+/* CONTACT */
 #contact {
     background: var(--bg2);
 }
@@ -1008,7 +1008,7 @@ nav {
     height: 18px;
 }
 
-/* ===================== FOOTER ===================== */
+/* FOOTER */
 footer {
     border-top: 1px solid var(--border);
     padding: 2rem 4rem;
@@ -1051,7 +1051,7 @@ footer p {
     color: var(--gold2);
 }
 
-/* ===================== RESPONSIVE ===================== */
+/* RESPONSIVE */
 @media (max-width: 900px) {
     nav {
         padding: 0 1.5rem;
