@@ -52,7 +52,7 @@ body::after {
 #cur {
     width: 8px;
     height: 8px;
-    /* background: var(--gold3); */
+    background: var(--gold3);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
