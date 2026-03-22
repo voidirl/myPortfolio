@@ -7,7 +7,7 @@ Personal portfolio of Rishavdeep Singh — Generalist Developer
 - Gold & Dark theme
 
 ## Live
-> Coming soon on Vercel
+> https://my-portfolio-three-orpin-56.vercel.app 
 
 ## Contact
 - GitHub: [voidirl](https://github.com/voidirl)
