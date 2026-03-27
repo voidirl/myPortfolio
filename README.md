@@ -1,6 +1,6 @@
 # v0idrsh — Portfolio
 
-Personal portfolio of Rishavdeep Singh — Generalist Developer
+Personal portfolio of Rishavdeep Singh — Multi-Stack Developer
 
 ## Tech Stack
 - HTML, CSS, JavaScript
