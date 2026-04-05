@@ -7,7 +7,7 @@ Personal portfolio of Rishavdeep Singh — Multi-Stack Developer
 - Gold & Dark theme
 
 ## Live
-> https://my-portfolio-three-orpin-56.vercel.app 
+> https://v0idrsh.vercel.app 
 
 ## Contact
 - GitHub: [voidirl](https://github.com/voidirl)
