@@ -739,6 +739,7 @@ nav {
     font-weight: 600;
     font-family: 'Plus Jakarta Sans', sans-serif;
     cursor: none;
+    pointer-events: auto;
     letter-spacing: 0.5px;
     transition: all 0.2s ease;
 }
@@ -759,9 +760,6 @@ nav {
     transition: transform 0.3s, border-color 0.3s, opacity 0.3s, scale 0.3s;
 }
 
-.proj-card.hidden {
-    display: none;
-}
 
 .proj-grid {
     display: grid;
