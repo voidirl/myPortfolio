@@ -311,9 +311,18 @@
         <h2 class="sec-title">Selected Work</h2>
         <p class="sec-sub">Applications I have designed, built, and deployed from scratch.</p>
       </div>
-      <div class="proj-grid">
 
-        <div class="proj-card">
+      <!-- FILTER TABS -->
+      <div class="proj-filters">
+        <button class="proj-filter-btn active" data-filter="all">All</button>
+        <button class="proj-filter-btn" data-filter="fullstack">Full-Stack</button>
+        <button class="proj-filter-btn" data-filter="ai">AI</button>
+        <button class="proj-filter-btn" data-filter="devops">DevOps</button>
+      </div>
+
+      <div class="proj-grid" id="proj-grid">
+        <!-- AI Expense Tracker -->
+        <div class="proj-card" data-category="fullstack ai devops">
           <div class="proj-img">
             <div class="proj-img-overlay"></div>
             <div class="proj-img-icon">ET</div>
@@ -341,7 +350,8 @@
           </div>
         </div>
 
-        <div class="proj-card">
+        <!-- Code Review Bot -->
+        <div class="proj-card" data-category="ai devops">
           <div class="proj-img">
             <div class="proj-img-overlay"></div>
             <div class="proj-img-icon">CR</div>
@@ -367,7 +377,8 @@
           </div>
         </div>
 
-        <div class="proj-card">
+        <!-- Codebase Onboarder -->
+        <div class="proj-card" data-category="fullstack ai">
           <div class="proj-img">
             <div class="proj-img-overlay"></div>
             <div class="proj-img-icon">CO</div>
@@ -393,11 +404,11 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- CONTACT -->
+
+    <!-- CONTACT  -->
     <section class="section" id="contact">
       <div class="contact-wrap">
         <div class="contact-left">
