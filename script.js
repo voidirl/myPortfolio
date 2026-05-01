@@ -7,26 +7,26 @@ document.addEventListener('mousemove', e => {
   mx = e.clientX;
   my = e.clientY;
   cur.style.left = mx - 4 + 'px';
-  cur.style.top  = my - 4 + 'px';
+  cur.style.top = my - 4 + 'px';
 });
 
 (function animateRing() {
   rx += (mx - rx) * 0.13;
   ry += (my - ry) * 0.13;
   ring.style.left = rx - 18 + 'px';
-  ring.style.top  = ry - 18 + 'px';
+  ring.style.top = ry - 18 + 'px';
   requestAnimationFrame(animateRing);
 })();
 
 // Cursor scale on hover
 document.querySelectorAll('a, button, .proj-card, .trait-card, .ci-card').forEach(el => {
   el.addEventListener('mouseenter', () => {
-    cur.style.transform  = 'scale(2)';
+    cur.style.transform = 'scale(2)';
     ring.style.transform = 'scale(1.6)';
     ring.style.borderColor = 'rgba(201,168,76,0.9)';
   });
   el.addEventListener('mouseleave', () => {
-    cur.style.transform  = 'scale(1)';
+    cur.style.transform = 'scale(1)';
     ring.style.transform = 'scale(1)';
     ring.style.borderColor = 'rgba(201,168,76,0.6)';
   });
@@ -65,7 +65,7 @@ const barObserver = new IntersectionObserver(entries => {
 bars.forEach(b => barObserver.observe(b));
 
 // ── NAV — active link highlight on scroll ──
-const sections  = document.querySelectorAll('section[id]');
+const sections = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
@@ -140,4 +140,29 @@ revealEls.forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   revealObserver.observe(el);
+});
+
+// ── PROJECT FILTER TABS ──
+const filterBtns = document.querySelectorAll('.proj-filter-btn');
+const projCards = document.querySelectorAll('.proj-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // active state
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+
+    projCards.forEach(card => {
+      if (filter === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        const cats = card.dataset.category.split(' ');
+        cats.includes(filter)
+          ? card.classList.remove('hidden')
+          : card.classList.add('hidden');
+      }
+    });
+  });
 });
