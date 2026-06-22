@@ -8,19 +8,19 @@
 }
 
 :root {
-    --bg: #0a0900;
-    --bg2: #0f0e0a;
-    --surface: rgba(255, 215, 0, 0.04);
-    --surface2: rgba(255, 215, 0, 0.07);
-    --gold: #c9a84c;
-    --gold2: #f0c040;
-    --gold3: #ffd700;
-    --goldl: rgba(201, 168, 76, 0.15);
-    --white: #f5f0e8;
-    --muted: #7a7060;
-    --border: rgba(201, 168, 76, 0.18);
-    --border2: rgba(255, 255, 255, 0.06);
-    --text: #f0e8d8;
+    --bg: #0d0b06;
+    --bg2: #131007;
+    --surface: rgba(255, 215, 0, 0.05);
+    --surface2: rgba(255, 215, 0, 0.09);
+    --gold: #d4a843;
+    --gold2: #f5c842;
+    --gold3: #ffe066;
+    --goldl: rgba(212, 168, 67, 0.18);
+    --white: #fdf6e3;
+    --muted: #8a7d60;
+    --border: rgba(212, 168, 67, 0.22);
+    --border2: rgba(255, 240, 180, 0.07);
+    --text: #f5ead8;
 }
 
 html {
@@ -83,9 +83,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(10, 9, 0, 0.85);
+    background: rgba(13, 11, 6, 0.88);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
 }
 
 .nav-logo {
@@ -348,16 +347,17 @@ nav {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: linear-gradient(145deg, #1a1508, #0f0e0a);
+    background: linear-gradient(145deg, #1c1608, #0d0b06);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-size: 52px;
-    font-weight: 800;
-    color: var(--gold2);
-    letter-spacing: -2px;
-    text-shadow: 0 0 40px rgba(201, 168, 76, 0.4);
+    overflow: hidden;
+    position: relative;
+}
+
+.anime-char {
+    width: 100%;
+    height: 100%;
 }
 
 .float-tag {
@@ -512,16 +512,8 @@ nav {
     width: 100%;
     aspect-ratio: 1/1;
     border-radius: 24px;
-    background: linear-gradient(145deg, #1a1508, #111009);
+    background: linear-gradient(145deg, #1c1608, #111009);
     border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-size: 48px;
-    font-weight: 800;
-    color: var(--gold2);
-    letter-spacing: -3px;
     overflow: hidden;
     position: relative;
 }

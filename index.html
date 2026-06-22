@@ -64,8 +64,134 @@
       <div class="hero-right">
         <div class="avatar-wrap">
           <div class="avatar-ring">
-            <div class="avatar-inner">VOID</div>
+            <div class="avatar-inner">
+              <!-- Anime developer character SVG -->
+              <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" class="anime-char">
+                <!-- Background glow -->
+                <defs>
+                  <radialGradient id="bgGlow" cx="50%" cy="60%" r="50%">
+                    <stop offset="0%" stop-color="#f5c842" stop-opacity="0.15"/>
+                    <stop offset="100%" stop-color="#0d0b06" stop-opacity="0"/>
+                  </radialGradient>
+                  <radialGradient id="skinGrad" cx="50%" cy="30%" r="60%">
+                    <stop offset="0%" stop-color="#fde8c8"/>
+                    <stop offset="100%" stop-color="#f0c9a0"/>
+                  </radialGradient>
+                  <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#1a1208"/>
+                    <stop offset="100%" stop-color="#2e2010"/>
+                  </linearGradient>
+                  <linearGradient id="hoodie" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#1c1608"/>
+                    <stop offset="100%" stop-color="#110f06"/>
+                  </linearGradient>
+                  <filter id="softGlow">
+                    <feGaussianBlur stdDeviation="2" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+
+                <!-- BG glow circle -->
+                <circle cx="140" cy="160" r="120" fill="url(#bgGlow)"/>
+
+                <!-- Body / hoodie -->
+                <path d="M70 280 Q75 200 90 185 Q110 175 140 178 Q170 175 190 185 Q205 200 210 280Z" fill="url(#hoodie)"/>
+                <!-- Hoodie pocket -->
+                <rect x="115" y="225" width="50" height="28" rx="6" fill="rgba(255,200,60,0.06)" stroke="rgba(245,200,66,0.18)" stroke-width="1"/>
+                <!-- Hoodie drawstring -->
+                <path d="M128 200 Q130 215 128 225M152 200 Q150 215 152 225" stroke="rgba(245,200,66,0.3)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+                <!-- Neck -->
+                <rect x="128" y="168" width="24" height="18" rx="6" fill="url(#skinGrad)"/>
+
+                <!-- Head -->
+                <ellipse cx="140" cy="140" rx="52" ry="56" fill="url(#skinGrad)"/>
+
+                <!-- Hair — long, black with gold sheen -->
+                <!-- Back hair -->
+                <path d="M90 120 Q82 150 86 190 Q90 175 96 165Z" fill="url(#hairGrad)"/>
+                <path d="M190 120 Q198 150 194 190 Q190 175 184 165Z" fill="url(#hairGrad)"/>
+                <!-- Top hair -->
+                <path d="M90 118 Q92 68 140 62 Q188 68 190 118 Q175 100 140 98 Q105 100 90 118Z" fill="url(#hairGrad)"/>
+                <!-- Hair strands / bangs -->
+                <path d="M100 115 Q95 95 105 80 Q108 100 104 118Z" fill="#12100a"/>
+                <path d="M118 95 Q120 72 130 68 Q128 90 120 105Z" fill="#12100a"/>
+                <path d="M152 95 Q150 72 140 68 Q142 90 150 105Z" fill="#12100a"/>
+                <path d="M168 108 Q172 88 165 80 Q160 98 164 118Z" fill="#12100a"/>
+                <!-- Side hair pieces -->
+                <path d="M92 130 Q84 155 88 170 Q94 155 98 138Z" fill="#12100a"/>
+                <path d="M188 130 Q196 155 192 170 Q186 155 182 138Z" fill="#12100a"/>
+
+                <!-- Eyes — large anime style -->
+                <!-- Left eye -->
+                <ellipse cx="122" cy="138" rx="13" ry="14" fill="#1a1206"/>
+                <ellipse cx="122" cy="138" rx="10" ry="11" fill="#2d1f0a"/>
+                <ellipse cx="122" cy="138" rx="7" ry="8" fill="#c9a030"/>
+                <ellipse cx="122" cy="138" rx="4" ry="5" fill="#0a0806"/>
+                <!-- Eye shine left -->
+                <circle cx="118" cy="134" r="2.5" fill="white" opacity="0.9"/>
+                <circle cx="125" cy="140" r="1.2" fill="white" opacity="0.5"/>
+                <!-- Left eyelashes -->
+                <path d="M109 133 Q110 128 116 129" stroke="#1a1206" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M135 133 Q134 128 128 129" stroke="#1a1206" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+                <!-- Right eye -->
+                <ellipse cx="158" cy="138" rx="13" ry="14" fill="#1a1206"/>
+                <ellipse cx="158" cy="138" rx="10" ry="11" fill="#2d1f0a"/>
+                <ellipse cx="158" cy="138" rx="7" ry="8" fill="#c9a030"/>
+                <ellipse cx="158" cy="138" rx="4" ry="5" fill="#0a0806"/>
+                <!-- Eye shine right -->
+                <circle cx="154" cy="134" r="2.5" fill="white" opacity="0.9"/>
+                <circle cx="161" cy="140" r="1.2" fill="white" opacity="0.5"/>
+                <!-- Right eyelashes -->
+                <path d="M145 133 Q146 128 152 129" stroke="#1a1206" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M171 133 Q170 128 164 129" stroke="#1a1206" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+                <!-- Eyebrows -->
+                <path d="M110 124 Q122 119 134 122" stroke="#1a1206" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <path d="M146 122 Q158 119 170 124" stroke="#1a1206" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+                <!-- Nose — subtle -->
+                <path d="M138 152 Q140 156 142 152" stroke="rgba(180,140,100,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+                <!-- Mouth — small smile -->
+                <path d="M130 163 Q140 170 150 163" stroke="#d4885a" stroke-width="2" fill="none" stroke-linecap="round"/>
+                <!-- Blush -->
+                <ellipse cx="108" cy="152" rx="12" ry="6" fill="rgba(255,150,120,0.18)"/>
+                <ellipse cx="172" cy="152" rx="12" ry="6" fill="rgba(255,150,120,0.18)"/>
+
+                <!-- Laptop / terminal floating in front -->
+                <g transform="translate(60, 215) rotate(-5)">
+                  <rect x="0" y="0" width="90" height="56" rx="6" fill="#0d0b06" stroke="rgba(245,200,66,0.4)" stroke-width="1.5"/>
+                  <!-- Screen content -->
+                  <rect x="4" y="4" width="82" height="42" rx="4" fill="#0a0800"/>
+                  <!-- Terminal lines -->
+                  <text x="8" y="16" font-family="monospace" font-size="7" fill="#f5c842" opacity="0.9">$ git push origin main</text>
+                  <text x="8" y="26" font-family="monospace" font-size="7" fill="#7db87d" opacity="0.8">✓ Deployed to Vercel</text>
+                  <text x="8" y="36" font-family="monospace" font-size="7" fill="rgba(245,200,66,0.5)">█</text>
+                  <!-- Laptop hinge -->
+                  <rect x="0" y="54" width="90" height="6" rx="2" fill="#1a1608" stroke="rgba(245,200,66,0.2)" stroke-width="1"/>
+                </g>
+
+                <!-- Gold particle dots -->
+                <circle cx="58" cy="100" r="2" fill="#f5c842" opacity="0.6">
+                  <animate attributeName="opacity" values="0.6;0.1;0.6" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="222" cy="115" r="1.5" fill="#f5c842" opacity="0.4">
+                  <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.5s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="75" cy="200" r="1.8" fill="#f5c842" opacity="0.3">
+                  <animate attributeName="opacity" values="0.3;0.8;0.3" dur="4s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="210" cy="195" r="2" fill="#f5c842" opacity="0.5">
+                  <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3.5s" repeatCount="indefinite"/>
+                </circle>
+              </svg>
+            </div>
           </div>
+          <div class="float-tag ft1"><span class="dot" style="background:#f5c842;box-shadow:0 0 6px #f5c842"></span>Building MockForge</div>
+          <div class="float-tag ft2"><span class="dot" style="background:#7db87d;box-shadow:0 0 6px #7db87d"></span>FastAPI + React</div>
+          <div class="float-tag ft3"><span class="dot" style="background:#60a5fa;box-shadow:0 0 6px #60a5fa"></span>Open to Internships</div>
         </div>
       </div>
     </section>
@@ -80,7 +206,111 @@
 
     <section class="section" id="about">
       <div class="about-img">
-        <div class="about-img-box">VOID</div>
+        <div class="about-img-box">
+          <!-- Anime character — about section version -->
+          <svg viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;">
+            <defs>
+              <radialGradient id="abgGlow" cx="50%" cy="55%" r="55%">
+                <stop offset="0%" stop-color="#f5c842" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#0d0b06" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="askinGrad" cx="50%" cy="30%" r="60%">
+                <stop offset="0%" stop-color="#fde8c8"/>
+                <stop offset="100%" stop-color="#f0c9a0"/>
+              </radialGradient>
+              <linearGradient id="ahairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1a1208"/>
+                <stop offset="100%" stop-color="#2e2010"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Bg glow -->
+            <ellipse cx="150" cy="200" rx="130" ry="150" fill="url(#abgGlow)"/>
+
+            <!-- Body -->
+            <path d="M50 340 Q60 240 85 215 Q110 200 150 204 Q190 200 215 215 Q240 240 250 340Z" fill="#1c1608"/>
+            <!-- Hoodie detail -->
+            <path d="M120 230 Q130 225 150 228 Q170 225 180 230 L178 260 Q150 268 122 260Z" fill="rgba(245,200,66,0.05)" stroke="rgba(245,200,66,0.12)" stroke-width="1"/>
+
+            <!-- Neck -->
+            <rect x="134" y="192" width="32" height="18" rx="8" fill="url(#askinGrad)"/>
+
+            <!-- Head -->
+            <ellipse cx="150" cy="158" rx="60" ry="64" fill="url(#askinGrad)"/>
+
+            <!-- Hair back -->
+            <path d="M93 140 Q82 175 86 230 Q92 205 100 188Z" fill="#12100a"/>
+            <path d="M207 140 Q218 175 214 230 Q208 205 200 188Z" fill="#12100a"/>
+            <!-- Top hair -->
+            <path d="M93 136 Q96 72 150 66 Q204 72 207 136 Q188 112 150 110 Q112 112 93 136Z" fill="url(#ahairGrad)"/>
+            <!-- Bangs -->
+            <path d="M106 130 Q100 105 112 90 Q114 115 110 134Z" fill="#12100a"/>
+            <path d="M126 106 Q128 78 140 74 Q137 100 128 118Z" fill="#12100a"/>
+            <path d="M162 106 Q160 78 150 74 Q153 100 162 118Z" fill="#12100a"/>
+            <path d="M178 122 Q183 98 175 88 Q168 108 172 132Z" fill="#12100a"/>
+            <!-- Side strands -->
+            <path d="M95 148 Q86 178 90 200 Q97 178 102 155Z" fill="#12100a"/>
+            <path d="M205 148 Q214 178 210 200 Q203 178 198 155Z" fill="#12100a"/>
+
+            <!-- Eyes -->
+            <ellipse cx="130" cy="157" rx="15" ry="16" fill="#1a1206"/>
+            <ellipse cx="130" cy="157" rx="11" ry="12" fill="#2d1f0a"/>
+            <ellipse cx="130" cy="157" rx="8" ry="9" fill="#c9a030"/>
+            <ellipse cx="130" cy="157" rx="5" ry="6" fill="#080604"/>
+            <circle cx="125" cy="152" r="3" fill="white" opacity="0.9"/>
+            <circle cx="133" cy="160" r="1.5" fill="white" opacity="0.5"/>
+
+            <ellipse cx="170" cy="157" rx="15" ry="16" fill="#1a1206"/>
+            <ellipse cx="170" cy="157" rx="11" ry="12" fill="#2d1f0a"/>
+            <ellipse cx="170" cy="157" rx="8" ry="9" fill="#c9a030"/>
+            <ellipse cx="170" cy="157" rx="5" ry="6" fill="#080604"/>
+            <circle cx="165" cy="152" r="3" fill="white" opacity="0.9"/>
+            <circle cx="173" cy="160" r="1.5" fill="white" opacity="0.5"/>
+
+            <!-- Eyebrows -->
+            <path d="M116 140 Q130 134 144 138" stroke="#1a1206" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M156 138 Q170 134 184 140" stroke="#1a1206" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+            <!-- Eyelashes -->
+            <path d="M115 150 Q116 143 124 145" stroke="#1a1206" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path d="M145 150 Q144 143 136 145" stroke="#1a1206" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path d="M155 150 Q156 143 164 145" stroke="#1a1206" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path d="M185 150 Q184 143 176 145" stroke="#1a1206" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+            <!-- Nose -->
+            <path d="M147 173 Q150 178 153 173" stroke="rgba(180,140,100,0.45)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+            <!-- Smile -->
+            <path d="M138 186 Q150 194 162 186" stroke="#d4885a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+
+            <!-- Blush -->
+            <ellipse cx="114" cy="172" rx="14" ry="7" fill="rgba(255,150,120,0.16)"/>
+            <ellipse cx="186" cy="172" rx="14" ry="7" fill="rgba(255,150,120,0.16)"/>
+
+            <!-- Headphones — coding aesthetic -->
+            <path d="M93 148 Q90 130 100 118" stroke="#d4a843" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M207 148 Q210 130 200 118" stroke="#d4a843" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="84" y="144" width="16" height="22" rx="7" fill="#1a1206" stroke="#d4a843" stroke-width="1.5"/>
+            <rect x="200" y="144" width="16" height="22" rx="7" fill="#1a1206" stroke="#d4a843" stroke-width="1.5"/>
+            <path d="M93 118 Q110 96 150 92 Q190 96 207 118" stroke="#d4a843" stroke-width="2.5" fill="none"/>
+
+            <!-- Code text floating -->
+            <text x="30" y="48" font-family="monospace" font-size="9" fill="rgba(245,200,66,0.35)" transform="rotate(-8,30,48)">const me = {</text>
+            <text x="22" y="62" font-family="monospace" font-size="9" fill="rgba(245,200,66,0.25)" transform="rotate(-8,22,62)">  stack: 'fullstack'</text>
+            <text x="26" y="76" font-family="monospace" font-size="9" fill="rgba(245,200,66,0.2)" transform="rotate(-8,26,76)">}</text>
+
+            <!-- Particles -->
+            <circle cx="42" cy="120" r="2.5" fill="#f5c842" opacity="0.5">
+              <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="258" cy="140" r="2" fill="#f5c842" opacity="0.4">
+              <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.8s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="268" cy="90" r="1.5" fill="#f5c842" opacity="0.3">
+              <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
         <div class="about-traits">
           <div class="trait-card">
             <div class="trait-icon">🎯</div>
