@@ -15,13 +15,12 @@
 </head>
 
 <body>
-
   <div id="cur"></div>
   <div id="cur-ring"></div>
 
   <nav>
     <a class="nav-logo" href="#hero">VOID<span>.</span></a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
@@ -38,23 +37,19 @@
   <main>
     <section id="hero">
       <div class="hero-left">
-
         <p class="hero-greeting">Hey, I'm</p>
         <h1 class="hero-name">
           <span class="n1">Rishavdeep</span>
           <span class="n2">Singh</span>
         </h1>
-        <p class="hero-sub">Full-stack. Deployed. <span id="typed-text" class="typed-cursor"></span></p>
-        <p class="hero-desc">
-          I design and engineer <strong>scalable full-stack applications</strong> — from robust REST APIs and relational
-          databases to responsive frontends and AI-integrated microservices. I turn ideas into production-ready
-          software.
-        </p>
+        <p class="hero-sub"><span class="typed-text"></span><span class="typed-cursor"></span></p>
+        <p class="hero-desc">I design and engineer <strong>scalable full-stack applications</strong> — from robust REST
+          APIs and relational databases to responsive frontends and AI-integrated microservices. I turn ideas into
+          production-ready software.</p>
         <div class="hero-btns">
           <a href="#projects" class="btn-primary">View My Work</a>
           <a href="#contact" class="btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
             </svg>
             Get in Touch
@@ -65,368 +60,379 @@
         <div class="avatar-wrap">
           <div class="avatar-ring">
             <div class="avatar-inner">
-              <!-- Chibi developer character — Sakura theme -->
+              <!-- Shonen protagonist SVG — spiky hair, determined look -->
               <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" class="anime-char">
                 <defs>
-                  <radialGradient id="bgGlow" cx="50%" cy="55%" r="55%">
-                    <stop offset="0%" stop-color="#f7afc3" stop-opacity="0.18" />
-                    <stop offset="100%" stop-color="#0d0810" stop-opacity="0" />
+                  <radialGradient id="heroBg" cx="50%" cy="65%" r="55%">
+                    <stop offset="0%" stop-color="#d4a843" stop-opacity="0.14" />
+                    <stop offset="100%" stop-color="#faf8f2" stop-opacity="0" />
                   </radialGradient>
-                  <radialGradient id="skinGrad" cx="50%" cy="35%" r="65%">
-                    <stop offset="0%" stop-color="#ffe8d6" />
-                    <stop offset="100%" stop-color="#f5c5a3" />
+                  <radialGradient id="heroSkin" cx="50%" cy="30%" r="65%">
+                    <stop offset="0%" stop-color="#fde8c8" />
+                    <stop offset="100%" stop-color="#f0c898" />
                   </radialGradient>
-                  <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#2d0a1e" />
-                    <stop offset="100%" stop-color="#4a1535" />
+                  <linearGradient id="heroHair" x1="20%" y1="0%" x2="80%" y2="100%">
+                    <stop offset="0%" stop-color="#1a1a2e" />
+                    <stop offset="50%" stop-color="#16213e" />
+                    <stop offset="100%" stop-color="#0f3460" />
                   </linearGradient>
-                  <linearGradient id="outfitGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#3d1030" />
-                    <stop offset="100%" stop-color="#1e0818" />
+                  <linearGradient id="heroJacket" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#1a1a2e" />
+                    <stop offset="100%" stop-color="#0d0d1a" />
                   </linearGradient>
-                  <linearGradient id="sakuraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#f7afc3" />
-                    <stop offset="100%" stop-color="#e88fa8" />
+                  <linearGradient id="heroAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#d4a843" />
+                    <stop offset="100%" stop-color="#f0c040" />
                   </linearGradient>
+                  <filter id="heroGlow">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
                 </defs>
 
                 <!-- BG glow -->
-                <circle cx="140" cy="150" r="118" fill="url(#bgGlow)" />
+                <circle cx="140" cy="160" r="118" fill="url(#heroBg)" />
 
-                <!-- Chibi body — short, round proportions -->
-                <!-- Body/outfit -->
+                <!-- Energy/aura rings -->
+                <circle cx="140" cy="155" r="108" fill="none" stroke="rgba(212,168,67,0.08)" stroke-width="1.5">
+                  <animate attributeName="r" values="108;114;108" dur="3s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="140" cy="155" r="100" fill="none" stroke="rgba(212,168,67,0.05)" stroke-width="1">
+                  <animate attributeName="r" values="100;106;100" dur="3s" begin="0.5s" repeatCount="indefinite" />
+                </circle>
+
+                <!-- BODY — jacket with gold trim -->
+                <path d="M60 280 Q65 210 82 192 Q105 178 140 180 Q175 178 198 192 Q215 210 220 280Z"
+                  fill="url(#heroJacket)" />
+                <!-- Jacket collar -->
+                <path d="M110 182 Q140 194 170 182 L165 205 Q140 212 115 205Z" fill="#252540" />
+                <!-- Gold trim on jacket -->
+                <path d="M82 192 Q68 220 64 260" stroke="url(#heroAccent)" stroke-width="2.5" fill="none"
+                  stroke-linecap="round" />
+                <path d="M198 192 Q212 220 216 260" stroke="url(#heroAccent)" stroke-width="2.5" fill="none"
+                  stroke-linecap="round" />
+                <!-- Chest emblem -->
+                <circle cx="140" cy="215" r="10" fill="none" stroke="url(#heroAccent)" stroke-width="1.5" />
+                <text x="140" y="219" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold"
+                  fill="#d4a843">&lt;/&gt;</text>
+
+                <!-- Arms -->
+                <path d="M82 192 Q60 205 54 228 Q60 232 70 226 Q76 208 96 198Z" fill="url(#heroJacket)" />
+                <path d="M198 192 Q220 205 226 228 Q220 232 210 226 Q204 208 184 198Z" fill="url(#heroJacket)" />
+                <!-- Gold sleeve stripe -->
+                <path d="M60 210 Q58 220 60 228" stroke="url(#heroAccent)" stroke-width="2" fill="none"
+                  stroke-linecap="round" />
+                <path d="M220 210 Q222 220 220 228" stroke="url(#heroAccent)" stroke-width="2" fill="none"
+                  stroke-linecap="round" />
+
+                <!-- Hands -->
+                <ellipse cx="56" cy="230" rx="11" ry="9" fill="url(#heroSkin)" />
+                <ellipse cx="224" cy="230" rx="11" ry="9" fill="url(#heroSkin)" />
+                <!-- Right hand — fist (determined pose) -->
+                <rect x="216" y="224" width="16" height="12" rx="5" fill="url(#heroSkin)" />
+                <path d="M218 226 Q224 224 230 226" stroke="rgba(180,130,80,0.4)" stroke-width="1" fill="none" />
+
+                <!-- NECK -->
+                <rect x="128" y="170" width="24" height="16" rx="6" fill="url(#heroSkin)" />
+                <!-- Neck shadow -->
+                <path d="M128 178 Q140 182 152 178" stroke="rgba(180,130,80,0.2)" stroke-width="1.5" fill="none" />
+
+                <!-- HEAD -->
+                <ellipse cx="140" cy="132" rx="54" ry="58" fill="url(#heroSkin)" />
+                <!-- Face shadow/definition -->
+                <path d="M100 145 Q112 168 140 172 Q168 168 180 145" fill="rgba(180,130,80,0.05)" />
+
+                <!-- SPIKY HAIR — shonen style -->
+                <!-- Main hair base -->
+                <path d="M88 118 Q90 58 140 52 Q190 58 192 118 Q174 95 140 92 Q106 95 88 118Z" fill="url(#heroHair)" />
+                <!-- Big spikes — front and top -->
+                <path d="M88 115 Q74 85 82 62 Q92 88 96 112Z" fill="#16213e" />
+                <path d="M104 82 Q100 52 116 38 Q118 65 114 90Z" fill="#1a1a2e" />
+                <path d="M124 68 Q126 36 140 24 Q142 50 138 76Z" fill="#16213e" />
+                <path d="M148 70 Q152 38 164 28 Q160 56 156 78Z" fill="#1a1a2e" />
+                <path d="M166 82 Q172 52 186 46 Q180 72 174 96Z" fill="#16213e" />
+                <path d="M186 108 Q200 82 206 60 Q200 88 192 112Z" fill="#1a1a2e" />
+                <!-- Side hair flowing down -->
+                <path d="M90 122 Q78 155 82 188 Q90 165 98 148Z" fill="#16213e" />
+                <path d="M190 122 Q202 155 198 188 Q190 165 182 148Z" fill="#1a1a2e" />
+                <!-- Hair highlight streak — gold tint -->
+                <path d="M130 55 Q136 35 140 26 Q141 48 138 72Z" fill="rgba(212,168,67,0.2)" />
+                <path d="M108 75 Q112 52 118 40 Q117 62 115 86Z" fill="rgba(212,168,67,0.12)" />
+
+                <!-- Headband — shonen classic -->
                 <path
-                  d="M88 230 Q90 195 100 182 Q118 172 140 174 Q162 172 180 182 Q190 195 192 230 Q168 240 140 242 Q112 240 88 230Z"
-                  fill="url(#outfitGrad)" />
-                <!-- Outfit trim — sakura pink -->
-                <path d="M100 182 Q118 172 140 174 Q162 172 180 182 Q170 188 140 190 Q110 188 100 182Z"
-                  fill="url(#sakuraGrad)" opacity="0.7" />
-                <!-- Outfit bow -->
-                <ellipse cx="140" cy="192" rx="14" ry="8" fill="#f7afc3" opacity="0.9" />
-                <ellipse cx="140" cy="192" rx="5" ry="4" fill="#e88fa8" />
-                <path d="M126 189 Q132 195 126 200 Q120 194 126 189Z" fill="#f7afc3" />
-                <path d="M154 189 Q148 195 154 200 Q160 194 154 189Z" fill="#f7afc3" />
-                <!-- Sleeves/arms -->
-                <ellipse cx="96" cy="205" rx="12" ry="18" fill="url(#outfitGrad)" />
-                <ellipse cx="184" cy="205" rx="12" ry="18" fill="url(#outfitGrad)" />
-                <!-- Hands holding laptop -->
-                <ellipse cx="96" cy="220" rx="9" ry="7" fill="url(#skinGrad)" />
-                <ellipse cx="184" cy="220" rx="9" ry="7" fill="url(#skinGrad)" />
+                  d="M88 118 Q114 106 140 104 Q166 106 192 118 Q190 126 192 130 Q166 118 140 116 Q114 118 88 130 Q88 124 88 118Z"
+                  fill="#d4a843" />
+                <!-- Headband knot/plate -->
+                <rect x="122" y="105" width="36" height="14" rx="4" fill="#b8860b" />
+                <rect x="124" y="107" width="32" height="10" rx="3" fill="none" stroke="#d4a843" stroke-width="1" />
+                <!-- Headband tie strings -->
+                <path d="M88 124 Q74 128 68 138 Q76 135 88 130Z" fill="#d4a843" />
+                <path d="M192 124 Q206 128 212 138 Q204 135 192 130Z" fill="#d4a843" />
 
-                <!-- Laptop -->
-                <rect x="105" y="218" width="70" height="42" rx="5" fill="#1a0820" stroke="#f7afc3" stroke-width="1.2"
-                  opacity="0.95" />
-                <rect x="108" y="221" width="64" height="32" rx="3" fill="#0d0810" />
-                <!-- Screen: code -->
-                <text x="112" y="231" font-family="monospace" font-size="5.5" fill="#f7afc3" opacity="0.95">$ fastapi
-                  dev main.py</text>
-                <text x="112" y="239" font-family="monospace" font-size="5.5" fill="#a8e6cf" opacity="0.85">✓ Server
-                  running :8000</text>
-                <text x="112" y="247" font-family="monospace" font-size="5.5" fill="#f7afc3" opacity="0.5">▋</text>
-                <!-- Laptop base -->
-                <rect x="102" y="259" width="76" height="5" rx="2" fill="#2d1030" stroke="#f7afc3" stroke-width="0.8"
-                  opacity="0.6" />
-
-                <!-- Neck — chibi short -->
-                <rect x="132" y="162" width="16" height="14" rx="5" fill="url(#skinGrad)" />
-
-                <!-- Chibi head — BIG relative to body -->
-                <ellipse cx="140" cy="120" rx="58" ry="60" fill="url(#skinGrad)" />
-
-                <!-- Hair — back layer -->
-                <path d="M84 108 Q76 145 82 185 Q90 160 96 145Z" fill="url(#hairGrad)" />
-                <path d="M196 108 Q204 145 198 185 Q210 160 184 145Z" fill="url(#hairGrad)" />
-                <!-- Hair pigtails with sakura ties -->
-                <path d="M84 120 Q70 140 72 165 Q80 150 88 138Z" fill="#2d0a1e" />
-                <ellipse cx="84" cy="128" rx="7" ry="5" fill="#f7afc3" opacity="0.9" />
-                <path d="M196 120 Q210 140 208 165 Q200 150 192 138Z" fill="#2d0a1e" />
-                <ellipse cx="196" cy="128" rx="7" ry="5" fill="#f7afc3" opacity="0.9" />
-                <!-- Top/main hair -->
-                <path d="M84 110 Q86 52 140 46 Q194 52 196 110 Q178 86 140 84 Q102 86 84 110Z" fill="url(#hairGrad)" />
-                <!-- Chibi bangs -->
-                <path d="M95 105 Q88 82 100 68 Q102 90 98 108Z" fill="#2d0a1e" />
-                <path d="M114 88 Q118 62 130 58 Q126 84 118 102Z" fill="#2d0a1e" />
-                <path d="M148 86 Q152 60 162 64 Q156 86 150 104Z" fill="#2d0a1e" />
-                <path d="M170 98 Q176 76 168 66 Q162 88 166 110Z" fill="#2d0a1e" />
-                <!-- Hair highlight -->
-                <path d="M118 56 Q138 50 158 56 Q148 62 130 62Z" fill="rgba(247,175,195,0.2)" />
-
-                <!-- Chibi eyes — LARGE, sparkly -->
+                <!-- EYES — sharp, determined shonen eyes -->
                 <!-- Left eye -->
-                <ellipse cx="118" cy="120" rx="16" ry="17" fill="#1a0520" />
-                <ellipse cx="118" cy="120" rx="12" ry="13" fill="#2d0a30" />
-                <ellipse cx="118" cy="120" rx="8" ry="9" fill="#c96b8a" />
-                <ellipse cx="118" cy="121" rx="5" ry="6" fill="#0d0810" />
-                <!-- Eye shine -->
-                <circle cx="112" cy="114" r="4" fill="white" opacity="0.95" />
-                <circle cx="122" cy="123" r="2" fill="white" opacity="0.6" />
-                <circle cx="114" cy="126" r="1.2" fill="rgba(247,175,195,0.8)" />
-                <!-- Eyelashes left -->
-                <path d="M103 113 Q105 106 112 108" stroke="#1a0520" stroke-width="2" fill="none"
+                <path d="M104 130 Q118 120 132 128 L130 140 Q118 146 106 140Z" fill="#1a1206" />
+                <ellipse cx="118" cy="134" rx="9" ry="8" fill="#2d4a8a" />
+                <ellipse cx="118" cy="134" rx="6" ry="6" fill="#1a3060" />
+                <ellipse cx="118" cy="135" rx="3.5" ry="4" fill="#060a14" />
+                <circle cx="114" cy="130" r="2.5" fill="white" opacity="0.9" />
+                <circle cx="120" cy="137" r="1.2" fill="white" opacity="0.5" />
+                <!-- Sharp determined upper lid line -->
+                <path d="M104 130 Q118 120 132 128" stroke="#1a1206" stroke-width="2.5" fill="none"
                   stroke-linecap="round" />
-                <path d="M133 113 Q131 106 124 108" stroke="#1a0520" stroke-width="2" fill="none"
-                  stroke-linecap="round" />
-                <path d="M108 108 Q110 102 115 104" stroke="#1a0520" stroke-width="1.5" fill="none"
+                <!-- Lower lid -->
+                <path d="M106 140 Q118 145 130 140" stroke="rgba(26,18,6,0.5)" stroke-width="1" fill="none"
                   stroke-linecap="round" />
 
                 <!-- Right eye -->
-                <ellipse cx="162" cy="120" rx="16" ry="17" fill="#1a0520" />
-                <ellipse cx="162" cy="120" rx="12" ry="13" fill="#2d0a30" />
-                <ellipse cx="162" cy="120" rx="8" ry="9" fill="#c96b8a" />
-                <ellipse cx="162" cy="121" rx="5" ry="6" fill="#0d0810" />
-                <circle cx="156" cy="114" r="4" fill="white" opacity="0.95" />
-                <circle cx="166" cy="123" r="2" fill="white" opacity="0.6" />
-                <circle cx="158" cy="126" r="1.2" fill="rgba(247,175,195,0.8)" />
-                <path d="M147 113 Q149 106 156 108" stroke="#1a0520" stroke-width="2" fill="none"
+                <path d="M148 128 Q162 120 176 130 L174 140 Q162 146 150 140Z" fill="#1a1206" />
+                <ellipse cx="162" cy="134" rx="9" ry="8" fill="#2d4a8a" />
+                <ellipse cx="162" cy="134" rx="6" ry="6" fill="#1a3060" />
+                <ellipse cx="162" cy="135" rx="3.5" ry="4" fill="#060a14" />
+                <circle cx="158" cy="130" r="2.5" fill="white" opacity="0.9" />
+                <circle cx="164" cy="137" r="1.2" fill="white" opacity="0.5" />
+                <!-- Sharp upper lid -->
+                <path d="M148 128 Q162 120 176 130" stroke="#1a1206" stroke-width="2.5" fill="none"
                   stroke-linecap="round" />
-                <path d="M177 113 Q175 106 168 108" stroke="#1a0520" stroke-width="2" fill="none"
-                  stroke-linecap="round" />
-                <path d="M170 108 Q172 102 165 104" stroke="#1a0520" stroke-width="1.5" fill="none"
+                <path d="M150 140 Q162 145 174 140" stroke="rgba(26,18,6,0.5)" stroke-width="1" fill="none"
                   stroke-linecap="round" />
 
-                <!-- Eyebrows — thin, expressive -->
-                <path d="M104 102 Q118 96 132 100" stroke="#2d0a1e" stroke-width="2.5" fill="none"
+                <!-- Eyebrows — sharp, angled inward (determined/serious look) -->
+                <path d="M104 122 Q118 114 130 118" stroke="#1a1206" stroke-width="3.5" fill="none"
                   stroke-linecap="round" />
-                <path d="M148 100 Q162 96 176 102" stroke="#2d0a1e" stroke-width="2.5" fill="none"
+                <path d="M150 118 Q162 114 176 122" stroke="#1a1206" stroke-width="3.5" fill="none"
                   stroke-linecap="round" />
-
-                <!-- Nose — tiny chibi dot -->
-                <circle cx="140" cy="136" r="2" fill="rgba(200,120,120,0.35)" />
-
-                <!-- Mouth — cute w shape -->
-                <path d="M128 146 Q134 152 140 148 Q146 152 152 146" stroke="#e88fa8" stroke-width="2.2" fill="none"
+                <!-- Inner brow crease — intense look -->
+                <path d="M129 118 Q136 115 141 117" stroke="#1a1206" stroke-width="1.5" fill="none"
                   stroke-linecap="round" />
 
-                <!-- Blush — big chibi circles -->
-                <ellipse cx="100" cy="138" rx="16" ry="9" fill="rgba(247,175,195,0.3)" />
-                <ellipse cx="180" cy="138" rx="16" ry="9" fill="rgba(247,175,195,0.3)" />
+                <!-- Nose — defined -->
+                <path d="M136 150 Q140 155 144 150" stroke="rgba(160,110,70,0.5)" stroke-width="1.8" fill="none"
+                  stroke-linecap="round" />
 
-                <!-- Small cat ears on hair for extra cute -->
-                <path d="M104 68 Q96 48 108 44 Q116 56 112 70Z" fill="url(#hairGrad)" />
-                <path d="M104 68 Q99 55 108 50 Q113 60 110 70Z" fill="#f7afc3" opacity="0.5" />
-                <path d="M176 68 Q184 48 172 44 Q164 56 168 70Z" fill="url(#hairGrad)" />
-                <path d="M176 68 Q181 55 172 50 Q167 60 170 70Z" fill="#f7afc3" opacity="0.5" />
+                <!-- Mouth — tight, determined smirk -->
+                <path d="M128 162 Q140 166 152 162" stroke="rgba(160,110,70,0.8)" stroke-width="2" fill="none"
+                  stroke-linecap="round" />
+                <path d="M148 162 Q152 164 154 160" stroke="rgba(160,110,70,0.6)" stroke-width="1.5" fill="none"
+                  stroke-linecap="round" />
 
-                <!-- Sakura petals floating -->
-                <g opacity="0.7">
-                  <path d="M52 80 Q56 74 62 78 Q58 84 52 80Z" fill="#f7afc3">
-                    <animateTransform attributeName="transform" type="translate" values="0,0;3,-8;0,0" dur="4s"
+                <!-- Scar detail — shonen character mark (small) -->
+                <path d="M134 138 L136 145" stroke="rgba(180,130,90,0.35)" stroke-width="1.5" fill="none"
+                  stroke-linecap="round" />
+
+                <!-- Power/energy effect — gold sparks around character -->
+                <g filter="url(#heroGlow)">
+                  <path d="M52 100 L56 94 L60 100 L56 106Z" fill="#d4a843" opacity="0.7">
+                    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite" />
+                    <animate attributeName="transform" attributeType="XML" type="scale" values="1;1.3;1" dur="1.8s"
+                      additive="sum" repeatCount="indefinite" />
+                  </path>
+                  <path d="M220 88 L224 82 L228 88 L224 94Z" fill="#d4a843" opacity="0.6">
+                    <animate attributeName="opacity" values="0.6;0.15;0.6" dur="2.2s" repeatCount="indefinite" />
+                  </path>
+                  <path d="M60 195 L63 190 L66 195 L63 200Z" fill="#f0c040" opacity="0.5">
+                    <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" begin="0.5s"
                       repeatCount="indefinite" />
                   </path>
-                  <path d="M220 95 Q224 89 230 93 Q226 99 220 95Z" fill="#f7afc3">
-                    <animateTransform attributeName="transform" type="translate" values="0,0;-3,-6;0,0" dur="3.5s"
-                      repeatCount="indefinite" />
-                  </path>
-                  <path d="M240 60 Q244 54 250 58 Q246 64 240 60Z" fill="#e88fa8">
-                    <animateTransform attributeName="transform" type="translate" values="0,0;-5,-4;0,0" dur="5s"
-                      repeatCount="indefinite" />
-                  </path>
-                  <path d="M36 140 Q40 134 46 138 Q42 144 36 140Z" fill="#ffd6e7">
-                    <animateTransform attributeName="transform" type="translate" values="0,0;4,-5;0,0" dur="4.5s"
+                  <path d="M214 200 L217 194 L220 200 L217 206Z" fill="#f0c040" opacity="0.6">
+                    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2s" begin="1s"
                       repeatCount="indefinite" />
                   </path>
                 </g>
 
-                <!-- Sparkle stars -->
-                <g fill="#f7afc3">
-                  <path d="M58 58 L60 52 L62 58 L68 60 L62 62 L60 68 L58 62 L52 60Z" opacity="0.6">
-                    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.8s" repeatCount="indefinite" />
-                  </path>
-                  <path d="M222 72 L224 67 L226 72 L231 74 L226 76 L224 81 L222 76 L217 74Z" opacity="0.5">
-                    <animate attributeName="opacity" values="0.5;0.9;0.5" dur="3.2s" repeatCount="indefinite" />
-                  </path>
-                </g>
+                <!-- Speed lines behind character — action feel -->
+                <line x1="30" y1="80" x2="68" y2="95" stroke="rgba(212,168,67,0.12)" stroke-width="1" />
+                <line x1="26" y1="92" x2="65" y2="104" stroke="rgba(212,168,67,0.08)" stroke-width="0.8" />
+                <line x1="250" y1="80" x2="212" y2="95" stroke="rgba(212,168,67,0.12)" stroke-width="1" />
+                <line x1="254" y1="92" x2="215" y2="104" stroke="rgba(212,168,67,0.08)" stroke-width="0.8" />
+
+                <!-- Floating code elements -->
+                <text x="20" y="155" font-family="monospace" font-size="8" fill="rgba(212,168,67,0.4)"
+                  transform="rotate(-15,20,155)">{code}</text>
+                <text x="222" y="140" font-family="monospace" font-size="8" fill="rgba(212,168,67,0.35)"
+                  transform="rotate(10,222,140)">&lt;dev/&gt;</text>
               </svg>
             </div>
           </div>
-          <div class="float-tag ft1"><span class="dot"
-              style="background:#f7afc3;box-shadow:0 0 6px #f7afc3"></span>Shipping Projects</div>
-          <div class="float-tag ft2"><span class="dot"
-              style="background:#a8e6cf;box-shadow:0 0 6px #a8e6cf"></span>FastAPI + React</div>
-          <div class="float-tag ft3"><span class="dot" style="background:#b8aaff;box-shadow:0 0 6px #b8aaff"></span>Open
+          <div class="float-tag ft1"><span class="dot" style="background:#d4a843;box-shadow:0 0 6px #d4a843"></span>Open
             to Internships</div>
+          <div class="float-tag ft2"><span class="dot"
+              style="background:#4ade80;box-shadow:0 0 6px #4ade80"></span>FastAPI + React</div>
+          <div class="float-tag ft3"><span class="dot"
+              style="background:#60a5fa;box-shadow:0 0 6px #60a5fa"></span>Full-Stack Dev</div>
         </div>
       </div>
     </section>
 
-
     <div class="stats-bar">
-      <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Projects Built</span></div>
-      <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Technologies</span></div>
-      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Dockerized App</span></div>
-      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Things to Learn</span></div>
+      <div class="stat reveal"><span class="stat-num">5+</span><span class="stat-label">Projects Built</span></div>
+      <div class="stat reveal reveal-delay-1"><span class="stat-num">10+</span><span
+          class="stat-label">Technologies</span></div>
+      <div class="stat reveal reveal-delay-2"><span class="stat-num">3</span><span class="stat-label">Dockerized
+          Apps</span></div>
+      <div class="stat reveal reveal-delay-3"><span class="stat-num">∞</span><span class="stat-label">Things to
+          Learn</span></div>
     </div>
 
     <section class="section" id="about">
       <div class="about-img">
         <div class="about-img-box">
-          <!-- Chibi developer — about section, sakura theme -->
+          <!-- Shonen about version — focused, reading/studying pose -->
           <svg viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg"
             style="width:100%;height:100%;position:absolute;inset:0;">
             <defs>
-              <radialGradient id="abgGlow" cx="50%" cy="50%" r="55%">
-                <stop offset="0%" stop-color="#f7afc3" stop-opacity="0.16" />
-                <stop offset="100%" stop-color="#0d0810" stop-opacity="0" />
+              <radialGradient id="abg2" cx="50%" cy="60%" r="55%">
+                <stop offset="0%" stop-color="#d4a843" stop-opacity="0.1" />
+                <stop offset="100%" stop-color="#faf8f2" stop-opacity="0" />
               </radialGradient>
-              <radialGradient id="askinGrad" cx="50%" cy="35%" r="65%">
-                <stop offset="0%" stop-color="#ffe8d6" />
-                <stop offset="100%" stop-color="#f5c5a3" />
+              <radialGradient id="aski2" cx="50%" cy="30%" r="60%">
+                <stop offset="0%" stop-color="#fde8c8" />
+                <stop offset="100%" stop-color="#f0c898" />
               </radialGradient>
-              <linearGradient id="ahairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#2d0a1e" />
-                <stop offset="100%" stop-color="#4a1535" />
-              </linearGradient>
-              <linearGradient id="aoutfit" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#3d1030" />
-                <stop offset="100%" stop-color="#1e0818" />
+              <linearGradient id="ahair2" x1="20%" y1="0%" x2="80%" y2="100%">
+                <stop offset="0%" stop-color="#1a1a2e" />
+                <stop offset="100%" stop-color="#0f3460" />
               </linearGradient>
             </defs>
 
-            <ellipse cx="150" cy="190" rx="140" ry="155" fill="url(#abgGlow)" />
+            <ellipse cx="150" cy="210" rx="130" ry="145" fill="url(#abg2)" />
 
-            <!-- Body -->
-            <path d="M62 340 Q68 255 92 228 Q116 212 150 215 Q184 212 208 228 Q232 255 238 340Z" fill="url(#aoutfit)" />
-            <!-- Outfit trim -->
-            <path d="M92 228 Q116 212 150 215 Q184 212 208 228 Q190 236 150 238 Q110 236 92 228Z" fill="#f7afc3"
-              opacity="0.65" />
-            <!-- Big bow -->
-            <ellipse cx="150" cy="245" rx="18" ry="10" fill="#f7afc3" opacity="0.9" />
-            <ellipse cx="150" cy="245" rx="6" ry="5" fill="#c96b8a" />
-            <path d="M132 241 Q138 250 132 258 Q124 249 132 241Z" fill="#f7afc3" />
-            <path d="M168 241 Q162 250 168 258 Q176 249 168 241Z" fill="#f7afc3" />
-            <!-- Arms -->
-            <ellipse cx="76" cy="258" rx="14" ry="22" fill="url(#aoutfit)" />
-            <ellipse cx="224" cy="258" rx="14" ry="22" fill="url(#aoutfit)" />
-            <ellipse cx="76" cy="276" rx="11" ry="8" fill="url(#askinGrad)" />
-            <ellipse cx="224" cy="276" rx="11" ry="8" fill="url(#askinGrad)" />
+            <!-- Body / jacket -->
+            <path d="M48 340 Q58 248 84 225 Q108 210 150 212 Q192 210 216 225 Q242 248 252 340Z" fill="#1a1a2e" />
+            <!-- Gold trim -->
+            <path d="M84 225 Q68 260 62 310" stroke="#d4a843" stroke-width="2.5" fill="none" stroke-linecap="round" />
+            <path d="M216 225 Q232 260 238 310" stroke="#d4a843" stroke-width="2.5" fill="none"
+              stroke-linecap="round" />
+            <!-- Chest code emblem -->
+            <circle cx="150" cy="260" r="14" fill="none" stroke="#d4a843" stroke-width="1.5" />
+            <text x="150" y="265" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold"
+              fill="#d4a843">&lt;/&gt;</text>
+            <!-- Collar -->
+            <path d="M114 214 Q150 226 186 214 L182 238 Q150 246 118 238Z" fill="#252545" />
 
-            <!-- Book being held -->
-            <rect x="90" y="272" width="120" height="58" rx="6" fill="#1e0818" stroke="#f7afc3" stroke-width="1.2" />
-            <rect x="148" y="272" width="3" height="58" fill="#f7afc3" opacity="0.4" />
-            <!-- Book title -->
-            <text x="96" y="294" font-family="monospace" font-size="7" fill="#f7afc3" opacity="0.8">Clean Code</text>
-            <text x="96" y="306" font-family="monospace" font-size="6" fill="#f7afc3" opacity="0.5">Robert C.
-              Martin</text>
-            <text x="155" y="294" font-family="monospace" font-size="7" fill="#a8e6cf" opacity="0.8">DSA Notes</text>
-            <text x="155" y="306" font-family="monospace" font-size="6" fill="#a8e6cf" opacity="0.5">Striver A2Z</text>
+            <!-- Arms with laptop -->
+            <path d="M84 228 Q62 242 56 268 Q64 274 76 266 Q80 248 100 236Z" fill="#1a1a2e" />
+            <path d="M216 228 Q238 242 244 268 Q236 274 224 266 Q220 248 200 236Z" fill="#1a1a2e" />
+
+            <!-- Laptop -->
+            <rect x="72" y="258" width="156" height="86" rx="8" fill="#0d0d1a" stroke="#d4a843" stroke-width="1.5" />
+            <rect x="76" y="262" width="148" height="70" rx="6" fill="#13132a" />
+            <!-- Code on screen -->
+            <text x="82" y="278" font-family="monospace" font-size="7" fill="#d4a843" opacity="0.9">$ fastapi dev
+              main.py</text>
+            <text x="82" y="290" font-family="monospace" font-size="7" fill="#4ade80" opacity="0.85"> INFO: Started
+              server process</text>
+            <text x="82" y="302" font-family="monospace" font-size="7" fill="#60a5fa" opacity="0.8"> INFO: Uvicorn
+              running ✓</text>
+            <text x="82" y="314" font-family="monospace" font-size="7" fill="rgba(212,168,67,0.6)"> █</text>
+            <rect x="72" y="342" width="156" height="6" rx="3" fill="#252545" stroke="rgba(212,168,67,0.2)"
+              stroke-width="1" />
+
+            <!-- Hands -->
+            <ellipse cx="60" cy="270" rx="11" ry="9" fill="url(#aski2)" />
+            <ellipse cx="240" cy="270" rx="11" ry="9" fill="url(#aski2)" />
 
             <!-- Neck -->
-            <rect x="136" y="202" width="28" height="16" rx="6" fill="url(#askinGrad)" />
+            <rect x="136" y="200" width="28" height="16" rx="7" fill="url(#aski2)" />
 
-            <!-- Big chibi head -->
-            <ellipse cx="150" cy="148" rx="70" ry="72" fill="url(#askinGrad)" />
+            <!-- Head -->
+            <ellipse cx="150" cy="152" rx="60" ry="64" fill="url(#aski2)" />
 
-            <!-- Cat ears -->
-            <path d="M94 82 Q84 56 98 50 Q108 66 106 84Z" fill="url(#ahairGrad)" />
-            <path d="M94 82 Q88 64 98 56 Q104 68 102 84Z" fill="#f7afc3" opacity="0.45" />
-            <path d="M206 82 Q216 56 202 50 Q192 66 194 84Z" fill="url(#ahairGrad)" />
-            <path d="M206 82 Q212 64 202 56 Q196 68 198 84Z" fill="#f7afc3" opacity="0.45" />
+            <!-- Spiky hair -->
+            <path d="M92 136 Q94 70 150 62 Q206 70 208 136 Q190 110 150 108 Q110 110 92 136Z" fill="url(#ahair2)" />
+            <path d="M92 132 Q76 100 84 72 Q96 100 100 128Z" fill="#16213e" />
+            <path d="M108 88 Q106 56 122 42 Q124 68 120 92Z" fill="#1a1a2e" />
+            <path d="M130 70 Q132 40 148 28 Q148 54 144 78Z" fill="#16213e" />
+            <path d="M162 72 Q166 42 180 34 Q176 60 170 84Z" fill="#1a1a2e" />
+            <path d="M182 92 Q190 62 200 54 Q196 80 188 104Z" fill="#16213e" />
+            <path d="M208 128 Q222 98 218 74 Q210 102 206 128Z" fill="#1a1a2e" />
+            <!-- Side flows -->
+            <path d="M94 148 Q82 180 86 215 Q94 192 102 172Z" fill="#16213e" />
+            <path d="M206 148 Q218 180 214 215 Q206 192 198 172Z" fill="#1a1a2e" />
+            <!-- Gold highlight -->
+            <path d="M144 32 Q148 28 150 26 Q150 50 147 74Z" fill="rgba(212,168,67,0.18)" />
 
-            <!-- Hair back -->
-            <path d="M82 130 Q72 170 76 218 Q84 192 92 174Z" fill="#2d0a1e" />
-            <path d="M218 130 Q228 170 224 218 Q216 192 208 174Z" fill="#2d0a1e" />
-            <!-- Twintails -->
-            <path d="M82 140 Q64 165 66 196 Q76 174 86 158Z" fill="#2d0a1e" />
-            <ellipse cx="80" cy="146" rx="9" ry="6" fill="#f7afc3" opacity="0.85" />
-            <path d="M218 140 Q236 165 234 196 Q224 174 214 158Z" fill="#2d0a1e" />
-            <ellipse cx="220" cy="146" rx="9" ry="6" fill="#f7afc3" opacity="0.85" />
-            <!-- Top hair -->
-            <path d="M82 122 Q84 54 150 48 Q216 54 218 122 Q196 96 150 94 Q104 96 82 122Z" fill="url(#ahairGrad)" />
-            <!-- Bangs -->
-            <path d="M96 118 Q88 90 102 74 Q104 98 100 122Z" fill="#2d0a1e" />
-            <path d="M118 98 Q122 68 136 64 Q132 92 124 114Z" fill="#2d0a1e" />
-            <path d="M164 96 Q168 66 180 70 Q174 94 168 116Z" fill="#2d0a1e" />
-            <path d="M188 108 Q196 82 186 70 Q178 94 182 120Z" fill="#2d0a1e" />
-            <!-- Hair shine -->
-            <path d="M122 54 Q148 46 172 54 Q160 62 136 62Z" fill="rgba(247,175,195,0.22)" />
+            <!-- Headband -->
+            <path
+              d="M92 134 Q120 122 150 120 Q180 122 208 134 Q207 142 208 146 Q180 134 150 132 Q120 134 92 146 Q92 140 92 134Z"
+              fill="#d4a843" />
+            <rect x="134" y="120" width="32" height="13" rx="4" fill="#b8860b" />
+            <rect x="136" y="122" width="28" height="9" rx="2" fill="none" stroke="rgba(212,168,67,0.6)"
+              stroke-width="1" />
 
-            <!-- Eyes — big sparkly chibi -->
-            <ellipse cx="122" cy="142" rx="18" ry="19" fill="#1a0520" />
-            <ellipse cx="122" cy="142" rx="14" ry="15" fill="#2d0a30" />
-            <ellipse cx="122" cy="142" rx="9" ry="10" fill="#c96b8a" />
-            <ellipse cx="122" cy="143" rx="5.5" ry="6.5" fill="#0d0810" />
-            <circle cx="114" cy="135" r="5" fill="white" opacity="0.95" />
-            <circle cx="126" cy="148" r="2.5" fill="white" opacity="0.55" />
-            <circle cx="116" cy="150" r="1.5" fill="rgba(247,175,195,0.8)" />
-            <path d="M104 134 Q107 125 116 128" stroke="#1a0520" stroke-width="2.2" fill="none"
-              stroke-linecap="round" />
-            <path d="M140 134 Q137 125 128 128" stroke="#1a0520" stroke-width="2.2" fill="none"
+            <!-- Sharp determined eyes — looking at screen -->
+            <path d="M106 144 Q120 136 134 142 L132 152 Q120 157 108 152Z" fill="#1a1206" />
+            <ellipse cx="120" cy="147" rx="8" ry="7" fill="#2d4a8a" />
+            <ellipse cx="120" cy="147" rx="5" ry="5" fill="#1a3060" />
+            <ellipse cx="120" cy="148" rx="3" ry="3.5" fill="#060a14" />
+            <circle cx="116" cy="143" r="2.2" fill="white" opacity="0.9" />
+            <path d="M106 144 Q120 136 134 142" stroke="#1a1206" stroke-width="2.5" fill="none"
               stroke-linecap="round" />
 
-            <ellipse cx="178" cy="142" rx="18" ry="19" fill="#1a0520" />
-            <ellipse cx="178" cy="142" rx="14" ry="15" fill="#2d0a30" />
-            <ellipse cx="178" cy="142" rx="9" ry="10" fill="#c96b8a" />
-            <ellipse cx="178" cy="143" rx="5.5" ry="6.5" fill="#0d0810" />
-            <circle cx="170" cy="135" r="5" fill="white" opacity="0.95" />
-            <circle cx="182" cy="148" r="2.5" fill="white" opacity="0.55" />
-            <circle cx="172" cy="150" r="1.5" fill="rgba(247,175,195,0.8)" />
-            <path d="M160 134 Q163 125 172 128" stroke="#1a0520" stroke-width="2.2" fill="none"
-              stroke-linecap="round" />
-            <path d="M196 134 Q193 125 184 128" stroke="#1a0520" stroke-width="2.2" fill="none"
+            <path d="M166 142 Q180 136 194 144 L192 152 Q180 157 168 152Z" fill="#1a1206" />
+            <ellipse cx="180" cy="147" rx="8" ry="7" fill="#2d4a8a" />
+            <ellipse cx="180" cy="147" rx="5" ry="5" fill="#1a3060" />
+            <ellipse cx="180" cy="148" rx="3" ry="3.5" fill="#060a14" />
+            <circle cx="176" cy="143" r="2.2" fill="white" opacity="0.9" />
+            <path d="M166 142 Q180 136 194 144" stroke="#1a1206" stroke-width="2.5" fill="none"
               stroke-linecap="round" />
 
-            <!-- Eyebrows -->
-            <path d="M106 122 Q122 114 138 118" stroke="#2d0a1e" stroke-width="3" fill="none" stroke-linecap="round" />
-            <path d="M162 118 Q178 114 194 122" stroke="#2d0a1e" stroke-width="3" fill="none" stroke-linecap="round" />
-
-            <!-- Nose dot -->
-            <circle cx="150" cy="160" r="2.5" fill="rgba(200,120,130,0.3)" />
-
-            <!-- Smile -->
-            <path d="M135 172 Q142 179 150 175 Q158 179 165 172" stroke="#e88fa8" stroke-width="2.5" fill="none"
+            <!-- Eyebrows — determined -->
+            <path d="M106 134 Q120 126 132 130" stroke="#1a1206" stroke-width="3.2" fill="none"
+              stroke-linecap="round" />
+            <path d="M168 130 Q180 126 194 134" stroke="#1a1206" stroke-width="3.2" fill="none"
+              stroke-linecap="round" />
+            <path d="M131 130 Q138 127 143 129" stroke="#1a1206" stroke-width="1.8" fill="none"
               stroke-linecap="round" />
 
-            <!-- Blush -->
-            <ellipse cx="102" cy="158" rx="18" ry="10" fill="rgba(247,175,195,0.28)" />
-            <ellipse cx="198" cy="158" rx="18" ry="10" fill="rgba(247,175,195,0.28)" />
+            <!-- Nose + mouth -->
+            <path d="M146 163 Q150 167 154 163" stroke="rgba(160,110,70,0.5)" stroke-width="1.6" fill="none"
+              stroke-linecap="round" />
+            <path d="M138 174 Q150 178 162 174" stroke="rgba(160,110,70,0.75)" stroke-width="1.8" fill="none"
+              stroke-linecap="round" />
 
-            <!-- Floating code snippets -->
-            <text x="14" y="60" font-family="monospace" font-size="8" fill="rgba(247,175,195,0.3)"
-              transform="rotate(-10,14,60)">O(n log n)</text>
-            <text x="220" y="78" font-family="monospace" font-size="8" fill="rgba(168,230,207,0.3)"
-              transform="rotate(8,220,78)">prefix_sum[]</text>
-            <text x="18" y="180" font-family="monospace" font-size="7" fill="rgba(247,175,195,0.22)"
-              transform="rotate(-5,18,180)">git push ✓</text>
+            <!-- Energy sparks -->
+            <path d="M28 110 L32 104 L36 110 L32 116Z" fill="#d4a843" opacity="0.5">
+              <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2s" repeatCount="indefinite" />
+            </path>
+            <path d="M262 95 L266 89 L270 95 L266 101Z" fill="#d4a843" opacity="0.45">
+              <animate attributeName="opacity" values="0.45;0.1;0.45" dur="2.5s" repeatCount="indefinite" />
+            </path>
+            <path d="M272 190 L275 185 L278 190 L275 195Z" fill="#f0c040" opacity="0.4">
+              <animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite" />
+            </path>
 
-            <!-- Sakura petals -->
-            <path d="M38 100 Q43 92 50 98 Q45 106 38 100Z" fill="#f7afc3" opacity="0.6">
-              <animateTransform attributeName="transform" type="translate" values="0,0;4,-10;0,0" dur="4.5s"
-                repeatCount="indefinite" />
-            </path>
-            <path d="M258 118 Q263 110 270 116 Q265 124 258 118Z" fill="#e88fa8" opacity="0.5">
-              <animateTransform attributeName="transform" type="translate" values="0,0;-5,-8;0,0" dur="3.8s"
-                repeatCount="indefinite" />
-            </path>
-            <path d="M272 50 Q277 42 284 48 Q279 56 272 50Z" fill="#ffd6e7" opacity="0.4">
-              <animateTransform attributeName="transform" type="translate" values="0,0;-4,-6;0,0" dur="5s"
-                repeatCount="indefinite" />
-            </path>
-            <!-- Sparkles -->
-            <path d="M44 148 L46 142 L48 148 L54 150 L48 152 L46 158 L44 152 L38 150Z" fill="#f7afc3" opacity="0.5">
-              <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite" />
-            </path>
-            <path d="M256 88 L258 82 L260 88 L266 90 L260 92 L258 98 L256 92 L250 90Z" fill="#f7afc3" opacity="0.4">
-              <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.5s" repeatCount="indefinite" />
-            </path>
+            <!-- Floating text -->
+            <text x="16" y="52" font-family="monospace" font-size="8.5" fill="rgba(212,168,67,0.35)"
+              transform="rotate(-8,16,52)">const rsh = {</text>
+            <text x="10" y="66" font-family="monospace" font-size="8.5" fill="rgba(212,168,67,0.25)"
+              transform="rotate(-8,10,66)"> level: 'rising'</text>
+            <text x="16" y="80" font-family="monospace" font-size="8.5" fill="rgba(212,168,67,0.2)"
+              transform="rotate(-8,16,80)">}</text>
           </svg>
         </div>
         <div class="about-traits">
-          <div class="trait-card">
+          <div class="trait-card reveal">
             <div class="trait-icon">🎯</div>
             <div class="trait-title">Detail-Oriented</div>
             <div class="trait-desc">Every layer of the stack matters — frontend to DB.</div>
           </div>
-          <div class="trait-card">
+          <div class="trait-card reveal reveal-delay-1">
             <div class="trait-icon">⚡</div>
             <div class="trait-title">Performance-First</div>
             <div class="trait-desc">Clean, efficient code that scales.</div>
           </div>
-          <div class="trait-card">
+          <div class="trait-card reveal reveal-delay-2">
             <div class="trait-icon">🧩</div>
             <div class="trait-title">Problem Solver</div>
             <div class="trait-desc">I enjoy breaking down complex challenges.</div>
           </div>
-          <div class="trait-card">
+          <div class="trait-card reveal reveal-delay-3">
             <div class="trait-icon">🚀</div>
             <div class="trait-title">Builder Mindset</div>
             <div class="trait-desc">I learn by shipping real projects end-to-end.</div>
@@ -434,19 +440,21 @@
         </div>
       </div>
       <div class="about-text-content">
-        <div>
+        <div class="reveal">
           <div class="sec-eyebrow">
             <div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">About Me</span>
           </div>
           <h2 class="sec-title">I build things that<br><em>matter &amp; last</em></h2>
         </div>
-        <p>I'm Rishavdeep Singh, a software developer and Computer Science undergraduate at <strong>Sri Sai College of
-            Engineering &amp; Technology, Pathankot</strong>. I'm from <strong>Kathua, J&amp;K</strong>, with a strong
-          passion for full-stack development, backend systems, and applied AI integration.</p>
-        <p>I thrive at the intersection of engineering discipline and practical problem-solving — turning complex
-          requirements into clean, well-structured software. My approach is project-driven: I learn by building real
-          applications from scratch, covering everything from database design to containerized deployment.</p>
-        <div class="info-grid">
+        <p class="reveal reveal-delay-1">I'm Rishavdeep Singh, a software developer and Computer Science undergraduate
+          at <strong>Sri Sai College of Engineering &amp; Technology, Pathankot</strong>. I'm from <strong>Kathua,
+            J&amp;K</strong>, with a strong passion for full-stack development, backend systems, and applied AI
+          integration.</p>
+        <p class="reveal reveal-delay-2">I thrive at the intersection of engineering discipline and practical
+          problem-solving — turning complex requirements into clean, well-structured software. My approach is
+          project-driven: I learn by building real applications from scratch, covering everything from database design
+          to containerized deployment.</p>
+        <div class="info-grid reveal reveal-delay-3">
           <div class="info-row"><span class="info-key">Course</span><span class="info-val">B.Tech — Computer Science
               &amp; Engineering</span></div>
           <div class="info-row"><span class="info-key">College</span><span class="info-val">Sri Sai College of
@@ -462,7 +470,7 @@
     </section>
 
     <section class="section" id="skills">
-      <div class="skills-header">
+      <div class="skills-header reveal">
         <div class="sec-eyebrow">
           <div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">Expertise</span>
         </div>
@@ -470,17 +478,16 @@
         <p class="sec-sub">A curated set of tools and technologies I use to build modern, scalable products.</p>
       </div>
       <div class="skills-grid">
-
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <div class="skill-card-header">
-            <div class="skill-card-dot" style="background:#6db33f;box-shadow:0 0 6px #6db33f"></div>
-            <span class="skill-card-label">Backend</span>
+            <div class="skill-card-dot" style="background:#6db33f;box-shadow:0 0 6px #6db33f40"></div><span
+              class="skill-card-label">Backend</span>
           </div>
           <div class="skill-bar-item">
             <div class="skill-bar-top"><span class="skill-bar-name">Java / Spring Boot</span><span
                 class="skill-bar-pct">82%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="82%"></div>
             </div>
           </div>
@@ -488,7 +495,7 @@
             <div class="skill-bar-top"><span class="skill-bar-name">Python / FastAPI</span><span
                 class="skill-bar-pct">75%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="75%"></div>
             </div>
           </div>
@@ -496,7 +503,7 @@
             <div class="skill-bar-top"><span class="skill-bar-name">MariaDB / MySQL</span><span
                 class="skill-bar-pct">78%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="78%"></div>
             </div>
           </div>
@@ -504,23 +511,21 @@
             <div class="skill-bar-top"><span class="skill-bar-name">REST API Design</span><span
                 class="skill-bar-pct">85%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="85%"></div>
             </div>
           </div>
         </div>
-
-        <!-- Frontend -->
-        <div class="skill-card">
+        <div class="skill-card reveal reveal-delay-1">
           <div class="skill-card-header">
-            <div class="skill-card-dot" style="background:#61dafb;box-shadow:0 0 6px #61dafb"></div>
-            <span class="skill-card-label">Frontend</span>
+            <div class="skill-card-dot" style="background:#61dafb;box-shadow:0 0 6px #61dafb40"></div><span
+              class="skill-card-label">Frontend</span>
           </div>
           <div class="skill-bar-item">
             <div class="skill-bar-top"><span class="skill-bar-name">React / Vite</span><span
                 class="skill-bar-pct">80%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="80%"></div>
             </div>
           </div>
@@ -528,7 +533,7 @@
             <div class="skill-bar-top"><span class="skill-bar-name">JavaScript</span><span
                 class="skill-bar-pct">78%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="78%"></div>
             </div>
           </div>
@@ -536,7 +541,7 @@
             <div class="skill-bar-top"><span class="skill-bar-name">Tailwind CSS</span><span
                 class="skill-bar-pct">82%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="82%"></div>
             </div>
           </div>
@@ -544,23 +549,21 @@
             <div class="skill-bar-top"><span class="skill-bar-name">Chart.js</span><span
                 class="skill-bar-pct">70%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="70%"></div>
             </div>
           </div>
         </div>
-
-        <!-- DevOps & AI -->
-        <div class="skill-card">
+        <div class="skill-card reveal reveal-delay-2">
           <div class="skill-card-header">
-            <div class="skill-card-dot" style="background:#ffd700;box-shadow:0 0 6px #ffd700"></div>
-            <span class="skill-card-label">DevOps &amp; AI</span>
+            <div class="skill-card-dot" style="background:#f0c040;box-shadow:0 0 6px #f0c04040"></div><span
+              class="skill-card-label">DevOps &amp; AI</span>
           </div>
           <div class="skill-bar-item">
             <div class="skill-bar-top"><span class="skill-bar-name">Docker / Compose</span><span
                 class="skill-bar-pct">72%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="72%"></div>
             </div>
           </div>
@@ -568,7 +571,7 @@
             <div class="skill-bar-top"><span class="skill-bar-name">AI / LLMs</span><span
                 class="skill-bar-pct">68%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="68%"></div>
             </div>
           </div>
@@ -576,7 +579,7 @@
             <div class="skill-bar-top"><span class="skill-bar-name">Git / GitHub</span><span
                 class="skill-bar-pct">85%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="85%"></div>
             </div>
           </div>
@@ -584,22 +587,20 @@
             <div class="skill-bar-top"><span class="skill-bar-name">Linux / Shell</span><span
                 class="skill-bar-pct">78%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="78%"></div>
             </div>
           </div>
         </div>
-
-        <!-- CS Fundamentals -->
-        <div class="skill-card">
+        <div class="skill-card reveal reveal-delay-3">
           <div class="skill-card-header">
-            <div class="skill-card-dot" style="background:#e67e22;box-shadow:0 0 6px #e67e22"></div>
-            <span class="skill-card-label">CS Fundamentals</span>
+            <div class="skill-card-dot" style="background:#e67e22;box-shadow:0 0 6px #e67e2240"></div><span
+              class="skill-card-label">CS Fundamentals</span>
           </div>
           <div class="skill-bar-item">
             <div class="skill-bar-top"><span class="skill-bar-name">C</span><span class="skill-bar-pct">80%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="80%"></div>
             </div>
           </div>
@@ -607,7 +608,7 @@
             <div class="skill-bar-top"><span class="skill-bar-name">C++</span><span class="skill-bar-pct">75%</span>
             </div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="75%"></div>
             </div>
           </div>
@@ -615,7 +616,7 @@
             <div class="skill-bar-top"><span class="skill-bar-name">Data Structures</span><span
                 class="skill-bar-pct">78%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="78%"></div>
             </div>
           </div>
@@ -623,112 +624,88 @@
             <div class="skill-bar-top"><span class="skill-bar-name">Algorithms</span><span
                 class="skill-bar-pct">72%</span></div>
             <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#c9a84c,#ffd700)"
+              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
                 data-width="72%"></div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
     <section class="section" id="projects">
-      <div class="proj-header">
+      <div class="proj-header reveal">
         <div class="sec-eyebrow">
           <div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">Portfolio</span>
         </div>
         <h2 class="sec-title">Selected Work</h2>
         <p class="sec-sub">Applications I have designed, built, and deployed from scratch.</p>
       </div>
-
-      <!-- FILTER TABS -->
       <div class="proj-filters">
         <button class="proj-filter-btn active" data-filter="all">All</button>
         <button class="proj-filter-btn" data-filter="fullstack">Full-Stack</button>
         <button class="proj-filter-btn" data-filter="ai">AI</button>
         <button class="proj-filter-btn" data-filter="devops">DevOps</button>
       </div>
-
       <div class="proj-grid" id="proj-grid">
-        <!-- AI Expense Tracker -->
-        <div class="proj-card" data-category="fullstack ai devops">
+        <div class="proj-card reveal" data-category="fullstack ai devops">
           <div class="proj-img">
             <div class="proj-img-overlay"></div>
             <div class="proj-img-icon">ET</div>
-            <div class="proj-img-tags">
-              <span class="proj-img-tag">Spring Boot</span>
-              <span class="proj-img-tag">React</span>
-              <span class="proj-img-tag">AI</span>
-            </div>
+            <div class="proj-img-tags"><span class="proj-img-tag">Spring Boot</span><span
+                class="proj-img-tag">React</span><span class="proj-img-tag">AI</span></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-name">AI Expense Management System</h3>
-            <p class="proj-desc">A full-stack expense tracker with Spring Boot REST API, React + Vite frontend with
+            <p class="proj-desc">Full-stack expense tracker with Spring Boot REST API, React + Vite frontend with
               Chart.js dashboards, FastAPI AI microservice using Groq's llama-3.3-70b, and Docker Compose deployment.
             </p>
             <div class="proj-links">
-              <a class="proj-link" href="https://github.com/voidirl/smart-expense-tracker" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor">
+              <a class="proj-link" href="https://github.com/voidirl/smart-expense-tracker" target="_blank"><svg
+                  viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-                GitHub
-              </a>
+                </svg>GitHub</a>
               <a class="proj-link" href="https://voidledger.vercel.app" target="_blank">Live Demo</a>
             </div>
           </div>
         </div>
-
-        <!-- Code Review Bot -->
-        <div class="proj-card" data-category="ai devops">
+        <div class="proj-card reveal reveal-delay-1" data-category="ai devops">
           <div class="proj-img">
             <div class="proj-img-overlay"></div>
             <div class="proj-img-icon">CR</div>
-            <div class="proj-img-tags">
-              <span class="proj-img-tag">FastAPI</span>
-              <span class="proj-img-tag">Groq LLaMA</span>
-              <span class="proj-img-tag">Webhooks</span>
-            </div>
+            <div class="proj-img-tags"><span class="proj-img-tag">FastAPI</span><span class="proj-img-tag">Groq
+                LLaMA</span><span class="proj-img-tag">Webhooks</span></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-name">Code Review Bot</h3>
             <p class="proj-desc">AI-powered GitHub PR reviewer. Automatically posts code review comments on pull
               requests using Groq (LLaMA 3.3-70b) and FastAPI.</p>
             <div class="proj-links">
-              <a class="proj-link" href="https://github.com/voidirl/code-review-bot" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor">
+              <a class="proj-link" href="https://github.com/voidirl/code-review-bot" target="_blank"><svg
+                  viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-                GitHub
-              </a>
+                </svg>GitHub</a>
             </div>
           </div>
         </div>
-
-        <!-- Codebase Onboarder -->
-        <div class="proj-card" data-category="fullstack ai">
+        <div class="proj-card reveal reveal-delay-2" data-category="fullstack ai">
           <div class="proj-img">
             <div class="proj-img-overlay"></div>
             <div class="proj-img-icon">CO</div>
-            <div class="proj-img-tags">
-              <span class="proj-img-tag">FastAPI</span>
-              <span class="proj-img-tag">React</span>
-              <span class="proj-img-tag">Groq LLaMA</span>
-            </div>
+            <div class="proj-img-tags"><span class="proj-img-tag">FastAPI</span><span
+                class="proj-img-tag">React</span><span class="proj-img-tag">Groq LLaMA</span></div>
           </div>
           <div class="proj-body">
             <h3 class="proj-name">Codebase Onboarder</h3>
             <p class="proj-desc">Drop a GitHub URL, get an instant onboarding doc + chat interface to ask questions
               about the codebase. Built with FastAPI, Groq (LLaMA 3.3-70b), and React.</p>
             <div class="proj-links">
-              <a class="proj-link" href="https://github.com/voidirl/codebase-onboarder" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor">
+              <a class="proj-link" href="https://github.com/voidirl/codebase-onboarder" target="_blank"><svg
+                  viewBox="0 0 24 24" fill="currentColor">
                   <path
                     d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-                GitHub
-              </a>
+                </svg>GitHub</a>
               <a class="proj-link" href="https://codebase-onboarder.vercel.app" target="_blank">Live Demo</a>
             </div>
           </div>
@@ -736,11 +713,9 @@
       </div>
     </section>
 
-
-    <!-- CONTACT  -->
     <section class="section" id="contact">
       <div class="contact-wrap">
-        <div class="contact-left">
+        <div class="contact-left reveal">
           <div class="sec-eyebrow">
             <div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">Contact</span>
           </div>
@@ -771,7 +746,7 @@
             </a>
           </div>
         </div>
-        <div>
+        <div class="reveal reveal-delay-2">
           <form class="contact-form" id="contact-form" action="https://formspree.io/f/mgopaawp" method="POST">
             <div class="form-row">
               <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name"
@@ -785,7 +760,7 @@
                 placeholder="Tell me about your project or opportunity..." required></textarea></div>
             <button type="submit" class="btn-send" id="send-btn">
               Send Message
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
               </svg>
@@ -795,7 +770,6 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
       <a class="footer-logo" href="#hero">VOID<span>.</span></a>
       <p>© 2026 Rishavdeep Singh. All rights reserved.</p>
@@ -806,38 +780,7 @@
       </div>
     </footer>
   </main>
-
   <script src="script.js"></script>
-  <script>
-    // ── TYPING EFFECT ──
-    const typedEl = document.getElementById('typed-text');
-    const words = ['Production-proven.', 'AI-integrated.', 'Docker-ready.', 'Open-source.', 'Backend-focused.'];
-    let wi = 0, ci = 0, deleting = false;
-    function type() {
-      const word = words[wi];
-      if (!deleting) {
-        typedEl.textContent = word.slice(0, ++ci);
-        if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
-      } else {
-        typedEl.textContent = word.slice(0, --ci);
-        if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; }
-      }
-      setTimeout(type, deleting ? 60 : 100);
-    }
-    setTimeout(type, 1200);
-
-    // ── SCROLL REVEAL ──
-    const reveals = document.querySelectorAll('.section, .stat, .skill-card, .proj-card, .trait-card, .ci-card');
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('revealed');
-          revealObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => { el.classList.add('reveal-init'); revealObs.observe(el); });
-  </script>
 </body>
 
 </html>
