@@ -1,3 +1,24 @@
+// ── DARK THEME TOGGLE ──
+const themeToggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
+
+// Apply saved theme on load (before paint to avoid flash)
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  root.setAttribute('data-theme', 'dark');
+}
+
+themeToggle.addEventListener('click', () => {
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    root.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+  } else {
+    root.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  }
+});
+
 // ── CUSTOM CURSOR ──
 const cur = document.getElementById('cur');
 const ring = document.getElementById('cur-ring');
@@ -17,7 +38,7 @@ document.addEventListener('mousemove', e => {
   requestAnimationFrame(animateRing);
 })();
 
-document.querySelectorAll('a, button, .proj-card, .trait-card, .ci-card').forEach(el => {
+document.querySelectorAll('a, button, .proj-card, .trait-card, .ci-card, .theme-toggle').forEach(el => {
   el.addEventListener('mouseenter', () => {
     cur.style.transform = 'scale(2)';
     ring.style.transform = 'scale(1.6)';
