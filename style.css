@@ -174,6 +174,12 @@ nav {
     box-shadow: 0 1px 20px var(--shadow);
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .nav-logo {
     font-family: 'Syne', sans-serif;
     font-size: 20px;
@@ -221,7 +227,19 @@ nav {
     letter-spacing: 0.3px;
 }
 
-.nav-cta:hover {
+.nav-resume {
+    background: transparent;
+    color: var(--muted);
+    border-color: var(--border2);
+}
+
+.nav-resume:hover {
+    border-color: var(--gold2);
+    color: var(--gold2);
+    background: transparent;
+}
+
+.nav-cta:not(.nav-resume):hover {
     background: var(--gold2);
     color: #fff;
 }
@@ -1287,6 +1305,14 @@ footer p {
 
     .nav-cta {
         display: none;
+    }
+
+    .nav-resume {
+        display: none;
+    }
+
+    .nav-right {
+        gap: 8px;
     }
 
     #hero {
