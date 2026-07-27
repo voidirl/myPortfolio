@@ -1,4 +1,4 @@
-// ── DARK THEME TOGGLE ──
+// DARK THEME TOGGLE 
 const themeToggle = document.getElementById('theme-toggle');
 const root = document.documentElement;
 
@@ -19,7 +19,7 @@ themeToggle.addEventListener('click', () => {
   }
 });
 
-// ── CUSTOM CURSOR ──
+// CUSTOM CURSOR 
 const cur = document.getElementById('cur');
 const ring = document.getElementById('cur-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -51,7 +51,7 @@ document.querySelectorAll('a, button, .proj-card, .trait-card, .ci-card, .theme-
   });
 });
 
-// ── HAMBURGER ──
+// HAMBURGER
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 hamburger.addEventListener('click', () => {
@@ -67,7 +67,7 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
-// ── TYPING EFFECT ──
+// TYPING EFFECT
 const typedEl = document.querySelector('.typed-text');
 const phrases = [
   'Full-Stack Developer.',
@@ -100,7 +100,7 @@ function type() {
 }
 setTimeout(type, 1000);
 
-// ── SCROLL REVEAL ──
+// SCROLL REVEAL 
 const revealEls = document.querySelectorAll('.reveal');
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -112,7 +112,7 @@ const revealObs = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 revealEls.forEach(el => revealObs.observe(el));
 
-// ── SKILL BARS ──
+// SKILL BARS
 const bars = document.querySelectorAll('.skill-fill');
 const barObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -124,7 +124,7 @@ const barObs = new IntersectionObserver(entries => {
 }, { threshold: 0.3 });
 bars.forEach(b => barObs.observe(b));
 
-// ── NAV ACTIVE HIGHLIGHT ──
+// NAV ACTIVE HIGHLIGHT
 const sections = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
@@ -135,7 +135,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ── CARD TILT / PARALLAX ──
+// CARD TILT / PARALLAX
 document.querySelectorAll('.proj-card, .skill-card, .trait-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
@@ -154,7 +154,7 @@ document.querySelectorAll('.proj-card, .skill-card, .trait-card').forEach(card =
   });
 });
 
-// ── CONTACT FORM ──
+// Contact Form
 const contactForm = document.getElementById('contact-form');
 const sendBtn = document.getElementById('send-btn');
 if (contactForm && sendBtn) {
@@ -187,28 +187,3 @@ if (contactForm && sendBtn) {
     }, 3000);
   });
 }
-
-// ── PROJECT FILTER ──
-const filterBtns = document.querySelectorAll('.proj-filter-btn');
-const projCards = document.querySelectorAll('.proj-card');
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    projCards.forEach(card => {
-      const cats = card.dataset.category.split(' ');
-      const show = filter === 'all' || cats.includes(filter);
-      if (show) {
-        card.style.display = 'block';
-        card.getBoundingClientRect();
-        card.style.opacity = '1';
-        card.style.transform = '';
-      } else {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(10px)';
-        setTimeout(() => { card.style.display = 'none'; }, 300);
-      }
-    });
-  });
-});
