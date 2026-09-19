@@ -1,806 +1,507 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Rishavdeep Singh — Full-Stack Developer & AI Enthusiast. Building scalable applications with Spring Boot, React, FastAPI, and Docker.">
-  <title>v0idrsh — Rishavdeep Singh | Full-Stack Developer</title>
+    content="Rishavdeep Singh — Full-Stack Developer & AI Integrator. Building production-ready apps with Spring Boot, React, FastAPI, and Docker.">
+  <meta name="author" content="Rishavdeep Singh">
+  <meta name="theme-color" content="#0b0e17">
+  <title>rsh://v0id — Rishavdeep Singh | Full-Stack Developer</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="rsh://v0id — Rishavdeep Singh">
+  <meta property="og:description"
+    content="Full-Stack Developer & AI Integrator. Production-ready software, one commit at a time.">
+  <meta property="og:url" content="https://voidirl.vercel.app">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="rsh://v0id — Rishavdeep Singh">
+  <meta name="twitter:description"
+    content="Full-Stack Developer & AI Integrator. Production-ready software, one commit at a time.">
+
+  <link rel="icon" type="image/png" href="icons8-anime-48.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="icons8-anime-48.png">
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  </script>
 </head>
 
 <body>
-  <div id="cur"></div>
-  <div id="cur-ring"></div>
+  <!-- preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="pre-logo">void<span>://</span><span class="pre-caret">▊</span></div>
+    <div class="pre-bar"><div class="pre-bar-fill"></div></div>
+  </div>
 
-  <nav>
-    <a class="nav-logo" href="#hero">VOID<span>.</span></a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
+  <!-- background fx -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <div id="progress" aria-hidden="true"></div>
+  <div id="cur" aria-hidden="true"></div>
+  <div id="cur-ring" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a class="logo" href="#hero"><span>&lt;</span>void<span>/&gt;</span><span class="logo-caret">▊</span></a>
+
     <ul class="nav-links" id="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">./about</a></li>
+      <li><a href="#journey">./journey</a></li>
+      <li><a href="#skills">./skills</a></li>
+      <li><a href="#projects">./work</a></li>
+      <li><a href="#contact">./contact</a></li>
     </ul>
+
     <div class="nav-right">
-      <a href="/resume.pdf" target="_blank" class="nav-cta nav-resume">Resume</a>
-      <a href="#contact" class="nav-cta">Hire Me</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
+      <a href="/resume.pdf" target="_blank" rel="noopener" class="nav-btn nav-resume">resume.pdf</a>
+      <a href="#contact" class="nav-btn nav-hire">hire_me()</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="5" />
-          <line x1="12" y1="1" x2="12" y2="3" />
-          <line x1="12" y1="21" x2="12" y2="23" />
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-          <line x1="1" y1="12" x2="3" y2="12" />
-          <line x1="21" y1="12" x2="23" y2="12" />
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <main>
+    <!-- HERO -->
     <section id="hero">
-      <div class="hero-left">
-        <p class="hero-greeting">Hey, I'm</p>
-        <h1 class="hero-name">
-          <span class="n1">Rishavdeep</span>
-          <span class="n2">Singh</span>
-        </h1>
-        <p class="hero-sub"><span class="typed-text"></span><span class="typed-cursor"></span></p>
-        <p class="hero-desc">I design and engineer <strong>scalable full-stack applications</strong> — from robust REST
-          APIs and relational databases to responsive frontends and AI-integrated microservices. I turn ideas into
-          production-ready software.</p>
-        <div class="hero-btns">
-          <a href="#projects" class="btn-primary">View My Work</a>
-          <a href="#contact" class="btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-            Get in Touch
-          </a>
+      <div class="hero-inner container">
+        <div class="hero-left">
+          <p class="eyebrow hero-eyebrow reveal"><span class="tick">➜</span> echo "hey, i'm"</p>
+          <h1 class="hero-name reveal">
+            <span class="line">Rishavdeep</span>
+            <span class="line grad-line">Singh</span>
+          </h1>
+          <p class="hero-sub reveal">
+            <span class="fun">const</span> role = <span class="str">"</span><span class="typed-text"></span><span class="str">"</span><span class="cursor-block">█</span>
+          </p>
+          <p class="hero-desc reveal">I engineer <strong>production-ready full-stack systems</strong> — robust REST APIs, relational databases, responsive frontends, and AI-integrated microservices. One commit at a time.</p>
+          <div class="hero-btns reveal">
+            <a href="#projects" class="btn btn-primary" data-mag>view_work <span aria-hidden="true">→</span></a>
+            <a href="#contact" class="btn btn-ghost" data-mag>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              get_in_touch()
+            </a>
+          </div>
         </div>
-      </div>
-      <div class="hero-right">
-        <div class="avatar-wrap">
-          <div class="avatar-ring">
-            <div class="avatar-inner">
-              <!-- Shonen protagonist SVG — spiky hair, determined look -->
-              <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" class="anime-char">
-                <defs>
-                  <radialGradient id="heroBg" cx="50%" cy="65%" r="55%">
-                    <stop offset="0%" stop-color="#d4a843" stop-opacity="0.14" />
-                    <stop offset="100%" stop-color="#faf8f2" stop-opacity="0" />
-                  </radialGradient>
-                  <radialGradient id="heroSkin" cx="50%" cy="30%" r="65%">
-                    <stop offset="0%" stop-color="#fde8c8" />
-                    <stop offset="100%" stop-color="#f0c898" />
-                  </radialGradient>
-                  <linearGradient id="heroHair" x1="20%" y1="0%" x2="80%" y2="100%">
-                    <stop offset="0%" stop-color="#1a1a2e" />
-                    <stop offset="50%" stop-color="#16213e" />
-                    <stop offset="100%" stop-color="#0f3460" />
-                  </linearGradient>
-                  <linearGradient id="heroJacket" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#1a1a2e" />
-                    <stop offset="100%" stop-color="#0d0d1a" />
-                  </linearGradient>
-                  <linearGradient id="heroAccent" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#d4a843" />
-                    <stop offset="100%" stop-color="#f0c040" />
-                  </linearGradient>
-                  <filter id="heroGlow">
-                    <feGaussianBlur stdDeviation="3" result="blur" />
-                    <feMerge>
-                      <feMergeNode in="blur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
 
-                <!-- BG glow -->
-                <circle cx="140" cy="160" r="118" fill="url(#heroBg)" />
-
-                <!-- Energy/aura rings -->
-                <circle cx="140" cy="155" r="108" fill="none" stroke="rgba(212,168,67,0.08)" stroke-width="1.5">
-                  <animate attributeName="r" values="108;114;108" dur="3s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="0.5;0.1;0.5" dur="3s" repeatCount="indefinite" />
-                </circle>
-                <circle cx="140" cy="155" r="100" fill="none" stroke="rgba(212,168,67,0.05)" stroke-width="1">
-                  <animate attributeName="r" values="100;106;100" dur="3s" begin="0.5s" repeatCount="indefinite" />
-                </circle>
-
-                <!-- BODY — jacket with gold trim -->
-                <path d="M60 280 Q65 210 82 192 Q105 178 140 180 Q175 178 198 192 Q215 210 220 280Z"
-                  fill="url(#heroJacket)" />
-                <!-- Jacket collar -->
-                <path d="M110 182 Q140 194 170 182 L165 205 Q140 212 115 205Z" fill="#252540" />
-                <!-- Gold trim on jacket -->
-                <path d="M82 192 Q68 220 64 260" stroke="url(#heroAccent)" stroke-width="2.5" fill="none"
-                  stroke-linecap="round" />
-                <path d="M198 192 Q212 220 216 260" stroke="url(#heroAccent)" stroke-width="2.5" fill="none"
-                  stroke-linecap="round" />
-                <!-- Chest emblem -->
-                <circle cx="140" cy="215" r="10" fill="none" stroke="url(#heroAccent)" stroke-width="1.5" />
-                <text x="140" y="219" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold"
-                  fill="#d4a843">&lt;/&gt;</text>
-
-                <!-- Arms -->
-                <path d="M82 192 Q60 205 54 228 Q60 232 70 226 Q76 208 96 198Z" fill="url(#heroJacket)" />
-                <path d="M198 192 Q220 205 226 228 Q220 232 210 226 Q204 208 184 198Z" fill="url(#heroJacket)" />
-                <!-- Gold sleeve stripe -->
-                <path d="M60 210 Q58 220 60 228" stroke="url(#heroAccent)" stroke-width="2" fill="none"
-                  stroke-linecap="round" />
-                <path d="M220 210 Q222 220 220 228" stroke="url(#heroAccent)" stroke-width="2" fill="none"
-                  stroke-linecap="round" />
-
-                <!-- Hands -->
-                <ellipse cx="56" cy="230" rx="11" ry="9" fill="url(#heroSkin)" />
-                <ellipse cx="224" cy="230" rx="11" ry="9" fill="url(#heroSkin)" />
-                <!-- Right hand — fist (determined pose) -->
-                <rect x="216" y="224" width="16" height="12" rx="5" fill="url(#heroSkin)" />
-                <path d="M218 226 Q224 224 230 226" stroke="rgba(180,130,80,0.4)" stroke-width="1" fill="none" />
-
-                <!-- NECK -->
-                <rect x="128" y="170" width="24" height="16" rx="6" fill="url(#heroSkin)" />
-                <!-- Neck shadow -->
-                <path d="M128 178 Q140 182 152 178" stroke="rgba(180,130,80,0.2)" stroke-width="1.5" fill="none" />
-
-                <!-- HEAD -->
-                <ellipse cx="140" cy="132" rx="54" ry="58" fill="url(#heroSkin)" />
-                <!-- Face shadow/definition -->
-                <path d="M100 145 Q112 168 140 172 Q168 168 180 145" fill="rgba(180,130,80,0.05)" />
-
-                <!-- SPIKY HAIR — shonen style -->
-                <!-- Main hair base -->
-                <path d="M88 118 Q90 58 140 52 Q190 58 192 118 Q174 95 140 92 Q106 95 88 118Z" fill="url(#heroHair)" />
-                <!-- Big spikes — front and top -->
-                <path d="M88 115 Q74 85 82 62 Q92 88 96 112Z" fill="#16213e" />
-                <path d="M104 82 Q100 52 116 38 Q118 65 114 90Z" fill="#1a1a2e" />
-                <path d="M124 68 Q126 36 140 24 Q142 50 138 76Z" fill="#16213e" />
-                <path d="M148 70 Q152 38 164 28 Q160 56 156 78Z" fill="#1a1a2e" />
-                <path d="M166 82 Q172 52 186 46 Q180 72 174 96Z" fill="#16213e" />
-                <path d="M186 108 Q200 82 206 60 Q200 88 192 112Z" fill="#1a1a2e" />
-                <!-- Side hair flowing down -->
-                <path d="M90 122 Q78 155 82 188 Q90 165 98 148Z" fill="#16213e" />
-                <path d="M190 122 Q202 155 198 188 Q190 165 182 148Z" fill="#1a1a2e" />
-                <!-- Hair highlight streak — gold tint -->
-                <path d="M130 55 Q136 35 140 26 Q141 48 138 72Z" fill="rgba(212,168,67,0.2)" />
-                <path d="M108 75 Q112 52 118 40 Q117 62 115 86Z" fill="rgba(212,168,67,0.12)" />
-
-                <!-- Headband — shonen classic -->
-                <path
-                  d="M88 118 Q114 106 140 104 Q166 106 192 118 Q190 126 192 130 Q166 118 140 116 Q114 118 88 130 Q88 124 88 118Z"
-                  fill="#d4a843" />
-                <!-- Headband knot/plate -->
-                <rect x="122" y="105" width="36" height="14" rx="4" fill="#b8860b" />
-                <rect x="124" y="107" width="32" height="10" rx="3" fill="none" stroke="#d4a843" stroke-width="1" />
-                <!-- Headband tie strings -->
-                <path d="M88 124 Q74 128 68 138 Q76 135 88 130Z" fill="#d4a843" />
-                <path d="M192 124 Q206 128 212 138 Q204 135 192 130Z" fill="#d4a843" />
-
-                <!-- EYES — sharp, determined shonen eyes -->
-                <!-- Left eye -->
-                <path d="M104 130 Q118 120 132 128 L130 140 Q118 146 106 140Z" fill="#1a1206" />
-                <ellipse cx="118" cy="134" rx="9" ry="8" fill="#2d4a8a" />
-                <ellipse cx="118" cy="134" rx="6" ry="6" fill="#1a3060" />
-                <ellipse cx="118" cy="135" rx="3.5" ry="4" fill="#060a14" />
-                <circle cx="114" cy="130" r="2.5" fill="white" opacity="0.9" />
-                <circle cx="120" cy="137" r="1.2" fill="white" opacity="0.5" />
-                <!-- Sharp determined upper lid line -->
-                <path d="M104 130 Q118 120 132 128" stroke="#1a1206" stroke-width="2.5" fill="none"
-                  stroke-linecap="round" />
-                <!-- Lower lid -->
-                <path d="M106 140 Q118 145 130 140" stroke="rgba(26,18,6,0.5)" stroke-width="1" fill="none"
-                  stroke-linecap="round" />
-
-                <!-- Right eye -->
-                <path d="M148 128 Q162 120 176 130 L174 140 Q162 146 150 140Z" fill="#1a1206" />
-                <ellipse cx="162" cy="134" rx="9" ry="8" fill="#2d4a8a" />
-                <ellipse cx="162" cy="134" rx="6" ry="6" fill="#1a3060" />
-                <ellipse cx="162" cy="135" rx="3.5" ry="4" fill="#060a14" />
-                <circle cx="158" cy="130" r="2.5" fill="white" opacity="0.9" />
-                <circle cx="164" cy="137" r="1.2" fill="white" opacity="0.5" />
-                <!-- Sharp upper lid -->
-                <path d="M148 128 Q162 120 176 130" stroke="#1a1206" stroke-width="2.5" fill="none"
-                  stroke-linecap="round" />
-                <path d="M150 140 Q162 145 174 140" stroke="rgba(26,18,6,0.5)" stroke-width="1" fill="none"
-                  stroke-linecap="round" />
-
-                <!-- Eyebrows — sharp, angled inward (determined/serious look) -->
-                <path d="M104 122 Q118 114 130 118" stroke="#1a1206" stroke-width="3.5" fill="none"
-                  stroke-linecap="round" />
-                <path d="M150 118 Q162 114 176 122" stroke="#1a1206" stroke-width="3.5" fill="none"
-                  stroke-linecap="round" />
-                <!-- Inner brow crease — intense look -->
-                <path d="M129 118 Q136 115 141 117" stroke="#1a1206" stroke-width="1.5" fill="none"
-                  stroke-linecap="round" />
-
-                <!-- Nose — defined -->
-                <path d="M136 150 Q140 155 144 150" stroke="rgba(160,110,70,0.5)" stroke-width="1.8" fill="none"
-                  stroke-linecap="round" />
-
-                <!-- Mouth — tight, determined smirk -->
-                <path d="M128 162 Q140 166 152 162" stroke="rgba(160,110,70,0.8)" stroke-width="2" fill="none"
-                  stroke-linecap="round" />
-                <path d="M148 162 Q152 164 154 160" stroke="rgba(160,110,70,0.6)" stroke-width="1.5" fill="none"
-                  stroke-linecap="round" />
-
-                <!-- Scar detail — shonen character mark (small) -->
-                <path d="M134 138 L136 145" stroke="rgba(180,130,90,0.35)" stroke-width="1.5" fill="none"
-                  stroke-linecap="round" />
-
-                <!-- Power/energy effect — gold sparks around character -->
-                <g filter="url(#heroGlow)">
-                  <path d="M52 100 L56 94 L60 100 L56 106Z" fill="#d4a843" opacity="0.7">
-                    <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite" />
-                    <animate attributeName="transform" attributeType="XML" type="scale" values="1;1.3;1" dur="1.8s"
-                      additive="sum" repeatCount="indefinite" />
-                  </path>
-                  <path d="M220 88 L224 82 L228 88 L224 94Z" fill="#d4a843" opacity="0.6">
-                    <animate attributeName="opacity" values="0.6;0.15;0.6" dur="2.2s" repeatCount="indefinite" />
-                  </path>
-                  <path d="M60 195 L63 190 L66 195 L63 200Z" fill="#f0c040" opacity="0.5">
-                    <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" begin="0.5s"
-                      repeatCount="indefinite" />
-                  </path>
-                  <path d="M214 200 L217 194 L220 200 L217 206Z" fill="#f0c040" opacity="0.6">
-                    <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2s" begin="1s"
-                      repeatCount="indefinite" />
-                  </path>
-                </g>
-
-                <!-- Speed lines behind character — action feel -->
-                <line x1="30" y1="80" x2="68" y2="95" stroke="rgba(212,168,67,0.12)" stroke-width="1" />
-                <line x1="26" y1="92" x2="65" y2="104" stroke="rgba(212,168,67,0.08)" stroke-width="0.8" />
-                <line x1="250" y1="80" x2="212" y2="95" stroke="rgba(212,168,67,0.12)" stroke-width="1" />
-                <line x1="254" y1="92" x2="215" y2="104" stroke="rgba(212,168,67,0.08)" stroke-width="0.8" />
-
-                <!-- Floating code elements -->
-                <text x="20" y="155" font-family="monospace" font-size="8" fill="rgba(212,168,67,0.4)"
-                  transform="rotate(-15,20,155)">{code}</text>
-                <text x="222" y="140" font-family="monospace" font-size="8" fill="rgba(212,168,67,0.35)"
-                  transform="rotate(10,222,140)">&lt;dev/&gt;</text>
-              </svg>
+        <div class="hero-right reveal">
+          <div class="term" data-tilt>
+            <div class="term-head">
+              <span class="term-dots"><i></i><i></i><i></i></span>
+              <span class="term-title">voidirl@rsh: ~</span>
+            </div>
+            <div class="term-body">
+              <p class="tl"><span class="p">&gt;</span> <span class="cmd">whoami</span></p>
+              <p class="tl out">rsh — full-stack developer</p>
+              <p class="tl"><span class="p">&gt;</span> <span class="cmd">cat stack.txt</span></p>
+              <p class="tl out">backend · frontend · ai · devops</p>
+              <p class="tl"><span class="p">&gt;</span> <span class="cmd">git status</span></p>
+              <p class="tl out">➜ building production software</p>
+              <p class="tl"><span class="p">&gt;</span> <span class="cmd">./ship --target production</span></p>
+              <p class="tl out ok">✓ deployed to users</p>
+              <p class="tl"><span class="p">&gt;</span> <span class="cursor-block">▊</span></p>
             </div>
           </div>
-          <div class="float-tag ft1"><span class="dot" style="background:#d4a843;box-shadow:0 0 6px #d4a843"></span>Open
-            to Internships</div>
-          <div class="float-tag ft2"><span class="dot"
-              style="background:#4ade80;box-shadow:0 0 6px #4ade80"></span>FastAPI + React</div>
-          <div class="float-tag ft3"><span class="dot"
-              style="background:#60a5fa;box-shadow:0 0 6px #60a5fa"></span>Full-Stack Dev</div>
+          <span class="float-chip fc1">AI<span class="chip-dot"></span></span>
+          <span class="float-chip fc2">Docker<span class="chip-dot"></span></span>
+          <span class="float-chip fc3">React<span class="chip-dot"></span></span>
+          <span class="float-chip fc4">FastAPI<span class="chip-dot"></span></span>
         </div>
       </div>
     </section>
 
-    <div class="stats-bar">
-      <div class="stat reveal"><span class="stat-num">5+</span><span class="stat-label">Projects Built</span></div>
-      <div class="stat reveal reveal-delay-1"><span class="stat-num">10+</span><span
-          class="stat-label">Technologies</span></div>
-      <div class="stat reveal reveal-delay-2"><span class="stat-num">3</span><span class="stat-label">Dockerized
-          Apps</span></div>
-      <div class="stat reveal reveal-delay-3"><span class="stat-num">∞</span><span class="stat-label">Things to
-          Learn</span></div>
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>FULL-STACK ENGINEERING</span><b>◆</b><span>BACKEND SYSTEMS</span><b>◆</b><span>AI INTEGRATION</span><b>◆</b><span>DEV-OPS</span><b>◆</b><span>OPEN SOURCE</span><b>◆</b>
+        <span>FULL-STACK ENGINEERING</span><b>◆</b><span>BACKEND SYSTEMS</span><b>◆</b><span>AI INTEGRATION</span><b>◆</b><span>DEV-OPS</span><b>◆</b><span>OPEN SOURCE</span><b>◆</b>
+      </div>
     </div>
 
-    <section class="section" id="about">
-      <div class="about-img">
-        <div class="about-img-box">
-          <!-- Shonen about version — focused, reading/studying pose -->
-          <svg viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg"
-            style="width:100%;height:100%;position:absolute;inset:0;">
-            <defs>
-              <radialGradient id="abg2" cx="50%" cy="60%" r="55%">
-                <stop offset="0%" stop-color="#d4a843" stop-opacity="0.1" />
-                <stop offset="100%" stop-color="#faf8f2" stop-opacity="0" />
-              </radialGradient>
-              <radialGradient id="aski2" cx="50%" cy="30%" r="60%">
-                <stop offset="0%" stop-color="#fde8c8" />
-                <stop offset="100%" stop-color="#f0c898" />
-              </radialGradient>
-              <linearGradient id="ahair2" x1="20%" y1="0%" x2="80%" y2="100%">
-                <stop offset="0%" stop-color="#1a1a2e" />
-                <stop offset="100%" stop-color="#0f3460" />
-              </linearGradient>
-            </defs>
+    <!-- STATS -->
+    <div class="stats container">
+      <div class="stat reveal" data-count="5" data-suffix="+"><span class="stat-num">0</span><span class="stat-label">projects shipped</span></div>
+      <div class="stat reveal" data-count="10" data-suffix="+"><span class="stat-num">0</span><span class="stat-label">technologies</span></div>
+      <div class="stat reveal" data-count="3"><span class="stat-num">0</span><span class="stat-label">dockerized apps</span></div>
+      <div class="stat reveal" data-infinite="true"><span class="stat-num">∞</span><span class="stat-label">things left to build</span></div>
+    </div>
 
-            <ellipse cx="150" cy="210" rx="130" ry="145" fill="url(#abg2)" />
-
-            <!-- Body / jacket -->
-            <path d="M48 340 Q58 248 84 225 Q108 210 150 212 Q192 210 216 225 Q242 248 252 340Z" fill="#1a1a2e" />
-            <!-- Gold trim -->
-            <path d="M84 225 Q68 260 62 310" stroke="#d4a843" stroke-width="2.5" fill="none" stroke-linecap="round" />
-            <path d="M216 225 Q232 260 238 310" stroke="#d4a843" stroke-width="2.5" fill="none"
-              stroke-linecap="round" />
-            <!-- Chest code emblem -->
-            <circle cx="150" cy="260" r="14" fill="none" stroke="#d4a843" stroke-width="1.5" />
-            <text x="150" y="265" text-anchor="middle" font-family="monospace" font-size="11" font-weight="bold"
-              fill="#d4a843">&lt;/&gt;</text>
-            <!-- Collar -->
-            <path d="M114 214 Q150 226 186 214 L182 238 Q150 246 118 238Z" fill="#252545" />
-
-            <!-- Arms with laptop -->
-            <path d="M84 228 Q62 242 56 268 Q64 274 76 266 Q80 248 100 236Z" fill="#1a1a2e" />
-            <path d="M216 228 Q238 242 244 268 Q236 274 224 266 Q220 248 200 236Z" fill="#1a1a2e" />
-
-            <!-- Laptop -->
-            <rect x="72" y="258" width="156" height="86" rx="8" fill="#0d0d1a" stroke="#d4a843" stroke-width="1.5" />
-            <rect x="76" y="262" width="148" height="70" rx="6" fill="#13132a" />
-            <!-- Code on screen -->
-            <text x="82" y="278" font-family="monospace" font-size="7" fill="#d4a843" opacity="0.9">$ fastapi dev
-              main.py</text>
-            <text x="82" y="290" font-family="monospace" font-size="7" fill="#4ade80" opacity="0.85"> INFO: Started
-              server process</text>
-            <text x="82" y="302" font-family="monospace" font-size="7" fill="#60a5fa" opacity="0.8"> INFO: Uvicorn
-              running ✓</text>
-            <text x="82" y="314" font-family="monospace" font-size="7" fill="rgba(212,168,67,0.6)"> █</text>
-            <rect x="72" y="342" width="156" height="6" rx="3" fill="#252545" stroke="rgba(212,168,67,0.2)"
-              stroke-width="1" />
-
-            <!-- Hands -->
-            <ellipse cx="60" cy="270" rx="11" ry="9" fill="url(#aski2)" />
-            <ellipse cx="240" cy="270" rx="11" ry="9" fill="url(#aski2)" />
-
-            <!-- Neck -->
-            <rect x="136" y="200" width="28" height="16" rx="7" fill="url(#aski2)" />
-
-            <!-- Head -->
-            <ellipse cx="150" cy="152" rx="60" ry="64" fill="url(#aski2)" />
-
-            <!-- Spiky hair -->
-            <path d="M92 136 Q94 70 150 62 Q206 70 208 136 Q190 110 150 108 Q110 110 92 136Z" fill="url(#ahair2)" />
-            <path d="M92 132 Q76 100 84 72 Q96 100 100 128Z" fill="#16213e" />
-            <path d="M108 88 Q106 56 122 42 Q124 68 120 92Z" fill="#1a1a2e" />
-            <path d="M130 70 Q132 40 148 28 Q148 54 144 78Z" fill="#16213e" />
-            <path d="M162 72 Q166 42 180 34 Q176 60 170 84Z" fill="#1a1a2e" />
-            <path d="M182 92 Q190 62 200 54 Q196 80 188 104Z" fill="#16213e" />
-            <path d="M208 128 Q222 98 218 74 Q210 102 206 128Z" fill="#1a1a2e" />
-            <!-- Side flows -->
-            <path d="M94 148 Q82 180 86 215 Q94 192 102 172Z" fill="#16213e" />
-            <path d="M206 148 Q218 180 214 215 Q206 192 198 172Z" fill="#1a1a2e" />
-            <!-- Gold highlight -->
-            <path d="M144 32 Q148 28 150 26 Q150 50 147 74Z" fill="rgba(212,168,67,0.18)" />
-
-            <!-- Headband -->
-            <path
-              d="M92 134 Q120 122 150 120 Q180 122 208 134 Q207 142 208 146 Q180 134 150 132 Q120 134 92 146 Q92 140 92 134Z"
-              fill="#d4a843" />
-            <rect x="134" y="120" width="32" height="13" rx="4" fill="#b8860b" />
-            <rect x="136" y="122" width="28" height="9" rx="2" fill="none" stroke="rgba(212,168,67,0.6)"
-              stroke-width="1" />
-
-            <!-- Sharp determined eyes — looking at screen -->
-            <path d="M106 144 Q120 136 134 142 L132 152 Q120 157 108 152Z" fill="#1a1206" />
-            <ellipse cx="120" cy="147" rx="8" ry="7" fill="#2d4a8a" />
-            <ellipse cx="120" cy="147" rx="5" ry="5" fill="#1a3060" />
-            <ellipse cx="120" cy="148" rx="3" ry="3.5" fill="#060a14" />
-            <circle cx="116" cy="143" r="2.2" fill="white" opacity="0.9" />
-            <path d="M106 144 Q120 136 134 142" stroke="#1a1206" stroke-width="2.5" fill="none"
-              stroke-linecap="round" />
-
-            <path d="M166 142 Q180 136 194 144 L192 152 Q180 157 168 152Z" fill="#1a1206" />
-            <ellipse cx="180" cy="147" rx="8" ry="7" fill="#2d4a8a" />
-            <ellipse cx="180" cy="147" rx="5" ry="5" fill="#1a3060" />
-            <ellipse cx="180" cy="148" rx="3" ry="3.5" fill="#060a14" />
-            <circle cx="176" cy="143" r="2.2" fill="white" opacity="0.9" />
-            <path d="M166 142 Q180 136 194 144" stroke="#1a1206" stroke-width="2.5" fill="none"
-              stroke-linecap="round" />
-
-            <!-- Eyebrows — determined -->
-            <path d="M106 134 Q120 126 132 130" stroke="#1a1206" stroke-width="3.2" fill="none"
-              stroke-linecap="round" />
-            <path d="M168 130 Q180 126 194 134" stroke="#1a1206" stroke-width="3.2" fill="none"
-              stroke-linecap="round" />
-            <path d="M131 130 Q138 127 143 129" stroke="#1a1206" stroke-width="1.8" fill="none"
-              stroke-linecap="round" />
-
-            <!-- Nose + mouth -->
-            <path d="M146 163 Q150 167 154 163" stroke="rgba(160,110,70,0.5)" stroke-width="1.6" fill="none"
-              stroke-linecap="round" />
-            <path d="M138 174 Q150 178 162 174" stroke="rgba(160,110,70,0.75)" stroke-width="1.8" fill="none"
-              stroke-linecap="round" />
-
-            <!-- Energy sparks -->
-            <path d="M28 110 L32 104 L36 110 L32 116Z" fill="#d4a843" opacity="0.5">
-              <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2s" repeatCount="indefinite" />
-            </path>
-            <path d="M262 95 L266 89 L270 95 L266 101Z" fill="#d4a843" opacity="0.45">
-              <animate attributeName="opacity" values="0.45;0.1;0.45" dur="2.5s" repeatCount="indefinite" />
-            </path>
-            <path d="M272 190 L275 185 L278 190 L275 195Z" fill="#f0c040" opacity="0.4">
-              <animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite" />
-            </path>
-
-            <!-- Floating text -->
-            <text x="16" y="52" font-family="monospace" font-size="8.5" fill="rgba(212,168,67,0.35)"
-              transform="rotate(-8,16,52)">const rsh = {</text>
-            <text x="10" y="66" font-family="monospace" font-size="8.5" fill="rgba(212,168,67,0.25)"
-              transform="rotate(-8,10,66)"> level: 'rising'</text>
-            <text x="16" y="80" font-family="monospace" font-size="8.5" fill="rgba(212,168,67,0.2)"
-              transform="rotate(-8,16,80)">}</text>
-          </svg>
-        </div>
-        <div class="about-traits">
-          <div class="trait-card reveal">
-            <div class="trait-icon">🎯</div>
-            <div class="trait-title">Detail-Oriented</div>
-            <div class="trait-desc">Every layer of the stack matters — frontend to DB.</div>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container about-grid">
+        <div class="about-visual reveal">
+          <div class="monogram" data-tilt>
+            <div class="monogram-glow"></div>
+            <span class="mono-label">rsh@dev</span>
+            <div class="monogram-hex">RS</div>
+            <div class="monogram-braces">&lt;/&gt;</div>
           </div>
-          <div class="trait-card reveal reveal-delay-1">
-            <div class="trait-icon">⚡</div>
-            <div class="trait-title">Performance-First</div>
-            <div class="trait-desc">Clean, efficient code that scales.</div>
-          </div>
-          <div class="trait-card reveal reveal-delay-2">
-            <div class="trait-icon">🧩</div>
-            <div class="trait-title">Problem Solver</div>
-            <div class="trait-desc">I enjoy breaking down complex challenges.</div>
-          </div>
-          <div class="trait-card reveal reveal-delay-3">
-            <div class="trait-icon">🚀</div>
-            <div class="trait-title">Builder Mindset</div>
-            <div class="trait-desc">I learn by shipping real projects end-to-end.</div>
+          <div class="about-chips">
+            <span class="chip">detail-obsessed</span>
+            <span class="chip">performance-first</span>
+            <span class="chip">problem-solver</span>
+            <span class="chip">builder-mindset</span>
           </div>
         </div>
-      </div>
-      <div class="about-text-content">
-        <div class="reveal">
-          <div class="sec-eyebrow">
-            <div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">About Me</span>
+
+        <div class="about-text">
+          <div class="reveal">
+            <p class="eyebrow"><span class="tick">/</span> ./01 — about_me</p>
+            <h2 class="sec-title">I turn ideas into<br><span class="grad">production software.</span></h2>
           </div>
-          <h2 class="sec-title">I build things that<br><em>matter &amp; last</em></h2>
-        </div>
-        <p class="reveal reveal-delay-1">I'm Rishavdeep Singh, a software developer and Computer Science undergraduate
-          at <strong>Sri Sai College of Engineering &amp; Technology, Pathankot</strong>. I'm from <strong>Kathua,
-            J&amp;K</strong>, with a strong passion for full-stack development, backend systems, and applied AI
-          integration.</p>
-        <p class="reveal reveal-delay-2">I thrive at the intersection of engineering discipline and practical
-          problem-solving — turning complex requirements into clean, well-structured software. My approach is
-          project-driven: I learn by building real applications from scratch, covering everything from database design
-          to containerized deployment.</p>
-        <div class="info-grid reveal reveal-delay-3">
-          <div class="info-row"><span class="info-key">Course</span><span class="info-val">B.Tech — Computer Science
-              &amp; Engineering</span></div>
-          <div class="info-row"><span class="info-key">College</span><span class="info-val">Sri Sai College of
-              Engineering &amp; Technology, Pathankot</span></div>
-          <div class="info-row"><span class="info-key">Location</span><span class="info-val">Kathua, J&amp;K,
-              India</span></div>
-          <div class="info-row"><span class="info-key">Focus</span><span class="info-val">Full-Stack Dev, Backend
-              Systems, AI Integration</span></div>
-          <div class="info-row"><span class="info-key">Status</span><span class="info-val">Open to Internships &amp;
-              Collaborations</span></div>
+          <p class="reveal">I'm <strong>Rishavdeep Singh</strong>, a software developer and Computer Science undergraduate at <strong>Sri Sai College of Engineering &amp; Technology, Pathankot</strong>, from <strong>Kathua, J&amp;K</strong>. My focus is full-stack development, backend systems, and applied AI integration.</p>
+          <p class="reveal">I live at the intersection of engineering discipline and practical problem-solving — learning by shipping real applications end-to-end, from database design to containerized deployment.</p>
+          <div class="info-grid reveal">
+            <div class="info-row"><span class="k">course</span><span class="v">B.Tech — CSE</span></div>
+            <div class="info-row"><span class="k">college</span><span class="v">Sri Sai College, Pathankot</span></div>
+            <div class="info-row"><span class="k">location</span><span class="v">Kathua, J&amp;K, India</span></div>
+            <div class="info-row"><span class="k">status</span><span class="v ok">open to internships &amp; collabs</span></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="skills">
-      <div class="skills-header reveal">
-        <div class="sec-eyebrow">
-          <div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">Expertise</span>
+    <!-- JOURNEY -->
+    <section id="journey" class="section alt">
+      <div class="container">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span class="tick">/</span> ./02 — journey.log</p>
+          <h2 class="sec-title">The <span class="grad">timeline</span></h2>
         </div>
-        <h2 class="sec-title">My Tech Stack</h2>
-        <p class="sec-sub">A curated set of tools and technologies I use to build modern, scalable products.</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-card reveal">
-          <div class="skill-card-header">
-            <div class="skill-card-dot" style="background:#6db33f;box-shadow:0 0 6px #6db33f40"></div><span
-              class="skill-card-label">Backend</span>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">Java / Spring Boot</span><span
-                class="skill-bar-pct">82%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="82%"></div>
+        <div class="timeline">
+          <div class="tl-item reveal">
+            <div class="tl-year">2023</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card" data-tilt>
+              <h3>First line of code</h3>
+              <p>Started B.Tech in Computer Science at <strong>Sri Sai College</strong>, Pathankot. Fell hard for problem-solving.</p>
             </div>
           </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">Python / FastAPI</span><span
-                class="skill-bar-pct">75%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="75%"></div>
+          <div class="tl-item reveal">
+            <div class="tl-year">2024</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card" data-tilt>
+              <h3>Full-stack foundations</h3>
+              <p>Spring Boot, REST APIs, React, and relational databases — went from tutorials to building real apps.</p>
             </div>
           </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">MariaDB / MySQL</span><span
-                class="skill-bar-pct">78%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="78%"></div>
+          <div class="tl-item reveal">
+            <div class="tl-year">2025</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card" data-tilt>
+              <h3>AI &amp; DevOps</h3>
+              <p>FastAPI microservices, Groq LLM integration, and Docker Compose — automation everywhere.</p>
             </div>
           </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">REST API Design</span><span
-                class="skill-bar-pct">85%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="85%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill-card reveal reveal-delay-1">
-          <div class="skill-card-header">
-            <div class="skill-card-dot" style="background:#61dafb;box-shadow:0 0 6px #61dafb40"></div><span
-              class="skill-card-label">Frontend</span>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">React / Vite</span><span
-                class="skill-bar-pct">80%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="80%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">JavaScript</span><span
-                class="skill-bar-pct">78%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="78%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">Tailwind CSS</span><span
-                class="skill-bar-pct">82%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="82%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">Chart.js</span><span
-                class="skill-bar-pct">70%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="70%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill-card reveal reveal-delay-2">
-          <div class="skill-card-header">
-            <div class="skill-card-dot" style="background:#f0c040;box-shadow:0 0 6px #f0c04040"></div><span
-              class="skill-card-label">DevOps &amp; AI</span>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">Docker / Compose</span><span
-                class="skill-bar-pct">72%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="72%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">AI / LLMs</span><span
-                class="skill-bar-pct">68%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="68%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">Git / GitHub</span><span
-                class="skill-bar-pct">85%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="85%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">Linux / Shell</span><span
-                class="skill-bar-pct">78%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="78%"></div>
-            </div>
-          </div>
-        </div>
-        <div class="skill-card reveal reveal-delay-3">
-          <div class="skill-card-header">
-            <div class="skill-card-dot" style="background:#e67e22;box-shadow:0 0 6px #e67e2240"></div><span
-              class="skill-card-label">CS Fundamentals</span>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">C</span><span class="skill-bar-pct">80%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="80%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">C++</span><span class="skill-bar-pct">75%</span>
-            </div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="75%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">Data Structures</span><span
-                class="skill-bar-pct">78%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="78%"></div>
-            </div>
-          </div>
-          <div class="skill-bar-item">
-            <div class="skill-bar-top"><span class="skill-bar-name">Algorithms</span><span
-                class="skill-bar-pct">72%</span></div>
-            <div class="skill-track">
-              <div class="skill-fill" style="width:0%;background:linear-gradient(90deg,#b8860b,#d4a843)"
-                data-width="72%"></div>
+          <div class="tl-item reveal">
+            <div class="tl-year">2026</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card" data-tilt>
+              <h3>Shipping production stuff</h3>
+              <p>5+ production-ready applications live. Now looking for internships, teams, and hard problems.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="projects">
-      <div class="proj-header reveal">
-        <div class="sec-eyebrow">
-          <div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">Portfolio</span>
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span class="tick">/</span> ./03 — stack.toml</p>
+          <h2 class="sec-title">My <span class="grad">tech stack</span></h2>
         </div>
-        <h2 class="sec-title">Selected Work</h2>
-        <p class="sec-sub">Applications I have designed, built, and deployed from scratch.</p>
-      </div>
-      <div class="proj-grid" id="proj-grid">
-        <div class="proj-card reveal" data-category="fullstack ai devops">
-          <div class="proj-img">
-            <div class="proj-img-overlay"></div>
-            <div class="proj-img-icon">ET</div>
-            <div class="proj-img-tags"><span class="proj-img-tag">Spring Boot</span><span
-                class="proj-img-tag">React</span><span class="proj-img-tag">AI</span></div>
+        <div class="skills-grid">
+          <div class="skill-card reveal" data-tilt>
+            <div class="skill-head">
+              <span class="skill-dot" style="--c:#82e65a"></span>
+              <span class="skill-label">backend</span>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>Java / Spring Boot</span><span class="pct">82%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="82%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>Python / FastAPI</span><span class="pct">75%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="75%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>MariaDB / MySQL</span><span class="pct">78%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="78%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>REST API design</span><span class="pct">85%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="85%"></div></div>
+            </div>
           </div>
-          <div class="proj-body">
-            <h3 class="proj-name">AI Expense Management System</h3>
-            <p class="proj-desc">Full-stack expense tracker with Spring Boot REST API, React + Vite frontend with
-              Chart.js dashboards, FastAPI AI microservice using Groq's llama-3.3-70b, and Docker Compose deployment.
-            </p>
-            <div class="proj-links">
-              <a class="proj-link" href="https://github.com/voidirl/smart-expense-tracker" target="_blank"><svg
-                  viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>GitHub</a>
-              <a class="proj-link" href="https://voidledger.vercel.app" target="_blank">Live Demo</a>
+
+          <div class="skill-card reveal" data-tilt>
+            <div class="skill-head">
+              <span class="skill-dot" style="--c:#3ec3f0"></span>
+              <span class="skill-label">frontend</span>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>React / Vite</span><span class="pct">80%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="80%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>JavaScript</span><span class="pct">78%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="78%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>Tailwind CSS</span><span class="pct">82%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="82%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>Chart.js</span><span class="pct">70%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="70%"></div></div>
+            </div>
+          </div>
+
+          <div class="skill-card reveal" data-tilt>
+            <div class="skill-head">
+              <span class="skill-dot" style="--c:#d7a6ff"></span>
+              <span class="skill-label">devops &amp; ai</span>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>Docker / Compose</span><span class="pct">72%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="72%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>AI / LLMs</span><span class="pct">68%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="68%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>Git / GitHub</span><span class="pct">85%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="85%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>Linux / Shell</span><span class="pct">78%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="78%"></div></div>
+            </div>
+          </div>
+
+          <div class="skill-card reveal" data-tilt>
+            <div class="skill-head">
+              <span class="skill-dot" style="--c:#ffb84d"></span>
+              <span class="skill-label">cs fundamentals</span>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>C</span><span class="pct">80%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="80%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>C++</span><span class="pct">75%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="75%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>Data structures</span><span class="pct">78%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="78%"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-top"><span>Algorithms</span><span class="pct">72%</span></div>
+              <div class="bar"><div class="bar-fill grad-b" data-width="72%"></div></div>
             </div>
           </div>
         </div>
-        <div class="proj-card reveal reveal-delay-1" data-category="ai devops">
-          <div class="proj-img">
-            <div class="proj-img-overlay"></div>
-            <div class="proj-img-icon">CR</div>
-            <div class="proj-img-tags"><span class="proj-img-tag">FastAPI</span><span class="proj-img-tag">Groq
-                LLaMA</span><span class="proj-img-tag">Webhooks</span></div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-name">Code Review Bot</h3>
-            <p class="proj-desc">AI-powered GitHub PR reviewer. Automatically posts code review comments on pull
-              requests using Groq (LLaMA 3.3-70b) and FastAPI.</p>
-            <div class="proj-links">
-              <a class="proj-link" href="https://github.com/voidirl/code-review-bot" target="_blank"><svg
-                  viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>GitHub</a>
-            </div>
-          </div>
-        </div>
-        <div class="proj-card reveal reveal-delay-2" data-category="fullstack ai">
-          <div class="proj-img">
-            <div class="proj-img-overlay"></div>
-            <div class="proj-img-icon">CO</div>
-            <div class="proj-img-tags"><span class="proj-img-tag">FastAPI</span><span
-                class="proj-img-tag">React</span><span class="proj-img-tag">Groq LLaMA</span></div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-name">Codebase Onboarder</h3>
-            <p class="proj-desc">Drop a GitHub URL, get an instant onboarding doc + chat interface to ask questions
-              about the codebase. Built with FastAPI, Groq (LLaMA 3.3-70b), and React.</p>
-            <div class="proj-links">
-              <a class="proj-link" href="https://github.com/voidirl/codebase-onboarder" target="_blank"><svg
-                  viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>GitHub</a>
-              <a class="proj-link" href="https://codebase-onboarder.vercel.app" target="_blank">Live Demo</a>
-            </div>
-          </div>
-        </div>
-        <div class="proj-card reveal reveal-delay-3" data-category="fullstack ai">
-          <div class="proj-img">
-            <div class="proj-img-overlay"></div>
-            <div class="proj-img-icon">RC</div>
-            <div class="proj-img-tags"><span class="proj-img-tag">FastAPI</span><span
-                class="proj-img-tag">React</span><span class="proj-img-tag">Groq LLaMA</span></div>
-          </div>
-          <div class="proj-body">
-            <h3 class="proj-name">Roast My Code Arena</h3>
-            <p class="proj-desc">Two users submit code for the same problem in a live room, and Groq's LLaMA 3.3-70b
-              roasts both submissions and picks a winner. Built with FastAPI, PostgreSQL, JWT auth, and a React +
-              Monaco Editor frontend.</p>
-            <div class="proj-links">
-              <a class="proj-link" href="https://github.com/voidirl/roast-my-code" target="_blank"><svg
-                  viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>GitHub</a>
-              <a class="proj-link" href="https://roast-my-code-pi.vercel.app" target="_blank">Live Demo</a>
-            </div>
+
+        <div class="cloud reveal">
+          <span class="cloud-label mono">$ echo $TOOLBOX</span>
+          <div class="cloud-chips">
+            <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">PostgreSQL</span><span class="chip">MariaDB</span><span class="chip">JWT</span><span class="chip">REST</span><span class="chip">Tailwind</span><span class="chip">Chart.js</span><span class="chip">Groq LLaMA</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Linux</span><span class="chip">Bash</span><span class="chip">JavaScript</span><span class="chip">C</span><span class="chip">C++</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
-      <div class="contact-wrap">
+    <!-- PROJECTS -->
+    <section id="projects" class="section alt">
+      <div class="container">
+        <div class="sec-head reveal">
+          <p class="eyebrow"><span class="tick">/</span> ./04 — deployed/</p>
+          <h2 class="sec-title">Selected <span class="grad">work</span></h2>
+        </div>
+
+        <div class="filters reveal" role="tablist" aria-label="Filter projects">
+          <button class="f-btn active" data-filter="all">all</button>
+          <button class="f-btn" data-filter="fullstack">full-stack</button>
+          <button class="f-btn" data-filter="ai">ai</button>
+          <button class="f-btn" data-filter="devops">devops</button>
+        </div>
+
+        <div class="proj-grid" id="proj-grid">
+          <article class="proj-card reveal" data-category="fullstack ai devops" data-tilt>
+            <div class="proj-thumb thumb-1">
+              <div class="proj-thumb-code">
+                <span class="tc t1">&lt;ExpenseLedger /&gt;</span>
+                <span class="tc t2">groq → balance</span>
+                <span class="tc t3">docker compose up</span>
+              </div>
+              <div class="proj-thumb-tags"><span>Spring Boot</span><span>React</span><span>AI</span></div>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-name">AI Expense Management System</h3>
+              <p class="proj-desc">Full-stack expense tracker with a Spring Boot REST API, React + Vite frontend with Chart.js dashboards, FastAPI AI microservice on Groq's llama-3.3-70b, and Docker Compose deployment.</p>
+              <div class="proj-meta"><span>✓ live</span><span>docker + ai</span></div>
+              <div class="proj-links">
+                <a href="https://github.com/voidirl/smart-expense-tracker" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  code
+                </a>
+                <a href="https://voidledger.vercel.app" target="_blank" rel="noopener">demo →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj-card reveal" data-category="ai devops" data-tilt>
+            <div class="proj-thumb thumb-2">
+              <div class="proj-thumb-code">
+                <span class="tc t1">const review = groq(patch)</span>
+                <span class="tc t2">POST /webhooks/github</span>
+                <span class="tc t3">// approve or roast</span>
+              </div>
+              <div class="proj-thumb-tags"><span>FastAPI</span><span>Groq LLaMA</span><span>Webhooks</span></div>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-name">Code Review Bot</h3>
+              <p class="proj-desc">AI-powered GitHub PR reviewer. Automatically posts code review comments on pull requests using Groq (LLaMA 3.3-70b) and FastAPI.</p>
+              <div class="proj-meta"><span>✓ live</span><span>automation</span></div>
+              <div class="proj-links">
+                <a href="https://github.com/voidirl/code-review-bot" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj-card reveal" data-category="fullstack ai" data-tilt>
+            <div class="proj-thumb thumb-3">
+              <div class="proj-thumb-code">
+                <span class="tc t1">doc = onboard(repo_url)</span>
+                <span class="tc t2">chat: ask anything</span>
+                <span class="tc t3">[llama3.3-70b] ✓</span>
+              </div>
+              <div class="proj-thumb-tags"><span>FastAPI</span><span>React</span><span>Groq LLaMA</span></div>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-name">Codebase Onboarder</h3>
+              <p class="proj-desc">Drop a GitHub URL, get an instant onboarding doc plus a chat interface to ask questions about the codebase. FastAPI, Groq (LLaMA 3.3-70b), React.</p>
+              <div class="proj-meta"><span>✓ live</span><span>ai + chat</span></div>
+              <div class="proj-links">
+                <a href="https://github.com/voidirl/codebase-onboarder" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  code
+                </a>
+                <a href="https://codebase-onboarder.vercel.app" target="_blank" rel="noopener">demo →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj-card reveal" data-category="fullstack ai" data-tilt>
+            <div class="proj-thumb thumb-4">
+              <div class="proj-thumb-code">
+                <span class="tc t1">room.live(roast)</span>
+                <span class="tc t2">jwt = user.session</span>
+                <span class="tc t3">monaco.editor → submit</span>
+              </div>
+              <div class="proj-thumb-tags"><span>FastAPI</span><span>React</span><span>PostgreSQL</span></div>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-name">Roast My Code Arena</h3>
+              <p class="proj-desc">Two users submit code for the same problem in a live room while Groq's LLaMA 3.3-70b roasts both submissions and picks a winner. FastAPI, PostgreSQL, JWT, React + Monaco.</p>
+              <div class="proj-meta"><span>✓ live</span><span>auth + live</span></div>
+              <div class="proj-links">
+                <a href="https://github.com/voidirl/roast-my-code" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                  code
+                </a>
+                <a href="https://roast-my-code-pi.vercel.app" target="_blank" rel="noopener">demo →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container contact-wrap">
         <div class="contact-left reveal">
-          <div class="sec-eyebrow">
-            <div class="sec-eyebrow-line"></div><span class="sec-eyebrow-text">Contact</span>
-          </div>
-          <h2 class="sec-title">Let's build something<br><em>remarkable</em></h2>
-          <p>Whether you have an internship opportunity, a project in mind, or just want to connect — my inbox is always
-            open.</p>
-          <div class="contact-info-cards">
+          <p class="eyebrow"><span class="tick">/</span> ./05 — say_hello.sh</p>
+          <h2 class="sec-title">Let's build something <span class="grad">remarkable.</span></h2>
+          <p>Internship, project, or just want to connect — my inbox is always open. I reply fast.</p>
+          <div class="ci-cards">
             <a class="ci-card" href="mailto:rishavrajput204@gmail.com">
-              <div class="ci-icon"><svg viewBox="0 0 24 24">
-                  <path
-                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                </svg></div>
-              <div><span class="ci-label">Email</span><span class="ci-val">rishavrajput204@gmail.com</span></div>
+              <div class="ci-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div><span class="ci-label">email</span><span class="ci-val">rishavrajput204@gmail.com</span></div>
             </a>
-            <a class="ci-card" href="https://github.com/voidirl" target="_blank">
-              <div class="ci-icon"><svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg></div>
-              <div><span class="ci-label">GitHub</span><span class="ci-val">github.com/voidirl</span></div>
+            <a class="ci-card" href="https://github.com/voidirl" target="_blank" rel="noopener">
+              <div class="ci-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </div>
+              <div><span class="ci-label">github</span><span class="ci-val">github.com/voidirl</span></div>
             </a>
-            <a class="ci-card" href="https://linkedin.com/in/rshv11" target="_blank">
-              <div class="ci-icon"><svg viewBox="0 0 24 24">
-                  <path
-                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg></div>
-              <div><span class="ci-label">LinkedIn</span><span class="ci-val">linkedin.com/in/rshv11</span></div>
+            <a class="ci-card" href="https://linkedin.com/in/rshv11" target="_blank" rel="noopener">
+              <div class="ci-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.44-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+              </div>
+              <div><span class="ci-label">linkedin</span><span class="ci-val">linkedin.com/in/rshv11</span></div>
             </a>
           </div>
         </div>
-        <div class="reveal reveal-delay-2">
+
+        <div class="contact-right reveal">
           <form class="contact-form" id="contact-form" action="https://formspree.io/f/mgopaawp" method="POST">
             <div class="form-row">
-              <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name"
-                  placeholder="Your name" required></div>
-              <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email"
-                  placeholder="you@example.com" required></div>
+              <div class="form-group">
+                <label for="name">name</label>
+                <input type="text" id="name" name="name" placeholder="your name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+              </div>
             </div>
-            <div class="form-group"><label for="subject">Subject</label><input type="text" id="subject" name="_subject"
-                placeholder="What's this about?"></div>
-            <div class="form-group"><label for="message">Message</label><textarea id="message" name="message"
-                placeholder="Tell me about your project or opportunity..." required></textarea></div>
-            <button type="submit" class="btn-send" id="send-btn">
-              Send Message
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <line x1="22" y1="2" x2="11" y2="13"></line>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-              </svg>
+            <div class="form-group">
+              <label for="subject">subject</label>
+              <input type="text" id="subject" name="_subject" placeholder="what's this about?">
+            </div>
+            <div class="form-group">
+              <label for="message">message</label>
+              <textarea id="message" name="message" placeholder="tell me about your project or opportunity..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-send" id="send-btn">
+              send_message
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             </button>
           </form>
         </div>
@@ -808,15 +509,22 @@
     </section>
 
     <footer>
-      <a class="footer-logo" href="#hero">VOID<span>.</span></a>
-      <p>© 2026 Rishavdeep Singh. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="https://github.com/voidirl" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/rshv11" target="_blank">LinkedIn</a>
-        <a href="mailto:rishavrajput204@gmail.com">Email</a>
+      <div class="container footer-inner">
+        <a class="footer-logo" href="#hero">&lt;void/&gt;</a>
+        <p>© 2026 Rishavdeep Singh — built &amp; shipped by rsh.</p>
+        <div class="footer-links">
+          <a href="https://github.com/voidirl" target="_blank" rel="noopener">github</a>
+          <a href="https://linkedin.com/in/rshv11" target="_blank" rel="noopener">linkedin</a>
+          <a href="mailto:rishavrajput204@gmail.com">email</a>
+        </div>
       </div>
     </footer>
   </main>
+
+  <button id="to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
   <script src="script.js"></script>
 </body>
 
