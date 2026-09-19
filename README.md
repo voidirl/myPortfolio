@@ -4,7 +4,6 @@ Personal portfolio of Rishavdeep Singh — Multi-Stack Developer
 
 ## Tech Stack
 - HTML, CSS, JavaScript
-- Gold & Dark theme
 
 ## Live
 > https://v0idrsh.vercel.app 
