@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Rishavdeep Singh — Full-Stack Developer & AI Integrator. Building production-ready apps with Spring Boot, React, FastAPI, and Docker.">
+    content="Rishavdeep Singh — Full-Stack Developer & AI Integrator. Explore a flight through the void: identity, stack, journey, deployed projects, and contact.">
   <meta name="author" content="Rishavdeep Singh">
-  <meta name="theme-color" content="#0b0e17">
-  <title>rsh://v0id — Rishavdeep Singh | Full-Stack Developer</title>
+  <meta name="theme-color" content="#05070f">
+  <title>void://rsh — Rishavdeep Singh | Full-Stack Developer</title>
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="rsh://v0id — Rishavdeep Singh">
-  <meta property="og:description"
-    content="Full-Stack Developer & AI Integrator. Production-ready software, one commit at a time.">
+  <meta property="og:title" content="void://rsh — Rishavdeep Singh">
+  <meta property="og:description" content="Full-Stack Developer & AI Integrator. Production-ready software, one commit at a time.">
   <meta property="og:url" content="https://voidirl.vercel.app">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="rsh://v0id — Rishavdeep Singh">
-  <meta name="twitter:description"
-    content="Full-Stack Developer & AI Integrator. Production-ready software, one commit at a time.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="void://rsh — Rishavdeep Singh">
+  <meta name="twitter:description" content="Full-Stack Developer & AI Integrator.">
 
   <link rel="icon" type="image/png" href="icons8-anime-48.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,421 +25,257 @@
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script>
-    if (localStorage.getItem('theme') === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-  </script>
 </head>
 
 <body>
-  <!-- preloader -->
-  <div id="preloader" aria-hidden="true">
-    <div class="pre-logo">void<span>://</span><span class="pre-caret">▊</span></div>
-    <div class="pre-bar"><div class="pre-bar-fill"></div></div>
-  </div>
+  <a class="skip" href="#scene-identity">Skip to content</a>
 
-  <!-- background fx -->
-  <div class="bg-blobs" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
-  <div class="bg-grid" aria-hidden="true"></div>
+  <!-- galaxy canvas -->
+  <canvas id="space" aria-hidden="true"></canvas>
 
-  <div id="progress" aria-hidden="true"></div>
+  <!-- static atmosphere -->
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- custom cursor -->
   <div id="cur" aria-hidden="true"></div>
   <div id="cur-ring" aria-hidden="true"></div>
 
   <!-- NAV -->
-  <nav id="nav">
-    <a class="logo" href="#hero"><span>&lt;</span>void<span>/&gt;</span><span class="logo-caret">▊</span></a>
-
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#about">./about</a></li>
-      <li><a href="#journey">./journey</a></li>
-      <li><a href="#skills">./skills</a></li>
-      <li><a href="#projects">./work</a></li>
-      <li><a href="#contact">./contact</a></li>
-    </ul>
-
+  <nav>
+    <a class="logo" href="#scene-launch">&lt;void<span>/&gt;</span></a>
     <div class="nav-right">
-      <a href="/resume.pdf" target="_blank" rel="noopener" class="nav-btn nav-resume">resume.pdf</a>
-      <a href="#contact" class="nav-btn nav-hire">hire_me()</a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-        </svg>
-        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="5" />
-          <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-          <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-        </svg>
-      </button>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <a class="nav-btn nav-resume" href="/resume.pdf" target="_blank" rel="noopener">resume.pdf</a>
+      <span class="counter mono" id="counter" aria-hidden="true">01/06</span>
+      <button class="map-btn" id="map-btn" aria-haspopup="dialog" aria-expanded="false">≡ map</button>
     </div>
   </nav>
 
+  <!-- scene dots rail -->
+  <nav id="rail" aria-label="Scene navigation">
+    <button data-scene="0" aria-label="Launch"><span></span></button>
+    <button data-scene="1" aria-label="Identity"><span></span></button>
+    <button data-scene="2" aria-label="Stack"><span></span></button>
+    <button data-scene="3" aria-label="Journey"><span></span></button>
+    <button data-scene="4" aria-label="Missions"><span></span></button>
+    <button data-scene="5" aria-label="Transmit"><span></span></button>
+  </nav>
+
+  <!-- scene map overlay -->
+  <div id="map" role="dialog" aria-modal="true" aria-label="Scene map">
+    <button class="map-close" id="map-close" aria-label="Close map">×</button>
+    <div class="map-list">
+      <a href="#scene-launch"><span class="m-n">01</span><span>launch</span></a>
+      <a href="#scene-identity"><span class="m-n">02</span><span>identity</span></a>
+      <a href="#scene-stack"><span class="m-n">03</span><span>stack</span></a>
+      <a href="#scene-journey"><span class="m-n">04</span><span>journey</span></a>
+      <a href="#scene-missions"><span class="m-n">05</span><span>missions</span></a>
+      <a href="#scene-transmit"><span class="m-n">06</span><span>transmit</span></a>
+    </div>
+  </div>
+
   <main>
-    <!-- HERO -->
-    <section id="hero">
-      <div class="hero-inner container">
-        <div class="hero-left">
-          <p class="eyebrow hero-eyebrow reveal"><span class="tick">➜</span> echo "hey, i'm"</p>
-          <h1 class="hero-name reveal">
-            <span class="line">Rishavdeep</span>
-            <span class="line grad-line">Singh</span>
-          </h1>
-          <p class="hero-sub reveal">
-            <span class="fun">const</span> role = <span class="str">"</span><span class="typed-text"></span><span class="str">"</span><span class="cursor-block">█</span>
-          </p>
-          <p class="hero-desc reveal">I engineer <strong>production-ready full-stack systems</strong> — robust REST APIs, relational databases, responsive frontends, and AI-integrated microservices. One commit at a time.</p>
-          <div class="hero-btns reveal">
-            <a href="#projects" class="btn btn-primary" data-mag>view_work <span aria-hidden="true">→</span></a>
-            <a href="#contact" class="btn btn-ghost" data-mag>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-              get_in_touch()
-            </a>
-          </div>
+    <!-- ── 01 · LAUNCH ───────────────────────── -->
+    <section class="scene" id="scene-launch">
+      <div class="scene-grid" aria-hidden="true"></div>
+      <div class="launch-core" aria-hidden="true"></div>
+      <div class="scene-inner launch">
+        <p class="mono tag" style="--d:1">// 2026 · booting rsh_system</p>
+        <h1 class="launch-title" style="--d:2">void<span class="accent">://</span>rsh</h1>
+        <p class="launch-sub" style="--d:3">Full-stack engineer · AI integrator · ship-it-anyway builder.</p>
+        <p class="launch-scroll mono" style="--d:4">scroll_to_enter <span class="blink">▊</span></p>
+      </div>
+    </section>
+
+    <!-- ── 02 · IDENTITY ─────────────────────── -->
+    <section class="scene" id="scene-identity">
+      <div class="scene-inner">
+        <p class="mono eyebrow" style="--d:1"><span class="idx">./02</span> identity</p>
+        <h2 class="big-title" style="--d:2">Rishavdeep <span class="accent">Singh</span><span class="caret">▊</span></h2>
+        <p class="role-line" style="--d:3">full-stack dev · backend systems · applied AI</p>
+        <p class="lead" style="--d:4">Computer Science undergrad at <strong>Sri Sai College of Engineering &amp; Technology, Pathankot</strong>, from <strong>Kathua, J&amp;K</strong>. I learn by shipping real software end-to-end&nbsp;— database design to containerized deployment.</p>
+
+        <div class="id-grid">
+          <div class="id-cell" style="--d:5"><span class="k">course</span><span class="v">B.Tech — Computer Science</span></div>
+          <div class="id-cell" style="--d:6"><span class="k">college</span><span class="v">Sri Sai College, Pathankot</span></div>
+          <div class="id-cell" style="--d:7"><span class="k">location</span><span class="v">Kathua, J&amp;K, India</span></div>
+          <div class="id-cell" style="--d:8"><span class="k">status</span><span class="v accent">open to internships &amp; collabs</span></div>
         </div>
 
-        <div class="hero-right reveal">
-          <div class="term" data-tilt>
-            <div class="term-head">
-              <span class="term-dots"><i></i><i></i><i></i></span>
-              <span class="term-title">voidirl@rsh: ~</span>
-            </div>
-            <div class="term-body">
-              <p class="tl"><span class="p">&gt;</span> <span class="cmd">whoami</span></p>
-              <p class="tl out">rsh — full-stack developer</p>
-              <p class="tl"><span class="p">&gt;</span> <span class="cmd">cat stack.txt</span></p>
-              <p class="tl out">backend · frontend · ai · devops</p>
-              <p class="tl"><span class="p">&gt;</span> <span class="cmd">git status</span></p>
-              <p class="tl out">➜ building production software</p>
-              <p class="tl"><span class="p">&gt;</span> <span class="cmd">./ship --target production</span></p>
-              <p class="tl out ok">✓ deployed to users</p>
-              <p class="tl"><span class="p">&gt;</span> <span class="cursor-block">▊</span></p>
-            </div>
-          </div>
-          <span class="float-chip fc1">AI<span class="chip-dot"></span></span>
-          <span class="float-chip fc2">Docker<span class="chip-dot"></span></span>
-          <span class="float-chip fc3">React<span class="chip-dot"></span></span>
-          <span class="float-chip fc4">FastAPI<span class="chip-dot"></span></span>
+        <div class="traits">
+          <span class="trait-chip" style="--d:9">detail-obsessed</span>
+          <span class="trait-chip" style="--d:10">performance-first</span>
+          <span class="trait-chip" style="--d:11">problem-solver</span>
+          <span class="trait-chip" style="--d:12">builder-mindset</span>
         </div>
       </div>
     </section>
 
-    <!-- MARQUEE -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>FULL-STACK ENGINEERING</span><b>◆</b><span>BACKEND SYSTEMS</span><b>◆</b><span>AI INTEGRATION</span><b>◆</b><span>DEV-OPS</span><b>◆</b><span>OPEN SOURCE</span><b>◆</b>
-        <span>FULL-STACK ENGINEERING</span><b>◆</b><span>BACKEND SYSTEMS</span><b>◆</b><span>AI INTEGRATION</span><b>◆</b><span>DEV-OPS</span><b>◆</b><span>OPEN SOURCE</span><b>◆</b>
-      </div>
-    </div>
-
-    <!-- STATS -->
-    <div class="stats container">
-      <div class="stat reveal" data-count="5" data-suffix="+"><span class="stat-num">0</span><span class="stat-label">projects shipped</span></div>
-      <div class="stat reveal" data-count="10" data-suffix="+"><span class="stat-num">0</span><span class="stat-label">technologies</span></div>
-      <div class="stat reveal" data-count="3"><span class="stat-num">0</span><span class="stat-label">dockerized apps</span></div>
-      <div class="stat reveal" data-infinite="true"><span class="stat-num">∞</span><span class="stat-label">things left to build</span></div>
-    </div>
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="container about-grid">
-        <div class="about-visual reveal">
-          <div class="monogram" data-tilt>
-            <div class="monogram-glow"></div>
-            <span class="mono-label">rsh@dev</span>
-            <div class="monogram-hex">RS</div>
-            <div class="monogram-braces">&lt;/&gt;</div>
-          </div>
-          <div class="about-chips">
-            <span class="chip">detail-obsessed</span>
-            <span class="chip">performance-first</span>
-            <span class="chip">problem-solver</span>
-            <span class="chip">builder-mindset</span>
+    <!-- ── 03 · STACK ────────────────────────── -->
+    <section class="scene" id="scene-stack">
+      <div class="scene-inner stack-scene">
+        <div class="sec-col">
+          <p class="mono eyebrow" style="--d:1"><span class="idx">./03</span> stack</p>
+          <h2 class="big-title" style="--d:2">Orbital <span class="accent">toolbox</span></h2>
+          <div class="group-list">
+            <div class="group" style="--d:3">
+              <div class="group-top"><span>backend</span><span class="mono g">82%</span></div>
+              <div class="bar"><span class="fill" style="--w:82%;--c:#c6ff3d"></span></div>
+              <p class="g-sub mono">java/spring · python/fastapi · mariadb/mysql · rest</p>
+            </div>
+            <div class="group" style="--d:4">
+              <div class="group-top"><span>frontend</span><span class="mono g">80%</span></div>
+              <div class="bar"><span class="fill" style="--w:80%;--c:#3ddcff"></span></div>
+              <p class="g-sub mono">react/vite · javascript · tailwind · chart.js</p>
+            </div>
+            <div class="group" style="--d:5">
+              <div class="group-top"><span>devops · ai</span><span class="mono g">72%</span></div>
+              <div class="bar"><span class="fill" style="--w:72%;--c:#a78bfa"></span></div>
+              <p class="g-sub mono">docker/compose · groq llama · git · linux</p>
+            </div>
+            <div class="group" style="--d:6">
+              <div class="group-top"><span>cs-fund</span><span class="mono g">78%</span></div>
+              <div class="bar"><span class="fill" style="--w:78%;--c:#ff6ec7"></span></div>
+              <p class="g-sub mono">c · c++ · dsa · algorithms</p>
+            </div>
           </div>
         </div>
 
-        <div class="about-text">
-          <div class="reveal">
-            <p class="eyebrow"><span class="tick">/</span> ./01 — about_me</p>
-            <h2 class="sec-title">I turn ideas into<br><span class="grad">production software.</span></h2>
-          </div>
-          <p class="reveal">I'm <strong>Rishavdeep Singh</strong>, a software developer and Computer Science undergraduate at <strong>Sri Sai College of Engineering &amp; Technology, Pathankot</strong>, from <strong>Kathua, J&amp;K</strong>. My focus is full-stack development, backend systems, and applied AI integration.</p>
-          <p class="reveal">I live at the intersection of engineering discipline and practical problem-solving — learning by shipping real applications end-to-end, from database design to containerized deployment.</p>
-          <div class="info-grid reveal">
-            <div class="info-row"><span class="k">course</span><span class="v">B.Tech — CSE</span></div>
-            <div class="info-row"><span class="k">college</span><span class="v">Sri Sai College, Pathankot</span></div>
-            <div class="info-row"><span class="k">location</span><span class="v">Kathua, J&amp;K, India</span></div>
-            <div class="info-row"><span class="k">status</span><span class="v ok">open to internships &amp; collabs</span></div>
+        <div class="orbit-wrap" style="--d:2" aria-hidden="true">
+          <div class="orbit">
+            <div class="orbit-ring ring-a"></div>
+            <div class="orbit-ring ring-b"></div>
+            <div class="orbit-core"><span>&lt;/&gt;</span></div>
+
+            <span class="moon moon-1"></span>
+            <span class="moon moon-2"></span>
+            <span class="moon moon-3"></span>
+            <span class="moon moon-4"></span>
+            <span class="moon moon-5"></span>
+            <span class="moon moon-6"></span>
+
+            <span class="s-chip" style="--a:0deg;--r:10.5rem">java</span>
+            <span class="s-chip" style="--a:30deg;--r:7.5rem">fastapi</span>
+            <span class="s-chip" style="--a:60deg;--r:11.5rem">react</span>
+            <span class="s-chip" style="--a:90deg;--r:8rem">docker</span>
+            <span class="s-chip" style="--a:120deg;--r:10.5rem">postgres</span>
+            <span class="s-chip" style="--a:150deg;--r:7.5rem">jwt</span>
+            <span class="s-chip" style="--a:180deg;--r:11.5rem">groq</span>
+            <span class="s-chip" style="--a:210deg;--r:8rem">tailwind</span>
+            <span class="s-chip" style="--a:240deg;--r:10.5rem">linux</span>
+            <span class="s-chip" style="--a:270deg;--r:7.5rem">git</span>
+            <span class="s-chip" style="--a:300deg;--r:11.5rem">python</span>
+            <span class="s-chip" style="--a:330deg;--r:8rem">spring</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- JOURNEY -->
-    <section id="journey" class="section alt">
-      <div class="container">
-        <div class="sec-head reveal">
-          <p class="eyebrow"><span class="tick">/</span> ./02 — journey.log</p>
-          <h2 class="sec-title">The <span class="grad">timeline</span></h2>
-        </div>
-        <div class="timeline">
-          <div class="tl-item reveal">
-            <div class="tl-year">2023</div>
-            <div class="tl-dot"></div>
-            <div class="tl-card" data-tilt>
-              <h3>First line of code</h3>
-              <p>Started B.Tech in Computer Science at <strong>Sri Sai College</strong>, Pathankot. Fell hard for problem-solving.</p>
-            </div>
+    <!-- ── 04 · JOURNEY ──────────────────────── -->
+    <section class="scene" id="scene-journey">
+      <div class="scene-inner">
+        <p class="mono eyebrow" style="--d:1"><span class="idx">./04</span> journey</p>
+        <h2 class="big-title" style="--d:2">Flight <span class="accent">log</span></h2>
+
+        <div class="flight">
+          <div class="flight-line" aria-hidden="true"></div>
+          <div class="waypoint" style="--d:3">
+            <span class="wp-year">2023</span>
+            <span class="wp-node" aria-hidden="true"></span>
+            <div class="wp-card"><h3>First line of code</h3><p>Started B.Tech in CSE at Sri Sai College, Pathankot. Fell hard for problem-solving.</p></div>
           </div>
-          <div class="tl-item reveal">
-            <div class="tl-year">2024</div>
-            <div class="tl-dot"></div>
-            <div class="tl-card" data-tilt>
-              <h3>Full-stack foundations</h3>
-              <p>Spring Boot, REST APIs, React, and relational databases — went from tutorials to building real apps.</p>
-            </div>
+          <div class="waypoint" style="--d:4">
+            <span class="wp-year">2024</span>
+            <span class="wp-node" aria-hidden="true"></span>
+            <div class="wp-card"><h3>Full-stack foundations</h3><p>Spring Boot, REST APIs, React, relational databases — from tutorials to real apps.</p></div>
           </div>
-          <div class="tl-item reveal">
-            <div class="tl-year">2025</div>
-            <div class="tl-dot"></div>
-            <div class="tl-card" data-tilt>
-              <h3>AI &amp; DevOps</h3>
-              <p>FastAPI microservices, Groq LLM integration, and Docker Compose — automation everywhere.</p>
-            </div>
+          <div class="waypoint" style="--d:5">
+            <span class="wp-year">2025</span>
+            <span class="wp-node" aria-hidden="true"></span>
+            <div class="wp-card"><h3>AI &amp; DevOps</h3><p>FastAPI microservices, Groq LLaMA integration, Docker Compose. Automation everywhere.</p></div>
           </div>
-          <div class="tl-item reveal">
-            <div class="tl-year">2026</div>
-            <div class="tl-dot"></div>
-            <div class="tl-card" data-tilt>
-              <h3>Shipping production stuff</h3>
-              <p>5+ production-ready applications live. Now looking for internships, teams, and hard problems.</p>
-            </div>
+          <div class="waypoint" style="--d:6">
+            <span class="wp-year">2026</span>
+            <span class="wp-node" aria-hidden="true"></span>
+            <div class="wp-card"><h3>Shipping production stuff</h3><p>5+ production-ready apps live. Now hunting internships, teams, and hard problems.</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <div class="container">
-        <div class="sec-head reveal">
-          <p class="eyebrow"><span class="tick">/</span> ./03 — stack.toml</p>
-          <h2 class="sec-title">My <span class="grad">tech stack</span></h2>
-        </div>
-        <div class="skills-grid">
-          <div class="skill-card reveal" data-tilt>
-            <div class="skill-head">
-              <span class="skill-dot" style="--c:#82e65a"></span>
-              <span class="skill-label">backend</span>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>Java / Spring Boot</span><span class="pct">82%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="82%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>Python / FastAPI</span><span class="pct">75%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="75%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>MariaDB / MySQL</span><span class="pct">78%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="78%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>REST API design</span><span class="pct">85%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="85%"></div></div>
-            </div>
-          </div>
+    <!-- ── 05 · MISSIONS ─────────────────────── -->
+    <section class="scene" id="scene-missions">
+      <div class="scene-inner">
+        <p class="mono eyebrow" style="--d:1"><span class="idx">./05</span> missions</p>
+        <h2 class="big-title" style="--d:2">Deployed <span class="accent">projects</span></h2>
 
-          <div class="skill-card reveal" data-tilt>
-            <div class="skill-head">
-              <span class="skill-dot" style="--c:#3ec3f0"></span>
-              <span class="skill-label">frontend</span>
+        <div class="mission-grid">
+          <article class="mission-card" style="--d:3" data-cat="fullstack ai devops">
+            <div class="m-thumb th-1">
+              <code>&lt;ExpenseLedger /&gt;</code>
+              <code>groq → balance</code>
+              <code>docker compose up</code>
+              <div class="m-tags"><span>spring boot</span><span>react</span><span>ai</span></div>
             </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>React / Vite</span><span class="pct">80%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="80%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>JavaScript</span><span class="pct">78%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="78%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>Tailwind CSS</span><span class="pct">82%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="82%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>Chart.js</span><span class="pct">70%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="70%"></div></div>
-            </div>
-          </div>
-
-          <div class="skill-card reveal" data-tilt>
-            <div class="skill-head">
-              <span class="skill-dot" style="--c:#d7a6ff"></span>
-              <span class="skill-label">devops &amp; ai</span>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>Docker / Compose</span><span class="pct">72%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="72%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>AI / LLMs</span><span class="pct">68%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="68%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>Git / GitHub</span><span class="pct">85%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="85%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>Linux / Shell</span><span class="pct">78%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="78%"></div></div>
-            </div>
-          </div>
-
-          <div class="skill-card reveal" data-tilt>
-            <div class="skill-head">
-              <span class="skill-dot" style="--c:#ffb84d"></span>
-              <span class="skill-label">cs fundamentals</span>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>C</span><span class="pct">80%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="80%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>C++</span><span class="pct">75%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="75%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>Data structures</span><span class="pct">78%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="78%"></div></div>
-            </div>
-            <div class="bar-item">
-              <div class="bar-top"><span>Algorithms</span><span class="pct">72%</span></div>
-              <div class="bar"><div class="bar-fill grad-b" data-width="72%"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cloud reveal">
-          <span class="cloud-label mono">$ echo $TOOLBOX</span>
-          <div class="cloud-chips">
-            <span class="chip">Java</span><span class="chip">Spring Boot</span><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">PostgreSQL</span><span class="chip">MariaDB</span><span class="chip">JWT</span><span class="chip">REST</span><span class="chip">Tailwind</span><span class="chip">Chart.js</span><span class="chip">Groq LLaMA</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Linux</span><span class="chip">Bash</span><span class="chip">JavaScript</span><span class="chip">C</span><span class="chip">C++</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section alt">
-      <div class="container">
-        <div class="sec-head reveal">
-          <p class="eyebrow"><span class="tick">/</span> ./04 — deployed/</p>
-          <h2 class="sec-title">Selected <span class="grad">work</span></h2>
-        </div>
-
-        <div class="filters reveal" role="tablist" aria-label="Filter projects">
-          <button class="f-btn active" data-filter="all">all</button>
-          <button class="f-btn" data-filter="fullstack">full-stack</button>
-          <button class="f-btn" data-filter="ai">ai</button>
-          <button class="f-btn" data-filter="devops">devops</button>
-        </div>
-
-        <div class="proj-grid" id="proj-grid">
-          <article class="proj-card reveal" data-category="fullstack ai devops" data-tilt>
-            <div class="proj-thumb thumb-1">
-              <div class="proj-thumb-code">
-                <span class="tc t1">&lt;ExpenseLedger /&gt;</span>
-                <span class="tc t2">groq → balance</span>
-                <span class="tc t3">docker compose up</span>
-              </div>
-              <div class="proj-thumb-tags"><span>Spring Boot</span><span>React</span><span>AI</span></div>
-            </div>
-            <div class="proj-body">
-              <h3 class="proj-name">AI Expense Management System</h3>
-              <p class="proj-desc">Full-stack expense tracker with a Spring Boot REST API, React + Vite frontend with Chart.js dashboards, FastAPI AI microservice on Groq's llama-3.3-70b, and Docker Compose deployment.</p>
-              <div class="proj-meta"><span>✓ live</span><span>docker + ai</span></div>
-              <div class="proj-links">
-                <a href="https://github.com/voidirl/smart-expense-tracker" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                  code
-                </a>
+            <div class="m-body">
+              <h3>AI Expense Management System</h3>
+              <p>Spring Boot REST API, React + Vite dashboards (Chart.js), FastAPI AI microservice on Groq LLaMA 3.3-70b, Docker Compose.</p>
+              <div class="m-meta"><span>✓ live</span><span>docker · ai</span></div>
+              <div class="m-links">
+                <a href="https://github.com/voidirl/smart-expense-tracker" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>code</a>
                 <a href="https://voidledger.vercel.app" target="_blank" rel="noopener">demo →</a>
               </div>
             </div>
           </article>
 
-          <article class="proj-card reveal" data-category="ai devops" data-tilt>
-            <div class="proj-thumb thumb-2">
-              <div class="proj-thumb-code">
-                <span class="tc t1">const review = groq(patch)</span>
-                <span class="tc t2">POST /webhooks/github</span>
-                <span class="tc t3">// approve or roast</span>
-              </div>
-              <div class="proj-thumb-tags"><span>FastAPI</span><span>Groq LLaMA</span><span>Webhooks</span></div>
+          <article class="mission-card" style="--d:4" data-cat="ai devops">
+            <div class="m-thumb th-2">
+              <code>const review = groq(patch)</code>
+              <code>POST /webhooks/github</code>
+              <code>// approve or roast</code>
+              <div class="m-tags"><span>fastapi</span><span>groq llama</span><span>webhooks</span></div>
             </div>
-            <div class="proj-body">
-              <h3 class="proj-name">Code Review Bot</h3>
-              <p class="proj-desc">AI-powered GitHub PR reviewer. Automatically posts code review comments on pull requests using Groq (LLaMA 3.3-70b) and FastAPI.</p>
-              <div class="proj-meta"><span>✓ live</span><span>automation</span></div>
-              <div class="proj-links">
-                <a href="https://github.com/voidirl/code-review-bot" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                  code
-                </a>
+            <div class="m-body">
+              <h3>Code Review Bot</h3>
+              <p>AI-powered GitHub PR reviewer. Automatically posts code review comments on pull requests using Groq (LLaMA 3.3-70b) and FastAPI.</p>
+              <div class="m-meta"><span>✓ live</span><span>automation</span></div>
+              <div class="m-links">
+                <a href="https://github.com/voidirl/code-review-bot" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>code</a>
               </div>
             </div>
           </article>
 
-          <article class="proj-card reveal" data-category="fullstack ai" data-tilt>
-            <div class="proj-thumb thumb-3">
-              <div class="proj-thumb-code">
-                <span class="tc t1">doc = onboard(repo_url)</span>
-                <span class="tc t2">chat: ask anything</span>
-                <span class="tc t3">[llama3.3-70b] ✓</span>
-              </div>
-              <div class="proj-thumb-tags"><span>FastAPI</span><span>React</span><span>Groq LLaMA</span></div>
+          <article class="mission-card" style="--d:5" data-cat="fullstack ai">
+            <div class="m-thumb th-3">
+              <code>doc = onboard(url)</code>
+              <code>chat: ask anything</code>
+              <code>[llama3.3-70b] ✓</code>
+              <div class="m-tags"><span>fastapi</span><span>react</span><span>groq</span></div>
             </div>
-            <div class="proj-body">
-              <h3 class="proj-name">Codebase Onboarder</h3>
-              <p class="proj-desc">Drop a GitHub URL, get an instant onboarding doc plus a chat interface to ask questions about the codebase. FastAPI, Groq (LLaMA 3.3-70b), React.</p>
-              <div class="proj-meta"><span>✓ live</span><span>ai + chat</span></div>
-              <div class="proj-links">
-                <a href="https://github.com/voidirl/codebase-onboarder" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                  code
-                </a>
+            <div class="m-body">
+              <h3>Codebase Onboarder</h3>
+              <p>Drop a GitHub URL, get an instant onboarding doc plus a chat interface. FastAPI, Groq (LLaMA 3.3-70b), React.</p>
+              <div class="m-meta"><span>✓ live</span><span>ai · chat</span></div>
+              <div class="m-links">
+                <a href="https://github.com/voidirl/codebase-onboarder" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>code</a>
                 <a href="https://codebase-onboarder.vercel.app" target="_blank" rel="noopener">demo →</a>
               </div>
             </div>
           </article>
 
-          <article class="proj-card reveal" data-category="fullstack ai" data-tilt>
-            <div class="proj-thumb thumb-4">
-              <div class="proj-thumb-code">
-                <span class="tc t1">room.live(roast)</span>
-                <span class="tc t2">jwt = user.session</span>
-                <span class="tc t3">monaco.editor → submit</span>
-              </div>
-              <div class="proj-thumb-tags"><span>FastAPI</span><span>React</span><span>PostgreSQL</span></div>
+          <article class="mission-card" style="--d:6" data-cat="fullstack ai">
+            <div class="m-thumb th-4">
+              <code>room.live(roast)</code>
+              <code>jwt = user.session</code>
+              <code>monaco → submit</code>
+              <div class="m-tags"><span>fastapi</span><span>react</span><span>postgres</span></div>
             </div>
-            <div class="proj-body">
-              <h3 class="proj-name">Roast My Code Arena</h3>
-              <p class="proj-desc">Two users submit code for the same problem in a live room while Groq's LLaMA 3.3-70b roasts both submissions and picks a winner. FastAPI, PostgreSQL, JWT, React + Monaco.</p>
-              <div class="proj-meta"><span>✓ live</span><span>auth + live</span></div>
-              <div class="proj-links">
-                <a href="https://github.com/voidirl/roast-my-code" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                  code
-                </a>
+            <div class="m-body">
+              <h3>Roast My Code Arena</h3>
+              <p>Two users submit code for the same problem in a live room while Groq's LLaMA 3.3-70b roasts both and picks a winner. FastAPI, PostgreSQL, JWT, React + Monaco.</p>
+              <div class="m-meta"><span>✓ live</span><span>auth · live</span></div>
+              <div class="m-links">
+                <a href="https://github.com/voidirl/roast-my-code" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>code</a>
                 <a href="https://roast-my-code-pi.vercel.app" target="_blank" rel="noopener">demo →</a>
               </div>
             </div>
@@ -450,80 +284,60 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="container contact-wrap">
-        <div class="contact-left reveal">
-          <p class="eyebrow"><span class="tick">/</span> ./05 — say_hello.sh</p>
-          <h2 class="sec-title">Let's build something <span class="grad">remarkable.</span></h2>
-          <p>Internship, project, or just want to connect — my inbox is always open. I reply fast.</p>
-          <div class="ci-cards">
-            <a class="ci-card" href="mailto:rishavrajput204@gmail.com">
-              <div class="ci-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              </div>
-              <div><span class="ci-label">email</span><span class="ci-val">rishavrajput204@gmail.com</span></div>
+    <!-- ── 06 · TRANSMIT ─────────────────────── -->
+    <section class="scene" id="scene-transmit">
+      <div class="scene-inner transmit">
+        <div class="t-col" style="--d:1">
+          <p class="mono eyebrow"><span class="idx">./06</span> transmit</p>
+          <h2 class="big-title">Open a <span class="accent">channel</span></h2>
+          <p class="lead">Internship, project, or just to say hi — my inbox is always open. I reply fast.</p>
+          <div class="chan-list">
+            <a class="chan-card" href="mailto:rishavrajput204@gmail.com">
+              <span class="chan-top"><span class="k">email</span><span class="arrow">→</span></span>
+              <span class="v">rishavrajput204@gmail.com</span>
             </a>
-            <a class="ci-card" href="https://github.com/voidirl" target="_blank" rel="noopener">
-              <div class="ci-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.13 3 .4 2.3-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.8 5.63-5.47 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </div>
-              <div><span class="ci-label">github</span><span class="ci-val">github.com/voidirl</span></div>
+            <a class="chan-card" href="https://github.com/voidirl" target="_blank" rel="noopener">
+              <span class="chan-top"><span class="k">github</span><span class="arrow">→</span></span>
+              <span class="v">github.com/voidirl</span>
             </a>
-            <a class="ci-card" href="https://linkedin.com/in/rshv11" target="_blank" rel="noopener">
-              <div class="ci-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.44-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-              </div>
-              <div><span class="ci-label">linkedin</span><span class="ci-val">linkedin.com/in/rshv11</span></div>
+            <a class="chan-card" href="https://linkedin.com/in/rshv11" target="_blank" rel="noopener">
+              <span class="chan-top"><span class="k">linkedin</span><span class="arrow">→</span></span>
+              <span class="v">linkedin.com/in/rshv11</span>
             </a>
           </div>
         </div>
 
-        <div class="contact-right reveal">
-          <form class="contact-form" id="contact-form" action="https://formspree.io/f/mgopaawp" method="POST">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">name</label>
-                <input type="text" id="name" name="name" placeholder="your name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">email</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" required>
-              </div>
+        <form class="tx-form" id="contact-form" action="https://formspree.io/f/mgopaawp" method="POST" style="--d:2">
+          <div class="form-row">
+            <div class="f-g">
+              <label for="name">name</label>
+              <input type="text" id="name" name="name" placeholder="your name" required>
             </div>
-            <div class="form-group">
-              <label for="subject">subject</label>
-              <input type="text" id="subject" name="_subject" placeholder="what's this about?">
+            <div class="f-g">
+              <label for="email">email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required>
             </div>
-            <div class="form-group">
-              <label for="message">message</label>
-              <textarea id="message" name="message" placeholder="tell me about your project or opportunity..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-send" id="send-btn">
-              send_message
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
-          </form>
-        </div>
+          </div>
+          <div class="f-g">
+            <label for="subject">subject</label>
+            <input type="text" id="subject" name="_subject" placeholder="what's this about?">
+          </div>
+          <div class="f-g">
+            <label for="message">message</label>
+            <textarea id="message" name="message" placeholder="tell me about the project or opportunity..." required></textarea>
+          </div>
+          <button type="submit" class="btn-send" id="send-btn">send_message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+          <p class="form-note mono">form → formspree · no auth · all good</p>
+        </form>
       </div>
+
+      <footer class="scene-foot mono">
+        © 2026 Rishavdeep Singh · void://rsh · built &amp; shipped by hand
+      </footer>
     </section>
-
-    <footer>
-      <div class="container footer-inner">
-        <a class="footer-logo" href="#hero">&lt;void/&gt;</a>
-        <p>© 2026 Rishavdeep Singh — built &amp; shipped by rsh.</p>
-        <div class="footer-links">
-          <a href="https://github.com/voidirl" target="_blank" rel="noopener">github</a>
-          <a href="https://linkedin.com/in/rshv11" target="_blank" rel="noopener">linkedin</a>
-          <a href="mailto:rishavrajput204@gmail.com">email</a>
-        </div>
-      </div>
-    </footer>
   </main>
-
-  <button id="to-top" aria-label="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-  </button>
 
   <script src="script.js"></script>
 </body>

@@ -1,323 +1,276 @@
-/* ═══════════════ rsh://v0id — script.js ═══════════════ */
+/* ═══════════════ void://rsh — script.js ═══════════════ */
 (() => {
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  /* ── PRELOADER ────────────────────────────── */
-  const preloader = $('#preloader');
-  const preBar = $('.pre-bar-fill');
-  let pre = 0;
-  const preTick = () => {
-    pre += Math.random() * 22;
-    if (pre >= 100) pre = 100;
-    if (preBar) preBar.style.width = pre + '%';
-    if (pre < 100) requestAnimationFrame(preTick);
-    else setTimeout(() => hidePreloader(), 150);
+  document.documentElement.classList.add('js');
+
+  /* ── GALAXY ENGINE (canvas 2d, single rAF) ── */
+  const canvas = $('#space');
+  const ctx = canvas && canvas.getContext('2d');
+  let W = 0, H = 0, DPR = 1;
+  let stars = [], nebulas = [], shooters = [];
+  let mx = 0, my = 0;            // normalized parallax [-1, 1]
+  let t = 0;
+
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  const seed = () => {
+    if (!ctx) return;
+    DPR = Math.min(window.devicePixelRatio || 1, 1.75);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W * DPR;
+    canvas.height = H * DPR;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+    const layers = [
+      { n: 140, z: 0.18, o: 0.55 },
+      { n: 90,  z: 0.4,  o: 0.75 },
+      { n: 42,  z: 0.9,  o: 1 }
+    ];
+    stars = [];
+    layers.forEach((l) => {
+      for (let i = 0; i < l.n; i++) {
+        stars.push({
+          x: rand(0, W), y: rand(0, H),
+          z: l.z, r: rand(0.4, 1.6) * (0.5 + l.z),
+          o: l.o, tw: rand(0, Math.PI * 2), tws: rand(0.3, 1.4)
+        });
+      }
+    });
+
+    nebulas = [
+      { x: W * 0.22, y: H * 0.28, r: 320, c: [198, 255, 61], a: 0.05 },
+      { x: W * 0.82, y: H * 0.2, r: 300, c: [61, 220, 255], a: 0.05 },
+      { x: W * 0.35, y: H * 0.8, r: 340, c: [167, 139, 250], a: 0.05 },
+      { x: W * 0.78, y: H * 0.72, r: 280, c: [255, 110, 199], a: 0.035 }
+    ];
+    shooters = [];
   };
-  const hidePreloader = () => {
-    if (preloader) preloader.classList.add('hidden');
+
+  const drawFrame = () => {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.016;
+
+    // nebulas
+    ctx.globalCompositeOperation = 'lighter';
+    nebulas.forEach((n, i) => {
+      const pulse = 1 + Math.sin(t * 0.25 + i * 2) * 0.1;
+      const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * pulse);
+      g.addColorStop(0, `rgba(${n.c[0]},${n.c[1]},${n.c[2]},${n.a})`);
+      g.addColorStop(1, `rgba(${n.c[0]},${n.c[1]},${n.c[2]},0)`);
+      ctx.fillStyle = g;
+      ctx.fillRect(n.x - n.r, n.y - n.r, n.r * 2, n.r * 2);
+    });
+
+    // stars (parallax + twinkle + slow drift)
+    for (const s of stars) {
+      s.y += 0.015 + s.z * 0.03;
+      if (s.y > H + 2) { s.y = -2; s.x = rand(0, W); }
+      const px = s.x - mx * 18 * s.z;
+      const py = s.y - my * 12 * s.z;
+      const tw = 0.55 + 0.45 * Math.sin(t * s.tws + s.tw);
+      ctx.globalAlpha = s.o * tw;
+      ctx.fillStyle = s.z > 0.6 ? '#cfe6ff' : (s.z > 0.35 ? '#7f9fd6' : '#3a4a6e');
+      ctx.beginPath();
+      ctx.arc(px, py, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // shooting stars
+    if (Math.random() < 0.012 && shooters.length < 2) {
+      shooters.push({
+        x: rand(0.25, 0.85) * W, y: rand(0.05, 0.3) * H,
+        vx: rand(-7, -4), vy: rand(2.4, 3.4), life: 1
+      });
+    }
+    for (let i = shooters.length - 1; i >= 0; i--) {
+      const sh = shooters[i];
+      sh.x += sh.vx; sh.y += sh.vy; sh.life -= 0.018;
+      if (sh.life <= 0) { shooters.splice(i, 1); continue; }
+      const tail = 9;
+      const gr = ctx.createLinearGradient(sh.x, sh.y, sh.x - sh.vx * tail, sh.y - sh.vy * tail);
+      gr.addColorStop(0, `rgba(220,255,255,${0.9 * sh.life})`);
+      gr.addColorStop(1, 'rgba(220,255,255,0)');
+      ctx.strokeStyle = gr;
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.moveTo(sh.x, sh.y);
+      ctx.lineTo(sh.x - sh.vx * tail, sh.y - sh.vy * tail);
+      ctx.stroke();
+    }
+    ctx.globalCompositeOperation = 'source-over';
   };
-  requestAnimationFrame(preTick);
-  window.addEventListener('load', () => setTimeout(hidePreloader, 300));
-  setTimeout(hidePreloader, 2600); // safety
 
-  /* ── THEME ────────────────────────────────── */
-  const root = document.documentElement;
-  const themeToggle = $('#theme-toggle');
-  const metaTheme = $('meta[name="theme-color"]');
-
-  const applyTheme = (t) => {
-    root.setAttribute('data-theme', t);
-    localStorage.setItem('theme', t);
-    if (metaTheme) metaTheme.setAttribute('content', t === 'dark' ? '#0b0e17' : '#f4f6fc');
+  const renderStatic = () => {
+    seed();
+    drawFrame();
   };
 
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') applyTheme('light');
+  /* single rAF loop: galaxy + cursor lerp */
+  let raf = null;
+  const tickCursor = () => {
+    if (!cursor) return;
+    rx += (cursor.x - rx) * 0.22;
+    ry += (cursor.y - ry) * 0.22;
+    ring.style.setProperty('--rx', (rx - 17) + 'px');
+    ring.style.setProperty('--ry', (ry - 17) + 'px');
+  };
+  const loop = () => {
+    drawFrame();
+    tickCursor();
+    raf = requestAnimationFrame(loop);
+  };
 
-  themeToggle && themeToggle.addEventListener('click', () => {
-    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  /* ── CURSOR ────────────────────────────────── */
+  const cur = $('#cur');
+  const ring = $('#cur-ring');
+  let cursor = null;
+  let rx = -100, ry = -100;
+
+  if (fine) {
+    cursor = { x: -100, y: -100 };
+    document.addEventListener('mousemove', (e) => {
+      mx = (e.clientX / window.innerWidth) * 2 - 1;
+      my = (e.clientY / window.innerHeight) * 2 - 1;
+      cursor.x = e.clientX;
+      cursor.y = e.clientY;
+      cur.style.setProperty('--cx', (cursor.x - 4) + 'px');
+      cur.style.setProperty('--cy', (cursor.y - 4) + 'px');
+    });
+    const hotSel = 'a, button, input, textarea, .mission-card, .chan-card, .trait-chip, .s-chip, select';
+    document.addEventListener('mouseover', (e) => {
+      if (ring && e.target.closest(hotSel)) ring.classList.add('grow');
+    });
+    document.addEventListener('mouseout', (e) => {
+      if (ring && e.target.closest(hotSel)) ring.classList.remove('grow');
+    });
+  } else {
+    cur && cur.remove();
+    ring && ring.remove();
+  }
+
+  /* ── START RENDER ──────────────────────────── */
+  if (ctx) {
+    seed();
+    if (reduced) {
+      renderStatic();
+    } else {
+      loop();
+    }
+    window.addEventListener('resize', () => { seed(); if (reduced) drawFrame(); });
+    document.addEventListener('visibilitychange', () => {
+      if (reduced) return;
+      if (document.hidden) {
+        if (raf) { cancelAnimationFrame(raf); raf = null; }
+      } else if (!raf) {
+        raf = requestAnimationFrame(loop);
+      }
+    });
+  }
+
+  /* ── SCENE CONTROLLER ──────────────────────── */
+  const scenes = $$('.scene');
+  const railBtns = $$('#rail button');
+  const counter = $('#counter');
+  let active = 0;
+
+  const activate = (i) => {
+    if (i < 0 || i >= scenes.length) return;
+    active = i;
+    scenes.forEach((s, idx) => s.classList.toggle('in', idx === i));
+    railBtns.forEach((b, idx) => b.classList.toggle('active', idx === i));
+    if (counter && !reduced) counter.textContent = String(i + 1).padStart(2, '0') + '/' + String(scenes.length).padStart(2, '0');
+  };
+
+  const goto = (i) => {
+    const n = ((i % scenes.length) + scenes.length) % scenes.length;
+    scenes[n].scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+  };
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) activate(scenes.indexOf(e.target));
+      });
+    }, { threshold: 0.6 });
+    scenes.forEach((s) => io.observe(s));
+  }
+
+  if (reduced) {
+    scenes.forEach((s) => s.classList.add('in'));
+    activate(0);
+  } else {
+    activate(0);
+  }
+
+  /* ── RAIL ──────────────────────────────────── */
+  railBtns.forEach((b, i) => {
+    b.addEventListener('click', () => goto(i));
   });
 
-  /* ── CUSTOM CURSOR ────────────────────────── */
-  if (finePointer && !prefersReduced) {
-    const cur = $('#cur');
-    const ring = $('#cur-ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
+  /* ── MAP ───────────────────────────────────── */
+  const map = $('#map');
+  const mapBtn = $('#map-btn');
+  const mapClose = $('#map-close');
+  const openMap = () => map && (map.classList.add('open'), mapBtn && mapBtn.setAttribute('aria-expanded', 'true'));
+  const closeMap = () => map && (map.classList.remove('open'), mapBtn && mapBtn.setAttribute('aria-expanded', 'false'));
+  mapBtn && mapBtn.addEventListener('click', openMap);
+  mapClose && mapClose.addEventListener('click', closeMap);
+  map && map.addEventListener('click', (e) => { if (e.target === map) closeMap(); });
+  map && $$('a', map).forEach((a) => a.addEventListener('click', closeMap));
 
-    document.addEventListener('mousemove', (e) => {
-      mx = e.clientX;
-      my = e.clientY;
-      if (cur) { cur.style.left = mx - 3.5 + 'px'; cur.style.top = my - 3.5 + 'px'; }
-    });
-
-    const loop = () => {
-      rx += (mx - rx) * 0.16;
-      ry += (my - ry) * 0.16;
-      if (ring) { ring.style.left = rx - 18 + 'px'; ring.style.top = ry - 18 + 'px'; }
-      requestAnimationFrame(loop);
-    };
-    loop();
-
-    const growSel = 'a, button, input, textarea, .proj-card, .skill-card, .tl-card, .ci-card, .chip, .f-btn, .term, .monogram';
-    $$(growSel).forEach((el) => {
-      el.addEventListener('mouseenter', () => ring && ring.classList.add('grow'));
-      el.addEventListener('mouseleave', () => ring && ring.classList.remove('grow'));
-    });
-  } else {
-    $('#cur') && $('#cur').remove();
-    $('#cur-ring') && $('#cur-ring').remove();
-  }
-
-  /* ── NAV: scroll state, scrollspy, top btn ── */
-  const nav = $('#nav');
-  const toTop = $('#to-top');
-  const sections = $$('main section[id]');
-  const navAnchors = $$('.nav-links a');
-
-  let ticking = false;
-  const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const y = window.scrollY;
-      if (nav) nav.classList.toggle('scrolled', y > 12);
-      if (toTop) toTop.classList.toggle('show', y > 700);
-
-      // scroll progress
-      const doc = document.documentElement;
-      const max = doc.scrollHeight - window.innerHeight;
-      const p = max > 0 ? (y / max) * 100 : 0;
-      const prog = $('#progress');
-      if (prog) prog.style.width = p + '%';
-
-      // scrollspy
-      let current = '';
-      sections.forEach((s) => { if (y >= s.offsetTop - 140) current = s.id; });
-      navAnchors.forEach((a) => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-      });
-
-      ticking = false;
-    });
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  toTop && toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' }));
-
-  /* ── HAMBURGER ────────────────────────────── */
-  const hamburger = $('#hamburger');
-  const navLinks = $('#nav-links');
-  if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      hamburger.classList.toggle('active', open);
-      hamburger.setAttribute('aria-expanded', open);
-    });
-    $$('a', navLinks).forEach((a) => {
-      a.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        hamburger.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  /* ── SCROLL REVEAL ────────────────────────── */
-  const revealEls = $$('.reveal');
-  if ('IntersectionObserver' in window && !prefersReduced) {
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          revealObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.14 });
-    revealEls.forEach((el) => revealObs.observe(el));
-  } else {
-    revealEls.forEach((el) => el.classList.add('visible'));
-  }
-
-  /* ── STAT COUNT-UP ─────────────────────────── */
-  const stats = $$('.stat');
-  const animNum = (el) => {
-    const target = parseInt(el.dataset.count, 10);
-    const suffix = el.dataset.suffix || '';
-    const numEl = $('.stat-num', el);
-    if (!numEl) return;
-    if (prefersReduced) { numEl.textContent = target + suffix; return; }
-    const dur = 1200;
-    const start = performance.now();
-    const tick = (t) => {
-      const k = Math.min((t - start) / dur, 1);
-      const ease = 1 - Math.pow(1 - k, 3);
-      numEl.textContent = Math.round(target * ease) + suffix;
-      if (k < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  };
-  if ('IntersectionObserver' in window) {
-    const statObs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          if (!e.target.dataset.infinite) animNum(e.target);
-          statObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.4 });
-    stats.forEach((s) => statObs.observe(s));
-  } else {
-    stats.forEach((s) => !s.dataset.infinite && animNum(s));
-  }
-
-  /* ── TYPING EFFECT ────────────────────────── */
-  const typedEl = $('.typed-text');
-  if (typedEl) {
-    const phrases = [
-      'full-stack developer',
-      'backend engineer',
-      'ai integrator',
-      'productive builder',
-      'deadline slayer'
-    ];
-    if (prefersReduced) {
-      typedEl.textContent = phrases[0];
-    } else {
-      let pi = 0, ci = 0, deleting = false;
-      const type = () => {
-        const current = phrases[pi];
-        if (!deleting) {
-          typedEl.textContent = current.slice(0, ci + 1);
-          ci++;
-          if (ci === current.length) {
-            deleting = true;
-            setTimeout(type, 1700);
-            return;
-          }
-        } else {
-          typedEl.textContent = current.slice(0, ci - 1);
-          ci--;
-          if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-        }
-        setTimeout(type, deleting ? 50 : 95);
-      };
-      setTimeout(type, 800);
+  /* ── KEYBOARD ──────────────────────────────── */
+  window.addEventListener('keydown', (e) => {
+    if (map && map.classList.contains('open')) {
+      if (e.key === 'Escape' || e.key === 'm') closeMap();
+      return;
     }
-  }
+    if (e.key === 'm') { e.preventDefault(); openMap(); return; }
+    if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(e.key)) {
+      e.preventDefault();
+      goto(active + 1);
+    } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) {
+      e.preventDefault();
+      goto(active - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      goto(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      goto(scenes.length - 1);
+    }
+  });
 
-  /* ── SKILL BARS ───────────────────────────── */
-  const bars = $$('.bar-fill');
-  if ('IntersectionObserver' in window) {
-    const barObs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.style.width = e.target.dataset.width;
-          barObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.35 });
-    bars.forEach((b) => barObs.observe(b));
-  } else {
-    bars.forEach((b) => (b.style.width = b.dataset.width));
-  }
-
-  /* ── PROJECT FILTER ───────────────────────── */
-  const fBtns = $$('.f-btn');
-  const projCards = $$('.proj-card');
-  if (fBtns.length && projCards.length) {
-    fBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        fBtns.forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        projCards.forEach((card) => {
-          const cats = (card.dataset.category || '').split(' ');
-          const show = f === 'all' || cats.includes(f);
-          if (show) {
-            card.classList.remove('hidden');
-            requestAnimationFrame(() => card.classList.add('visible'));
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-      });
-    });
-  }
-
-  /* ── CARD TILT ────────────────────────────── */
-  if (finePointer && !prefersReduced) {
-    $$('[data-tilt]').forEach((card) => {
-      let raf = null;
-      const onMove = (e) => {
-        if (raf) return;
-        raf = requestAnimationFrame(() => {
-          const rect = card.getBoundingClientRect();
-          const px = (e.clientX - rect.left) / rect.width;
-          const py = (e.clientY - rect.top) / rect.height;
-          const rx = (0.5 - py) * 7;
-          const ry = (px - 0.5) * 7;
-          card.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-3px)`;
-          raf = null;
-        });
-      };
-      const onLeave = () => {
-        card.style.transform = '';
-      };
-      card.addEventListener('mousemove', onMove);
-      card.addEventListener('mouseleave', onLeave);
-    });
-  }
-
-  /* ── MAGNETIC BUTTONS ─────────────────────── */
-  if (finePointer && !prefersReduced) {
-    $$('[data-mag]').forEach((btn) => {
-      let raf = null;
-      btn.addEventListener('mousemove', (e) => {
-        if (raf) return;
-        raf = requestAnimationFrame(() => {
-          const rect = btn.getBoundingClientRect();
-          const dx = e.clientX - (rect.left + rect.width / 2);
-          const dy = e.clientY - (rect.top + rect.height / 2);
-          btn.style.transform = `translate(${dx * 0.22}px, ${dy * 0.3}px)`;
-          raf = null;
-        });
-      });
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = '';
-      });
-    });
-  }
-
-  /* ── CONTACT FORM ─────────────────────────── */
-  const contactForm = $('#contact-form');
+  /* ── CONTACT FORM ──────────────────────────── */
+  const form = $('#contact-form');
   const sendBtn = $('#send-btn');
-  if (contactForm && sendBtn) {
-    const resetBtn = () => {
+  if (form && sendBtn) {
+    const reset = () => {
       sendBtn.disabled = false;
       sendBtn.innerHTML = `send_message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>`;
       sendBtn.style.background = '';
-      sendBtn.style.color = '';
     };
-
-    contactForm.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       sendBtn.disabled = true;
       sendBtn.textContent = 'sending...';
       try {
-        const res = await fetch(contactForm.action, {
+        const res = await fetch(form.action, {
           method: 'POST',
-          body: new FormData(contactForm),
+          body: new FormData(form),
           headers: { Accept: 'application/json' }
         });
         if (res.ok) {
           sendBtn.textContent = '✓ message sent!';
-          sendBtn.style.background = 'linear-gradient(100deg,#82e65a,#3ec3f0)';
-          sendBtn.style.color = '#06100a';
-          contactForm.reset();
+          sendBtn.style.background = 'linear-gradient(100deg,#c6ff3d,#3ddcff)';
+          form.reset();
         } else {
           sendBtn.textContent = '✗ failed — try again';
           sendBtn.style.background = '#ff5f57';
@@ -328,7 +281,7 @@
         sendBtn.style.background = '#ff5f57';
         sendBtn.style.color = '#fff';
       }
-      setTimeout(resetBtn, 3000);
+      setTimeout(reset, 3000);
     });
   }
 })();
