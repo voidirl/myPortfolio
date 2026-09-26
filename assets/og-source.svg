@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="0.12" cy="0.06" r="0.85">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.30"/>
+      <stop offset="55%" stop-color="#818cf8" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0b0d12"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="0" y="0" width="8" height="630" fill="url(#edge)"/>
+
+  <g font-family="DejaVu Sans, Verdana, sans-serif">
+    <g transform="translate(80, 74)">
+      <rect width="58" height="58" rx="13" fill="#a5b4fc"/>
+      <text x="29" y="39" text-anchor="middle" font-size="23" font-weight="700" fill="#0b0d12">RS</text>
+    </g>
+
+    <text x="80" y="230" font-size="21" font-weight="600" fill="#818cf8" letter-spacing="3.4">FULL-STACK DEVELOPER &amp; AI INTEGRATOR</text>
+
+    <text x="80" y="322" font-size="82" font-weight="700" fill="#e8ecf4" letter-spacing="-2.4">Rishavdeep Singh</text>
+
+    <text x="80" y="392" font-size="27" fill="#a3adc2">Open-source contributor to FastAPI. Four deployed apps built on</text>
+    <text x="80" y="430" font-size="27" fill="#a3adc2">Spring Boot, FastAPI and React — containerized, CI/CD'd, and live.</text>
+
+    <line x1="80" y1="502" x2="1120" y2="502" stroke="#232838" stroke-width="1.5"/>
+
+    <text x="80" y="552" font-size="21" fill="#737f96" letter-spacing="0.6">github.com/voidirl</text>
+    <text x="327" y="552" font-size="21" fill="#737f96" letter-spacing="0.6">linkedin.com/in/rshv11</text>
+    <text x="621" y="552" font-size="21" fill="#737f96" letter-spacing="0.6">B.Tech CSE 2027 · Open to internships</text>
+  </g>
+</svg>
