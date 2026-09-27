@@ -55,7 +55,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -78,7 +78,7 @@
   <nav>
     <a class="logo" href="#scene-launch">&lt;void<span>/&gt;</span></a>
     <div class="nav-right">
-      <a class="nav-btn nav-resume" href="resume.pdf" target="_blank" rel="noopener">resume.pdf</a>
+      <a class="nav-btn" href="resume.pdf" target="_blank" rel="noopener">resume.pdf</a>
       <span class="counter mono" id="counter" aria-hidden="true">01/06</span>
       <button class="map-btn" id="map-btn" aria-haspopup="dialog" aria-expanded="false">≡ map</button>
     </div>
@@ -86,12 +86,12 @@
 
   <!-- scene dots rail -->
   <nav id="rail" aria-label="Scene navigation">
-    <button data-scene="0" aria-label="Launch"><span></span></button>
-    <button data-scene="1" aria-label="Identity"><span></span></button>
-    <button data-scene="2" aria-label="Stack"><span></span></button>
-    <button data-scene="3" aria-label="Journey"><span></span></button>
-    <button data-scene="4" aria-label="Missions"><span></span></button>
-    <button data-scene="5" aria-label="Transmit"><span></span></button>
+    <button aria-label="Launch"><span></span></button>
+    <button aria-label="Identity"><span></span></button>
+    <button aria-label="Stack"><span></span></button>
+    <button aria-label="Journey"><span></span></button>
+    <button aria-label="Missions"><span></span></button>
+    <button aria-label="Transmit"><span></span></button>
   </nav>
 
   <!-- scene map overlay -->
@@ -190,7 +190,7 @@
             <div class="orbit-ring ring-b"></div>
             <div class="orbit-core"><span>&lt;/&gt;</span></div>
 
-            <span class="moon moon-1"></span>
+            <span class="moon"></span>
             <span class="moon moon-2"></span>
             <span class="moon moon-3"></span>
             <span class="moon moon-4"></span>
@@ -253,7 +253,7 @@
         <h2 class="big-title" style="--d:2">Deployed <span class="accent">projects</span></h2>
 
         <div class="mission-grid">
-          <article class="mission-card" style="--d:3" data-cat="fullstack ai devops">
+          <article class="mission-card" style="--d:3">
             <div class="m-thumb th-1">
               <code>&lt;ExpenseLedger /&gt;</code>
               <code>groq → balance</code>
@@ -271,7 +271,7 @@
             </div>
           </article>
 
-          <article class="mission-card" style="--d:4" data-cat="ai devops">
+          <article class="mission-card" style="--d:4">
             <div class="m-thumb th-2">
               <code>const review = groq(patch)</code>
               <code>POST /webhooks/github</code>
@@ -288,7 +288,7 @@
             </div>
           </article>
 
-          <article class="mission-card" style="--d:5" data-cat="fullstack ai">
+          <article class="mission-card" style="--d:5">
             <div class="m-thumb th-3">
               <code>doc = onboard(url)</code>
               <code>chat: ask anything</code>
@@ -306,7 +306,7 @@
             </div>
           </article>
 
-          <article class="mission-card" style="--d:6" data-cat="fullstack ai">
+          <article class="mission-card" style="--d:6">
             <div class="m-thumb th-4">
               <code>room.live(roast)</code>
               <code>jwt = user.session</code>

@@ -47,8 +47,7 @@ index.html           six scenes + site map overlay + JSON-LD Person schema
 style.css            design tokens (dark only), scene layout, rail, print rules
 script.js            starfield canvas · scene controller · rail + map · form
 icons8-anime-48.png  browser tab icon (pink girl, 48×48)
-assets/favicon.svg   monogram, kept for reference
-assets/apple-touch-icon.png   180×180 home-screen icon, upscaled from the same art
+assets/apple-touch-icon.png   180×180 home-screen icon, upscaled + palette-reduced
 assets/og.png        1200×630 social card (source: assets/og-source.svg)
 resume.pdf
 ```

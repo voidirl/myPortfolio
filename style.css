@@ -18,7 +18,6 @@
   --font-mono: 'JetBrains Mono', monospace;
 
   --bg: #05070f;
-  --bg2: #0a0e1c;
   --text: #e9f2ff;
   --muted: #8fa3c7;
   --muted2: #51648c;
@@ -28,7 +27,6 @@
   --lime: #c6ff3d;
   --cyan: #3ddcff;
   --violet: #a78bfa;
-  --pink: #ff6ec7;
   --grad: linear-gradient(100deg, #c6ff3d, #3ddcff 55%, #a78bfa);
 
   --glass: rgba(18, 26, 48, 0.55);
@@ -37,7 +35,6 @@
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
   --glow-lime: rgba(198, 255, 61, 0.35);
   --glow-cyan: rgba(61, 220, 255, 0.3);
-  --glow-violet: rgba(167, 139, 250, 0.3);
 }
 
 html {
@@ -594,7 +591,6 @@ main {
 }
 
 .launch-scroll {
-  margin-top: 48px;
   font-size: 12.5px;
   color: var(--cyan);
   letter-spacing: 2px;

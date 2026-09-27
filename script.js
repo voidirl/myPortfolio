@@ -109,7 +109,6 @@
   };
 
   const renderStatic = () => {
-    seed();
     drawFrame();
   };
 
@@ -144,7 +143,7 @@
       cur.style.setProperty('--cx', (cursor.x - 4) + 'px');
       cur.style.setProperty('--cy', (cursor.y - 4) + 'px');
     });
-    const hotSel = 'a, button, input, textarea, .mission-card, .chan-card, .trait-chip, .s-chip, select';
+    const hotSel = 'a, button, input, textarea, .mission-card, .chan-card, .trait-chip, .s-chip';
     const setHot = (on) => {
       if (ring) ring.classList.toggle('grow', !!on);
     };
@@ -242,7 +241,7 @@
     }
     const t = e.target;
     const near = (sel) => t && typeof t.closest === 'function' && t.closest(sel);
-    if (near('input, textarea, select, [contenteditable=""], [contenteditable="true"]')) return;
+    if (near('input, textarea, [contenteditable=""], [contenteditable="true"]')) return;
     if (e.key === ' ' && near('button, a, [role="button"]')) return;
     if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(e.key)) {
       e.preventDefault();
@@ -267,6 +266,7 @@
       sendBtn.disabled = false;
       sendBtn.innerHTML = `send_message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>`;
       sendBtn.style.background = '';
+      sendBtn.style.color = '';
     };
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
