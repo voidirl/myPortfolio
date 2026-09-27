@@ -87,16 +87,10 @@ Scenes: `#scene-launch` · `#scene-identity` · `#scene-stack` · `#scene-journe
   390px, plus a 1280×600 laptop (the case that used to clip the 4th project), with
   `script.js` blocked, with `prefers-reduced-motion: reduce`, and in print emulation.
 
-## Content to check
+## Content notes
 
-One detail still differs between the site and `resume.pdf`:
-
-| Item | Site says | `resume.pdf` says |
-| --- | --- | --- |
-| Location | Kathua, J&K | Jammu |
-
-Kathua is a district within the Jammu division, so both are defensible — but pick one and
-make them match.
+The location is **Jammu, J&K** everywhere: the identity scene, the JSON-LD
+`addressLocality`, and `resume.pdf` all agree.
 
 The domain was previously wrong here too: the site and this README pointed at
 `voidirl.vercel.app`, which returns **404**. The correct live URL is `v0idrsh.vercel.app`
