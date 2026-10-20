@@ -53,24 +53,25 @@
     shooters = [];
   };
 
-  const drawFrame = () => {
+  const drawFrame = (dt = 1) => {
     ctx.clearRect(0, 0, W, H);
-    t += 0.016;
+    t += 0.016 * dt;
 
     // nebulas
     ctx.globalCompositeOperation = 'lighter';
     nebulas.forEach((n, i) => {
       const pulse = 1 + Math.sin(t * 0.25 + i * 2) * 0.1;
-      const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * pulse);
+      const rr = n.r * pulse;
+      const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, rr);
       g.addColorStop(0, `rgba(${n.c[0]},${n.c[1]},${n.c[2]},${n.a})`);
       g.addColorStop(1, `rgba(${n.c[0]},${n.c[1]},${n.c[2]},0)`);
       ctx.fillStyle = g;
-      ctx.fillRect(n.x - n.r, n.y - n.r, n.r * 2, n.r * 2);
+      ctx.fillRect(n.x - rr, n.y - rr, rr * 2, rr * 2);
     });
 
     // stars (parallax + twinkle + slow drift)
     for (const s of stars) {
-      s.y += 0.015 + s.z * 0.03;
+      s.y += (0.015 + s.z * 0.03) * dt;
       if (s.y > H + 2) { s.y = -2; s.x = rand(0, W); }
       const px = s.x - mx * 18 * s.z;
       const py = s.y - my * 12 * s.z;
@@ -84,7 +85,7 @@
     ctx.globalAlpha = 1;
 
     // shooting stars
-    if (Math.random() < 0.012 && shooters.length < 2) {
+    if (Math.random() < 0.012 * dt && shooters.length < 2) {
       shooters.push({
         x: rand(0.25, 0.85) * W, y: rand(0.05, 0.3) * H,
         vx: rand(-7, -4), vy: rand(2.4, 3.4), life: 1
@@ -92,7 +93,7 @@
     }
     for (let i = shooters.length - 1; i >= 0; i--) {
       const sh = shooters[i];
-      sh.x += sh.vx; sh.y += sh.vy; sh.life -= 0.018;
+      sh.x += sh.vx * dt; sh.y += sh.vy * dt; sh.life -= 0.018 * dt;
       if (sh.life <= 0) { shooters.splice(i, 1); continue; }
       const tail = 9;
       const gr = ctx.createLinearGradient(sh.x, sh.y, sh.x - sh.vx * tail, sh.y - sh.vy * tail);
@@ -109,11 +110,10 @@
   };
 
   const renderStatic = () => {
-    drawFrame();
+    drawFrame(1);
   };
 
-  /* single rAF loop: galaxy + cursor lerp */
-  let raf = null;
+  /* cursor lerp on a dedicated rAF so it works even without the galaxy */
   const tickCursor = () => {
     if (!cursor) return;
     rx += (cursor.x - rx) * 0.22;
@@ -121,10 +121,19 @@
     ring.style.setProperty('--rx', (rx - 17) + 'px');
     ring.style.setProperty('--ry', (ry - 17) + 'px');
   };
-  const loop = () => {
-    drawFrame();
-    tickCursor();
+  const loop = (ts) => {
+    const dt = last ? Math.min((ts - last) / 16.667, 4) : 1;
+    last = ts;
+    drawFrame(dt);
     raf = requestAnimationFrame(loop);
+  };
+  let last = 0;
+
+  /* cursor loop runs whenever the custom cursor exists (independent of reduced motion) */
+  let cRaf = null;
+  const cursorLoop = () => {
+    tickCursor();
+    cRaf = requestAnimationFrame(cursorLoop);
   };
 
   /* ── CURSOR ────────────────────────────────── */
@@ -159,15 +168,26 @@
     ring && ring.remove();
   }
 
+  if (cursor && ring) cursorLoop();
+
   /* ── START RENDER ──────────────────────────── */
   if (ctx) {
     seed();
     if (reduced) {
       renderStatic();
     } else {
-      loop();
+      raf = requestAnimationFrame(loop);
     }
-    window.addEventListener('resize', () => { seed(); if (reduced) drawFrame(); });
+    let rt = null, rW = W, rH = H;
+    window.addEventListener('resize', () => {
+      clearTimeout(rt);
+      rt = setTimeout(() => {
+        if (window.innerWidth === rW && window.innerHeight === rH) return;
+        rW = window.innerWidth; rH = window.innerHeight;
+        seed();
+        if (reduced) renderStatic();
+      }, 150);
+    });
     document.addEventListener('visibilitychange', () => {
       if (reduced) return;
       if (document.hidden) {
@@ -187,9 +207,9 @@
   const activate = (i) => {
     if (i < 0 || i >= scenes.length) return;
     active = i;
-    scenes.forEach((s, idx) => s.classList.toggle('in', idx <= i));
+    scenes.forEach((s, idx) => { if (idx <= i) s.classList.add('in'); });
     railBtns.forEach((b, idx) => b.classList.toggle('active', idx === i));
-    if (counter && !reduced) counter.textContent = String(i + 1).padStart(2, '0') + '/' + String(scenes.length).padStart(2, '0');
+    if (counter) counter.textContent = String(i + 1).padStart(2, '0') + '/' + String(scenes.length).padStart(2, '0');
   };
 
   const goto = (i) => {
@@ -204,14 +224,14 @@
       });
     }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
     scenes.forEach((s) => io.observe(s));
+  } else {
+    scenes.forEach((s) => s.classList.add('in'));
   }
 
   if (reduced) {
     scenes.forEach((s) => s.classList.add('in'));
-    activate(0);
-  } else {
-    activate(0);
   }
+  activate(0);
 
   /* ── RAIL ──────────────────────────────────── */
   railBtns.forEach((b, i) => {
@@ -226,15 +246,36 @@
   const map = $('#map');
   const mapBtn = $('#map-btn');
   const mapClose = $('#map-close');
-  const openMap = () => map && (map.classList.add('open'), mapBtn && mapBtn.setAttribute('aria-expanded', 'true'));
-  const closeMap = () => map && (map.classList.remove('open'), mapBtn && mapBtn.setAttribute('aria-expanded', 'false'));
+  const openMap = () => {
+    if (!map) return;
+    map.classList.add('open');
+    document.documentElement.classList.add('map-open');
+    mapBtn && mapBtn.setAttribute('aria-expanded', 'true');
+    (mapClose || map).focus();
+  };
+  const closeMap = () => {
+    if (!map) return;
+    map.classList.remove('open');
+    document.documentElement.classList.remove('map-open');
+    mapBtn && mapBtn.setAttribute('aria-expanded', 'false');
+    mapBtn && mapBtn.focus();
+  };
   mapBtn && mapBtn.addEventListener('click', openMap);
   mapClose && mapClose.addEventListener('click', closeMap);
   map && map.addEventListener('click', (e) => { if (e.target === map) closeMap(); });
   map && $$('a', map).forEach((a) => a.addEventListener('click', closeMap));
+  map && map.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const items = $$('a, button', map);
+    if (!items.length) return;
+    const first = items[0], lastEl = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); lastEl.focus(); }
+    else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); first.focus(); }
+  });
 
   /* ── KEYBOARD ──────────────────────────────── */
   window.addEventListener('keydown', (e) => {
+    if (e.repeat) return;
     if (map && map.classList.contains('open')) {
       if (e.key === 'Escape') closeMap();
       return;
