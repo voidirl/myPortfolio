@@ -20,7 +20,7 @@
   --bg: #05070f;
   --text: #e9f2ff;
   --muted: #8fa3c7;
-  --muted2: #51648c;
+  --muted2: #7286ad;
   --line: rgba(143, 163, 199, 0.16);
   --line2: rgba(143, 163, 199, 0.09);
 
@@ -46,6 +46,11 @@ html:not(.js) .scene-inner > * {
   transform: none !important;
 }
 
+html:not(.js) .scene-inner :is(.id-cell, .group, .trait-chip, .waypoint, .mission-card) {
+  opacity: 1 !important;
+  translate: none !important;
+}
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -53,6 +58,10 @@ body {
   font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
+}
+
+html.map-open {
+  overflow: hidden;
 }
 
 ::selection {
@@ -396,6 +405,20 @@ main {
 .scene.in .scene-inner > * {
   opacity: 1;
   transform: none;
+}
+
+/* nested stagger reveal (uses `translate` so orbit/hover transforms survive) */
+.scene-inner :is(.id-cell, .group, .trait-chip, .waypoint, .mission-card) {
+  opacity: 0;
+  translate: 0 46px;
+  transition: opacity 0.7s cubic-bezier(.2, .7, .2, 1),
+    translate 0.7s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: calc(var(--d, 0) * 70ms);
+}
+
+.scene.in .scene-inner :is(.id-cell, .group, .trait-chip, .waypoint, .mission-card) {
+  opacity: 1;
+  translate: none;
 }
 
 /* shared typography */
@@ -851,6 +874,19 @@ main {
   box-shadow: 0 0 24px var(--glow-lime);
 }
 
+.s-chip-1 { --a: 0deg; --r: 10.5rem; }
+.s-chip-2 { --a: 30deg; --r: 7.5rem; }
+.s-chip-3 { --a: 60deg; --r: 11.5rem; }
+.s-chip-4 { --a: 90deg; --r: 8rem; }
+.s-chip-5 { --a: 120deg; --r: 10.5rem; }
+.s-chip-6 { --a: 150deg; --r: 7.5rem; }
+.s-chip-7 { --a: 180deg; --r: 11.5rem; }
+.s-chip-8 { --a: 210deg; --r: 8rem; }
+.s-chip-9 { --a: 240deg; --r: 10.5rem; }
+.s-chip-10 { --a: 270deg; --r: 7.5rem; }
+.s-chip-11 { --a: 300deg; --r: 11.5rem; }
+.s-chip-12 { --a: 330deg; --r: 8rem; }
+
 /* ── 04 · JOURNEY ─────────────────────────────── */
 .flight {
   position: relative;
@@ -1270,6 +1306,10 @@ main {
     opacity: 1;
     transform: none;
   }
+  .scene-inner :is(.id-cell, .group, .trait-chip, .waypoint, .mission-card) {
+    opacity: 1;
+    translate: none;
+  }
 }
 
 /* ── RESPONSIVE ───────────────────────────────── */
@@ -1367,6 +1407,11 @@ main {
   .scene-inner > * {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .scene-inner :is(.id-cell, .group, .trait-chip, .waypoint, .mission-card) {
+    opacity: 1 !important;
+    translate: none !important;
   }
 
   #space,
