@@ -67,7 +67,7 @@ Scenes: `#scene-launch` · `#scene-identity` · `#scene-stack` · `#scene-journe
   no single-key shortcut for it any more, so it can never shadow a key a visitor expects
   to type.
 - **Scenes** — each scene is at least one viewport tall and grows with its content, so the
-  four project cards are never clipped. The launch block is vertically centred in the
+  five project cards are never clipped. The launch block is vertically centred in the
   viewport, and the project grid uses the original three-up basis (382px cards at 1440px,
   two-up at 720px, one-up on phones). Scroll snapping is `proximity` on wide screens and
   off below 720px, where the page becomes a normal single column.
