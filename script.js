@@ -120,10 +120,46 @@
   };
   let last = 0;
 
+  /* ── CURSOR ────────────────────────────────── */
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const cur = $('#cur');
+  const hasCursor = !!(fine && cur);
+
+  if (hasCursor) {
+    document.documentElement.classList.add('has-cursor');
+  } else if (cur) {
+    cur.remove();
+  }
+
+  const hideCursor = () => {
+    if (!hasCursor) return;
+    cur.style.setProperty('--cx', '-100px');
+    cur.style.setProperty('--cy', '-100px');
+    cur.classList.remove('grow');
+  };
+
   document.addEventListener('mousemove', (e) => {
     mx = (e.clientX / window.innerWidth) * 2 - 1;
     my = (e.clientY / window.innerHeight) * 2 - 1;
+    if (!hasCursor) return;
+    cur.style.setProperty('--cx', e.clientX + 'px');
+    cur.style.setProperty('--cy', e.clientY + 'px');
   });
+
+  if (hasCursor) {
+    const hotSel = 'a, button, input, textarea, select, label, [role="button"], .mission-card, .chan-card, .trait-chip, .s-chip';
+    document.addEventListener('mouseover', (e) => {
+      const el = e.target.closest ? e.target.closest(hotSel) : null;
+      cur.classList.toggle('grow', !!el);
+    });
+    document.addEventListener('mouseout', (e) => {
+      const to = e.relatedTarget;
+      if (!to) { hideCursor(); return; }
+      const el = to.closest ? to.closest(hotSel) : null;
+      cur.classList.toggle('grow', !!el);
+    });
+    document.addEventListener('mouseleave', hideCursor);
+  }
 
   /* ── START RENDER ──────────────────────────── */
   if (ctx) {
