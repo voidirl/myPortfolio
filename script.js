@@ -3,7 +3,6 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   document.documentElement.classList.add('js');
 
@@ -113,14 +112,6 @@
     drawFrame(1);
   };
 
-  /* cursor lerp on a dedicated rAF so it works even without the galaxy */
-  const tickCursor = () => {
-    if (!cursor) return;
-    rx += (cursor.x - rx) * 0.22;
-    ry += (cursor.y - ry) * 0.22;
-    ring.style.setProperty('--rx', (rx - 17) + 'px');
-    ring.style.setProperty('--ry', (ry - 17) + 'px');
-  };
   const loop = (ts) => {
     const dt = last ? Math.min((ts - last) / 16.667, 4) : 1;
     last = ts;
@@ -129,73 +120,10 @@
   };
   let last = 0;
 
-  /* cursor loop runs whenever the custom cursor exists (independent of reduced motion) */
-  let cRaf = null;
-  const cursorLoop = () => {
-    if (!cursor || document.hidden) {
-      cRaf = null;
-      return;
-    }
-    tickCursor();
-    cRaf = requestAnimationFrame(cursorLoop);
-  };
-
-  /* ── CURSOR ────────────────────────────────── */
-  const cur = $('#cur');
-  const ring = $('#cur-ring');
-  let cursor = null;
-  let rx = -100, ry = -100;
-  let cActive = false;
-
-  if (fine && cur && ring) {
-    document.documentElement.classList.add('has-cursor');
-    cursor = { x: -100, y: -100 };
-    rx = -100; ry = -100;
-    cur.style.setProperty('--cx', '-100px');
-    cur.style.setProperty('--cy', '-100px');
-    ring.style.setProperty('--rx', '-100px');
-    ring.style.setProperty('--ry', '-100px');
-    document.addEventListener('mousemove', (e) => {
-      mx = (e.clientX / window.innerWidth) * 2 - 1;
-      my = (e.clientY / window.innerHeight) * 2 - 1;
-      cursor.x = e.clientX;
-      cursor.y = e.clientY;
-      cur.style.setProperty('--cx', (cursor.x - 4) + 'px');
-      cur.style.setProperty('--cy', (cursor.y - 4) + 'px');
-    });
-    document.addEventListener('mouseleave', () => {
-      if (!cursor) return;
-      cursor.x = -100;
-      cursor.y = -100;
-      cur.style.setProperty('--cx', '-100px');
-      cur.style.setProperty('--cy', '-100px');
-      rx = -100; ry = -100;
-      ring.style.setProperty('--rx', '-100px');
-      ring.style.setProperty('--ry', '-100px');
-      ring.classList.remove('grow');
-    });
-    const hotSel = 'a, button, input, textarea, .mission-card, .chan-card, .trait-chip, .s-chip';
-    const setHot = (on) => {
-      ring.classList.toggle('grow', !!on);
-    };
-    document.addEventListener('mouseover', (e) => {
-      const el = e.target.closest ? e.target.closest(hotSel) : null;
-      setHot(!!el);
-    });
-    document.addEventListener('mouseout', (e) => {
-      const to = e.relatedTarget;
-      const el = to && to.closest ? to.closest(hotSel) : null;
-      setHot(!!el);
-    });
-    if (!cActive) {
-      cActive = true;
-      cursorLoop();
-    }
-  } else {
-    if (cur) cur.remove();
-    if (ring) ring.remove();
-    document.documentElement.classList.remove('has-cursor');
-  }
+  document.addEventListener('mousemove', (e) => {
+    mx = (e.clientX / window.innerWidth) * 2 - 1;
+    my = (e.clientY / window.innerHeight) * 2 - 1;
+  });
 
   /* ── START RENDER ──────────────────────────── */
   if (ctx) {
@@ -215,21 +143,14 @@
         if (reduced) renderStatic();
       }, 150);
     });
-  document.addEventListener('visibilitychange', () => {
-    if (reduced) return;
-    if (document.hidden) {
-      if (raf) { cancelAnimationFrame(raf); raf = null; }
-      if (cRaf) { cancelAnimationFrame(cRaf); cRaf = null; }
-    } else {
-      if (!raf) {
+    document.addEventListener('visibilitychange', () => {
+      if (reduced) return;
+      if (document.hidden) {
+        if (raf) { cancelAnimationFrame(raf); raf = null; }
+      } else if (!raf) {
         raf = requestAnimationFrame(loop);
       }
-      if (cursor && ring && !cRaf) {
-        cActive = true;
-        cursorLoop();
-      }
-    }
-  });
+    });
   }
 
   /* ── SCENE CONTROLLER ──────────────────────── */

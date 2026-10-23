@@ -80,8 +80,8 @@ Scenes: `#scene-launch` · `#scene-identity` · `#scene-stack` · `#scene-journe
   to their content height with a page break between them, and drops the canvas, rail, map
   and nav in favour of ink-on-paper colours.
 - **Accessibility** — single `h1`, ordered headings, visible focus rings, 24px minimum
-  targets, `aria-label`s on the icon buttons, no global keyboard hijacking, and a visible
-  text alternative to the custom cursor (which is removed on coarse pointers).
+  targets, `aria-label`s on the icon buttons, no global keyboard hijacking, and the
+  standard browser cursor with visible focus indicators.
 - **Verified** — checked in headless Chromium at 1440, 1280, 1024, 860, 720, 640, 480 and
   390px, plus a 1280×600 laptop (the case that used to clip the 4th project), with
   `script.js` blocked, with `prefers-reduced-motion: reduce`, and in print emulation.
