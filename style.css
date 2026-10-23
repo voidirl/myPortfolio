@@ -166,6 +166,20 @@ html.map-open {
   background: rgba(198, 255, 61, 0.12);
 }
 
+@media (hover: hover) and (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor body,
+  html.has-cursor a,
+  html.has-cursor button,
+  html.has-cursor input,
+  html.has-cursor textarea,
+  html.has-cursor select,
+  html.has-cursor label,
+  html.has-cursor [role='button'] {
+    cursor: none !important;
+  }
+}
+
 @media (hover: none) and (pointer: coarse) {
   #cur, #cur-ring { display: none; }
 }
