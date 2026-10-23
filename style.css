@@ -130,45 +130,6 @@ html.map-open {
   background: radial-gradient(120% 95% at 50% 40%, transparent 45%, rgba(2, 4, 10, 0.82) 100%);
 }
 
-/* ── CURSOR ───────────────────────────────────── */
-#cur {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--lime);
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate3d(var(--cx, -100px), var(--cy, -100px), 0) translate(-50%, -50%) scale(var(--s, 1));
-  transition: scale 0.15s ease, background-color 0.15s ease;
-  will-change: transform;
-}
-
-#cur.grow {
-  --s: 2;
-  background: var(--cyan);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  html.has-cursor,
-  html.has-cursor body,
-  html.has-cursor a,
-  html.has-cursor button,
-  html.has-cursor input,
-  html.has-cursor textarea,
-  html.has-cursor select,
-  html.has-cursor label,
-  html.has-cursor [role='button'] {
-    cursor: none !important;
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  #cur { display: none; }
-}
-
 /* ── NAV ──────────────────────────────────────── */
 nav:not(#rail) {
   position: fixed;
@@ -1417,7 +1378,6 @@ main {
   #space,
   .scanlines,
   .vignette,
-  #cur,
   #rail,
   #map,
   .map-btn,
